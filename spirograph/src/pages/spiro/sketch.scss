@@ -1,0 +1,36 @@
+.MySketch{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+    .nft{
+
+        margin-top: 10px;
+
+        .buttons{
+            .button1{
+                width: auto;
+                min-width: 120px;
+                height: 30px;
+                border-radius: 20px;
+                margin: 10px 10px;
+                padding: 0 20px;
+            }
+            .button2{
+                width: auto;
+                min-width: 120px;
+                height: 30px;
+                border-radius: 20px;
+                margin: 10px 10px;
+                padding: 0 20px;
+            }
+            .button3{
+                width: auto;
+                min-width: 120px;
+                height: 30px;
+                border-radius: 20px;
+                margin: 10px 10px;
+                padding: 0 20px;
+            }
+        }
+    }
