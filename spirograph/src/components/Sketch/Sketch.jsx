@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import p5 from 'p5'; // p5 라이브러리 가져오기
-import './sketch.scss';
+import './Sketch.scss';
 
-const MySketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
+const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
   const sketchRef = useRef();
   const [sketchInstance, setSketchInstance] = useState(null);
   const [IsEnd, setIsEnd] = useState(false);
@@ -133,4 +133,4 @@ const MySketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
   );
 };
 
-export default MySketch;
+export default Sketch;
