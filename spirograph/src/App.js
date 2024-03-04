@@ -1,11 +1,12 @@
 // App.js
 import React, { useState } from 'react';
-import MySketch from './pages/spiro/MySketch';
+import MySketch from './pages/spiro/SketchPage.jsx';
+import NameBox from './components/NameBox/NameBox.jsx';
 import './App.css';
 import { button } from '@material-tailwind/react';
 
 function App() {
-  const [firstName, setFirstName] = useState('');
+/*  const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isEnd, setIsEnd] = useState(false);
@@ -21,39 +22,12 @@ function App() {
 
   const boxClass = isSubmitted ? "box" : "box center";
   const buttonClass = isEnd ? "endButton" : "button";
-
+*/
   return (
     <div className="App">
-        <h1 className="h1">Graphic</h1>
-        <div className={boxClass}>
-        <div className="name">
-        <input
-          type="text"
-          placeholder="Name : "
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        </div>
-        <div className="birth">
-        <input
-          type="text"
-          placeholder="생년월일 : "
-          onChange={(e) => setLastName(e.target.value)}
-        />
-        </div>
-        <button className={buttonClass} onClick={handleSubmit}>그래픽 생성하기</button>
-        </div>
-      
-
-      <div className = "sketch">
-      {isSubmitted && <MySketch
-        key={isSubmitted} // key를 isSubmitted 상태에 따라 변경
-        firstName={firstName}
-        lastName={lastName}
-        isSubmitted={isSubmitted}
-        onEnd={handleEnd}
-      />}
-      </div>
+      <MySketch/>  
     </div>
+       
   );
 }
 
