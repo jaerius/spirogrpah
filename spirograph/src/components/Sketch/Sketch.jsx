@@ -1,17 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react';
 import p5 from 'p5'; // p5 라이브러리 가져오기
 import './Sketch.scss';
+import html2canvas from "html2canvas";
+
 
 const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
   const sketchRef = useRef();
   const [sketchInstance, setSketchInstance] = useState(null);
   const [IsEnd, setIsEnd] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+
+
+
   useEffect(() => {
     if (!isSubmitted) return;
 
     const sketch = (p) => {
-      let R = 500;
-      let r = 419;
+      let R = 400;
+      let r = 319;
       let k;
       let totalRotations = 50000;
       let additionalRotation = p.PI / 3;
@@ -60,8 +66,13 @@ const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
           setIsEnd(true);
           onEnd();
           p.noLoop();
+          handleSaveImage(firstName,lastName);
         }
       };
+
+      const handleSaveImage = async (firstName, lastName) => {
+        p.saveCanvas(firstName + lastName + '_sketch', 'png');
+      }
 
       function getRandomColor(p) {
         return p.color(p.random(255), p.random(255), p.random(255), 150);
