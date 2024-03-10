@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import p5 from 'p5'; // p5 라이브러리 가져오기
 import './Sketch.scss';
-import html2canvas from "html2canvas";
+import { pinFileToIPFS } from '../../pinata';
 
 
 const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
@@ -9,7 +9,7 @@ const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
   const [sketchInstance, setSketchInstance] = useState(null);
   const [IsEnd, setIsEnd] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
-
+  const [Url,setUrl] = useState(false);
 
 
   useEffect(() => {
@@ -71,7 +71,22 @@ const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
       };
 
       const handleSaveImage = async (firstName, lastName) => {
-        p.saveCanvas(firstName + lastName + '_sketch', 'png');
+        //const imageFile = p.saveCanvas(firstName + lastName + '_sketch', 'png');
+        //const result = await pinFileToIPFS(imageFile);
+        //setUrl(`https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`)
+        //로컬 파일을 pinata.js에 연결
+        if (sketchInstance && sketchInstance.canvas) {
+          // canvas를 Blob으로 변환 후 IPFS에 업로드
+          sketchInstance.canvas.toBlob(async (blob) => {
+            const result = await pinFileToIPFS(blob);
+            setUrl(`https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`);
+            console.log(Url)
+          }, 'image/png');
+
+          console.log("성공?")
+        } else {
+          console.error('Sketch instance or canvas not available.');
+        }
       }
 
       function getRandomColor(p) {
