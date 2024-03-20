@@ -1,14 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import p5 from 'p5'; // p5 라이브러리 가져오기
 import './Sketch.scss';
-<<<<<<< HEAD
+
 import { pinFileToIPFS } from '../../pinata';
-=======
+
 import html2canvas from "html2canvas";
 import { init, useConnectWallet } from "@web3-onboard/react";
 import injectedModule from "@web3-onboard/injected-wallets";
 import { ethers } from "ethers"; 
 import abi from "./abi";
+
 
 
 // 1. 지갑 모듈
@@ -58,7 +59,7 @@ init({
   chains,
   appMetadata,
 });
->>>>>>> ca92d028897eb09b732986872098e9b0e08d657e
+
 
 
 const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
@@ -66,9 +67,9 @@ const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
   const [sketchInstance, setSketchInstance] = useState(null);
   const [IsEnd, setIsEnd] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
-<<<<<<< HEAD
+
   const [Url,setUrl] = useState(false);
-=======
+
   // 지갑 훅
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
 
@@ -79,7 +80,7 @@ const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
     ethersProvider = new ethers.providers.Web3Provider(wallet.provider, "any"); //ethers.BrowserProvider in v6
   }
   const CA = "0x28DD6A040b2c754857115a4b7f8b0151c7aD9Ba5";
->>>>>>> ca92d028897eb09b732986872098e9b0e08d657e
+
 
   const mintNFT = async (deposit, duration) => {
     const contract = new ethers.Contract(CA, abi, ethersProvider.getSigner());
@@ -87,12 +88,33 @@ const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
     mint.wait();
   }
 
+  async function sendUrlToServer(url) {
+    try {
+        const response = await fetch('http://localhost:5000/save-url', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ url }) // 서버로 URL 보내기
+        });
+        if (!response.ok) {
+            // 응답이 성공적이지 않을 경우, 에러를 던짐
+            throw new Error('Network response was not ok.');
+        }
+        const data = await response.json();  // 응답을 JSON으로 파싱
+        console.log(data);  // 서버로부터 받은 데이터 출력
+        return data;  // JSON 데이터 반환
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
   useEffect(() => {
     if (!isSubmitted) return;
 
     const sketch = (p) => {
       let R = 400;
-      let r = 319;
+      let r = 300;
       let k;
       let totalRotations = 50000;
       let additionalRotation = p.PI / 3;
@@ -150,12 +172,12 @@ const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
         //const result = await pinFileToIPFS(imageFile);
         //setUrl(`https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`)
         //로컬 파일을 pinata.js에 연결
-        if (sketchInstance && sketchInstance.canvas) {
-          // canvas를 Blob으로 변환 후 IPFS에 업로드
-          sketchInstance.canvas.toBlob(async (blob) => {
+        if (newSketchInstance && newSketchInstance.canvas) {
+  
+          newSketchInstance.canvas.toBlob(async (blob) => {
             const result = await pinFileToIPFS(blob);
             setUrl(`https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`);
-            console.log(Url)
+            //console.log(Url)
           }, 'image/png');
 
           console.log("성공?")
@@ -217,6 +239,23 @@ const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
       newSketchInstance.remove(); // 컴포넌트가 언마운트될 때 스케치 제거
     };
   }, [/*{firstName, lastName,}*/ isSubmitted]);
+
+  useEffect(() => {
+    // Check if the URL state has changed and if there is a new URL to send
+    
+    if (Url) {
+      console.log(Url)
+        sendUrlToServer(Url)
+            .then(() => {
+                console.log('URL was sent to the server successfully.');
+            })
+            .catch(error => {
+                console.error('There was an error sending the URL to the server:', error);
+            });
+    }
+}, [Url]);
+
+
 
   return (
     <div className="MySketch">

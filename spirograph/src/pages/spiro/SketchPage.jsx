@@ -8,7 +8,6 @@ function SketchPage() {
   return (
     <div className="SketchPage">
         <NameBox/>
-        
       </div>
   )
 
