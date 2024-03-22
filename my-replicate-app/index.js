@@ -33,6 +33,7 @@ app.use(cors({
   origin: 'http://localhost:3000' // 클라이언트 애플리케이션의 도메인으로 대체하세요.
 }));
 
+/*
 async function downloadImage(url, outputPath) {
   const response = await axios({
       url,
@@ -40,7 +41,7 @@ async function downloadImage(url, outputPath) {
       responseType: 'stream',
   });
   await pipeline(response.data, fs.createWriteStream(outputPath));
-}
+} */
 
 async function pinFileToIPFS(filePath) {
   const url = 'https://api.pinata.cloud/pinning/pinFileToIPFS';
@@ -166,7 +167,10 @@ app.post('/save-url', async (req, res) => {
         const finalIpfsUrl = `https://gateway.pinata.cloud/ipfs/${pinataResponse.data.IpfsHash}`;
         console.log(finalIpfsUrl)
     //    res.send({ message: 'Model run successfully', output });
-        console.log('res.send실행완료')
+        console.log('res.send실행완료');
+        res.json({url: finalIpfsUrl})
+       // res.send(finalIpfsUrl);
+
     } catch (error) {
         console.error('모델 실행 중 서버 에러:', error);
         res.status(500).send('Error running model');
