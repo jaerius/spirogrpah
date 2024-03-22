@@ -92,9 +92,20 @@ const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
 
 
   const mintNFT = async (aiUrl) => {
+    if (!aiUrl) {
+      console.error("AI URL is not set.");
+      return;
+    }//"image: "sdjoisejf""
+    try{
     const contract = new ethers.Contract(CA, abi, ethersProvider.getSigner());
     const mint = await contract.awardItem(aiUrl);
-    mint.wait();
+    await mint.wait();
+    console.log("NFT has been minted with AI URL:", aiUrl)
+    }
+    catch (error){
+      console.error("error minting NFT:", error)
+    }
+
   }
 
   async function sendUrlToServer(url) {
@@ -111,10 +122,10 @@ const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
             throw new Error('Network response was not ok.');
         }
         const data = await response.json();  // 응답을 JSON으로 파싱
-        console.log(data, "hi")
+        console.log(data.metadataResult, "hi")
         
-        setAiUrl(data.url)
-        console.log(data,"aiurlupdated");  // 서버로부터 받은 데이터 출력
+        setAiUrl(data.metadataResult)
+        console.log(data.metadataResult,"aiurlupdated");  // 서버로부터 받은 데이터 출력
         return data;  // JSON 데이터 반환
     } catch (error) {
         console.error('Error:', error);
