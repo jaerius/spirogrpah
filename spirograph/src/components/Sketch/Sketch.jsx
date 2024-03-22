@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import p5 from 'p5'; // p5 라이브러리 가져오기
 import './Sketch.scss';
+import { useNavigate } from 'react-router-dom';
 
 import { pinFileToIPFS } from '../../pinata';
 
@@ -63,12 +64,20 @@ init({
 
 
 const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
+
+  const navigate = useNavigate();
+
+  const goToNewPage = () => {
+    navigate('/aiCorrection');
+  };
+
   const sketchRef = useRef();
   const [sketchInstance, setSketchInstance] = useState(null);
   const [IsEnd, setIsEnd] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
   const [Url,setUrl] = useState(false);
+  const [aiUrl, setAiUrl]= useState(false)
 
   // 지갑 훅
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
@@ -79,12 +88,12 @@ const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
   if (wallet) {
     ethersProvider = new ethers.providers.Web3Provider(wallet.provider, "any"); //ethers.BrowserProvider in v6
   }
-  const CA = "0x28DD6A040b2c754857115a4b7f8b0151c7aD9Ba5";
+  const CA = "0x96DefAc7d1E8F0F4258779A8343c97850C6de7fa";
 
 
-  const mintNFT = async (deposit, duration) => {
+  const mintNFT = async (aiUrl) => {
     const contract = new ethers.Contract(CA, abi, ethersProvider.getSigner());
-    const mint = await contract.mint(deposit,duration);
+    const mint = await contract.awardItem(aiUrl);
     mint.wait();
   }
 
@@ -102,12 +111,20 @@ const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
             throw new Error('Network response was not ok.');
         }
         const data = await response.json();  // 응답을 JSON으로 파싱
-        console.log(data);  // 서버로부터 받은 데이터 출력
+        console.log(data, "hi")
+        
+        setAiUrl(data.url)
+        console.log(data,"aiurlupdated");  // 서버로부터 받은 데이터 출력
         return data;  // JSON 데이터 반환
     } catch (error) {
         console.error('Error:', error);
     }
 }
+
+useEffect(() => {
+  console.log(aiUrl); // aiUrl 상태의 변화 확인
+}, [aiUrl]);
+
 
   useEffect(() => {
     if (!isSubmitted) return;
@@ -289,14 +306,7 @@ const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
     }
 }, [Url]);
 
-function validUrl(string) {
-  try {
-      new URL(string);
-      return true;
-  } catch (e) {
-      return false;
-  }
-}
+
 
   return (
     <div className="MySketch">
@@ -304,12 +314,12 @@ function validUrl(string) {
       <div className="nft">
       {IsEnd&&
         <div className="buttons">
-        <button className="button1" onClick={() => mintNFT(10,12)}>NFT 발행하기</button>
+        <button className="button1" onClick={() => mintNFT(aiUrl)}>NFT 발행하기</button>
         <button disabled={connecting} onClick={() => (wallet ? disconnect(wallet) : connect())}>
           {connecting ? "연결 중" : wallet ? "연결 해제" : "지갑 연결"}
         </button>
         <button className="button2">출력하기</button>
-        <button className="button3">AI 수정하기</button>
+        <button className="button3" onClick={goToNewPage}>AI 수정하기</button>
         </div>
         }
       </div>
