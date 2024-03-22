@@ -65,6 +65,37 @@ async function pinFileToIPFS(filePath) {
   return response.data;
 }
 
+const pinJSONToIPFS = async (json) => {
+    console.log("pinJSONToIPFS 동작");
+    const data = JSON.stringify({
+      pinataOptions: {
+        cidVersion: 1,
+      },
+      pinataMetadata: {
+        name: "testing",
+        keyvalues: {
+          customKey: "customValue",
+          customKey2: "customValue2",
+        },
+      },
+      pinataContent: json,
+    });
+  
+    const config = {
+      method: "post",
+      url: "https://api.pinata.cloud/pinning/pinJSONToIPFS",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${JWT2}`,
+      },
+      data: data,
+    };
+  
+    const res = await axios(config);
+  
+    return res.data;
+  };
+
 // Replicate API를 사용하는 함수
 async function runReplicateModel(url) {
     console.log('runReplicateModel 함수 실행 시작');
@@ -107,7 +138,19 @@ app.post('/upload-to-ipfs', upload.single('image'), async (req, res) => {
       try {
           const imagePath = path.join(__dirname, req.file.path);
           const result = await pinFileToIPFS(imagePath); // IPFS 업로드 함수
-          res.json({ ipfsUrl: `https://gateway.pinata.cloud/ipfs/${result.IpfsHash}` });
+          
+            const metadata = {
+                name: "MyFile",                  // 파일 이름
+                description: "blahblah",  // 설명
+                image: `https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`,     // IPFS에 올린 파일 주소
+                attributes: [],
+            }
+        
+            const metadataResult = await pinJSONToIPFS(metadata);
+            console.log(metadataResult);
+
+          res.json({ ipfsUrl: `https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`, metadataResult: `https://gateway.pinata.cloud/ipfs/${metadataResult.IpfsHash}` });
+
       } catch (error) {
           console.error('Error uploading image to IPFS:', error);
           res.status(500).send('Error uploading image to IPFS');
@@ -166,9 +209,22 @@ app.post('/save-url', async (req, res) => {
         // 최종 IPFS URL 반환
         const finalIpfsUrl = `https://gateway.pinata.cloud/ipfs/${pinataResponse.data.IpfsHash}`;
         console.log(finalIpfsUrl)
+
+        const metadata = {
+            name: "MyFile",                  // 파일 이름
+            description: "blahblah",  // 설명
+            image: "ipfs://"+pinataResponse.data.IpfsHash,     // IPFS에 올린 파일 주소
+            attributes: [],
+        }
+    
+        const metadataResult = await pinJSONToIPFS(metadata);
+        console.log(metadataResult, "json result");
+
+      res.json({ ipfsUrl: `https://gateway.pinata.cloud/ipfs/${finalIpfsUrl.IpfsHash}`, metadataResult: `https://gateway.pinata.cloud/ipfs/${metadataResult.IpfsHash}` });
+
     //    res.send({ message: 'Model run successfully', output });
         console.log('res.send실행완료');
-        res.json({url: finalIpfsUrl})
+       // res.json({url: finalIpfsUrl})
        // res.send(finalIpfsUrl);
 
     } catch (error) {
