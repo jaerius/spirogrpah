@@ -164,27 +164,61 @@ const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
           onEnd();
           p.noLoop();
           handleSaveImage(firstName,lastName);
+          //sendImageToServer(blobImage);
         }
       };
 
+      async function sendImageToServer(blobImage) {
+        const formData = new FormData();
+        formData.append('image', blobImage);
+    
+        try {
+            const response = await fetch('http://localhost:5000/upload-to-ipfs', {
+                method: 'POST',
+                body: formData, // FormData 객체 전송
+            });
+            const data = await response.json();
+            setUrl(data.ipfsUrl)
+            return data.ipfsUrl; // 서버로부터 반환된 IPFS URL
+        } catch (error) {
+            console.error('Error sending image to server:', error);
+        }
+    }
+
       const handleSaveImage = async (firstName, lastName) => {
-        //const imageFile = p.saveCanvas(firstName + lastName + '_sketch', 'png');
-        //const result = await pinFileToIPFS(imageFile);
-        //setUrl(`https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`)
-        //로컬 파일을 pinata.js에 연결
+        
         if (newSketchInstance && newSketchInstance.canvas) {
   
           newSketchInstance.canvas.toBlob(async (blob) => {
+            const formData = new FormData();
+            formData.append('image', blob);
+
+            try{
+              const response = await fetch('http://localhost:5000/upload-to-ipfs',{
+                method: 'POST',
+                body: formData,
+              });
+              const data = await response.json();
+              console.log(data.ipfsUrl,"clientside")
+              setUrl(data.ipfsUrl)
+              return data.ipfsUrl;
+            } catch (error){
+              console.log('Error sending image to server:', error)
+            }
+            /*
             const result = await pinFileToIPFS(blob);
             setUrl(`https://gateway.pinata.cloud/ipfs/${result.IpfsHash}`);
             //console.log(Url)
           }, 'image/png');
 
           console.log("성공?")
-        } else {
+        }*/
+      })
+      } else {
           console.error('Sketch instance or canvas not available.');
-        }
+        } 
       }
+    
 
       function getRandomColor(p) {
         return p.color(p.random(255), p.random(255), p.random(255), 150);
@@ -255,7 +289,14 @@ const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
     }
 }, [Url]);
 
-
+function validUrl(string) {
+  try {
+      new URL(string);
+      return true;
+  } catch (e) {
+      return false;
+  }
+}
 
   return (
     <div className="MySketch">
