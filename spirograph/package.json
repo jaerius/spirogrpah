@@ -23,6 +23,7 @@
     "react-scripts": "5.0.1",
     "replicate": "^0.29.0",
     "stream-browserify": "^3.0.0",
+    "styled-components": "^6.1.8",
     "url": "^0.11.3",
     "web-vitals": "^2.1.4"
   },
@@ -53,6 +54,7 @@
   "devDependencies": {
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.71.1",
-    "sass-loader": "^14.1.1"
+    "sass-loader": "^14.1.1",
+    "typescript": "^5.4.5"
   }
 }
