@@ -4,30 +4,36 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Horizon from "../../components/NavBar/horizon";
 import Logo from "../../assets/SymbolLogo.svg";
+const ImageWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  //원래 1.69
+  margin-right: 2rem;
+  //원래 2.77rem
+  margin-left: 2.5rem;
+  height: 100%;
+`;
+const Image = styled.img`
+  display: block;
+  width: auto;
+`;
+const Group = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-right: 1.25rem;
+  margin-bottom: 7.94rem;
+  &:hover {
+    background-color: #fff;
+    transition: background-color 0.8s;
+  }
+`;
 export function Nav() {
-  const ImageWrapper = styled.div`
-    display: flex;
-    width: 100%;
-    //원래 1.69
-    margin-right: 2rem;
-    //원래 2.77rem
-    margin-left: 2.5rem;
-    height: 100%;
-  `;
-  const Image = styled.img`
-    display: block;
-    width: auto;
-  `;
-  const Group = styled.div`
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin-right: 1.25rem;
-    margin-bottom: 7.94rem;
-  `;
   const navigate = useNavigate();
+
   function handleClick() {
-    navigate("/");
+    console.log("NavMenu가 클릭!");
+    navigate("/about");
   }
   return (
     <S.NavBar>
@@ -57,7 +63,9 @@ export function Nav() {
       </Group>
       <Group>
         <Horizon />
-        <S.NavMenu onClick={handleClick}>Model Graphic {">"} </S.NavMenu>
+        <S.NavMenu onClick={handleClick} style={{ fontSize: "1.12rem" }}>
+          Model Graphic {">"}{" "}
+        </S.NavMenu>
       </Group>
 
       {/* <Link style={S.NavMenu}>Main</Link>

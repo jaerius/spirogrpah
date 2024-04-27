@@ -14,7 +14,11 @@ export const NavMenu = styled.div`
   /* margin-top: 0.5rem; */
   /* margin: 1rem; */
   //원래 폰트 0.875rem인데 너무 작아보여서 일단 1rem으로
+  cursor: pointer;
   font-size: 1rem;
   font-family: bold;
-  /* :hover */
+  &:hover {
+    color: #000;
+    transition: color 0.8s;
+  }
 `;
