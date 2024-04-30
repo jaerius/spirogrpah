@@ -41,7 +41,6 @@ export function Nav() {
         <Image src={Logo} alt="logo" />
       </ImageWrapper>
       <Group>
-        {/* 이미 horizonLine 정의해놓은 게 있어서 여기 color랑 MARGIN이 안먹는 듯,,새로 하나 만들어야 될 거 같어 */}
         <Horizon />
         <S.NavMenu onClick={handleClick}>Symbol Logic</S.NavMenu>
       </Group>
