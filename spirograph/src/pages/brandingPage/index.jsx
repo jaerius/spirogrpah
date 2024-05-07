@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "../../components/NavBar/navBar";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import BlueGradient from "../../assets/blueGradient.png";
-export default function brandingPage() {
+export default function BrandingPage() {
+  const [position, setPosition] = useState(0);
+  function onScroll() {
+    console.log(window.scrollY);
+
+    setPosition(window.scrollY);
+  }
+  useEffect(() => {
+    window.addEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
+  });
   const FirstPage = styled.div`
-    background: var(--gray-95, #181818);
-    margin-bottom: 26.25rem;
+    height: 20%;
+    background: var(--gray-95, #000);
+    margin-bottom: 50vh;
   `;
   const SecondPage = styled.div`
     display: flex;
@@ -14,7 +27,7 @@ export default function brandingPage() {
     margin-bottom: 18.19rem;
   `;
   const HugeT = styled.div`
-    font-size: 10rem;
+    font-size: 7vw;
     color: #fff;
     text-align: center;
     margin-left: 1rem;
@@ -24,7 +37,7 @@ export default function brandingPage() {
   `;
 
   const SmallT = styled.div`
-    font-size: 1.375rem;
+    font-size: 1vw;
     color: #fff;
     text-align: start;
     margin-right: 3rem;
@@ -35,9 +48,18 @@ export default function brandingPage() {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-top: 39.06rem;
+    margin-top: 20vw;
   `;
-
+  const fadeInUp = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  `;
   const GradientT = styled.div`
     display: flex;
     align-items: center;
@@ -46,6 +68,7 @@ export default function brandingPage() {
     line-height: 180%; /* 5.85rem */
     font-weight: 800;
     color: black;
+    visibility: visible;
     /* Text에만 배경 그라데이션 효과를 적용 */
     background: linear-gradient(180deg, #fff 0%, #4d4d4d 100%);
     /* 배경 그라데이션 효과가 텍스트 위에 오버레이되도록 */
@@ -54,6 +77,13 @@ export default function brandingPage() {
     /* 텍스트의 배경을 투명으로 */
     color: transparent;
     letter-spacing: -0.0975rem;
+    animation: ${fadeInUp} 1s ease-in-out; // 키 프레임 애니메이션 적용
+
+    animation-duration: 1s;
+    animation-name: fadeInUp;
+    /* transition: opacity 3s all ease-in-out; */
+    /* transition: opacity 0.3s ease-in-out; // opacity에 대한 transition을 추가합니다.
+ */
   `;
 
   const Horizon = styled.div`
@@ -100,13 +130,72 @@ export default function brandingPage() {
           </SmallT>
         </TextWrapper>
       </FirstPage>
+
+      {/* =================================================================== */}
       <SecondPage>
-        <GradientT>각 시대정신을 반영하는 ‘상징'은 인류의</GradientT>
-        <GradientT>발전과 함께했다.</GradientT>
-        <br />
-        <br />
-        <GradientT> 그것은 기존 가치를 해체하고 새로운 의미를</GradientT>
-        <GradientT> 창출하는 역할을 해왔다.</GradientT>
+        <div style={{ position: "relative" }}>
+          <GradientT
+            style={{
+              opacity: (position - 300) / 200,
+              // transition: "ease-in-out",
+              animationDuration: "1s",
+              animationName: "fadeInUp",
+              // transition: "fadeIn opacity 0.5s ease-in-out",
+              transition: "opacity .95s all ease-in-out",
+              // opacity: (position - 200) / 100,
+              // animationDuration: "1s",
+              // animationName: "fadeInUp",
+              // overflow: "hidden",
+            }}
+          >
+            각 시대정신을 반영하는 ‘상징'은 인류의
+          </GradientT>
+
+          <GradientT
+            style={{
+              opacity: (position - 400) / 200,
+              transition: "ease-in-out",
+              animationDuration: "2s",
+              animationName: "fadeInUp",
+              // transition: "fadeIn opacity 0.5s ease-in-out",
+              // transition: "opacity .95s all ease-in-out",
+              // opacity: (position - 200) / 100,
+              // animationDuration: "1s",
+              // animationName: "fadeInUp",
+              // overflow: "hidden",
+            }}
+          >
+            발전과 함께했다.
+          </GradientT>
+          <br />
+          <br />
+          <GradientT
+            style={{
+              opacity: (position - 600) / 200,
+              // transition: "ease-in-out",
+              animationDuration: "2s",
+              animationName: "fadeInUp",
+              // // transition: "fadeIn opacity 0.5s ease-in-out",
+              // transition: "opacity .95s all ease-in-out",
+              // opacity: (position - 210) / 100,
+              // animationDuration: "1s",
+              // animationName: "fadeInUp",
+              // overflow: "hidden",
+            }}
+          >
+            그것은 기존 가치를 해체하고 새로운 의미를
+          </GradientT>
+          <GradientT
+            style={{
+              opacity: (position - 700) / 200,
+              // transition: "ease-in-out",
+              animationDuration: "2s",
+              animationName: "fadeInUp",
+            }}
+          >
+            창출하는 역할을 해왔다.
+          </GradientT>
+        </div>
         <div style={{ marginTop: "15rem" }}></div>
         <text
           style={{
