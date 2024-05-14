@@ -2,6 +2,20 @@ import React, { useState, useEffect } from "react";
 import NavBar from "../../components/NavBar/navBar";
 import styled, { keyframes } from "styled-components";
 import BlueGradient from "../../assets/blueGradient.png";
+import BrownBackground from "../../assets/brownBackground.png";
+import Animal from "../../assets/animal.png";
+import Person from "../../assets/person.png";
+import CaveBackground from "../../assets/caveBackground.png";
+import Cave from "../../assets/mural.png";
+import DiscoveryOfFirePerson from "../../assets/DiscoveryOfFire.png";
+import DiscoveryOfFireBackground from "../../assets/Background_DiscoveryOfFire.png";
+import DiscoveryOfFireText from "../../assets/DiscoveryOfFireText.png";
+import DiscoveryOfCivil from "../../assets/DiscoveryOfCivil.png";
+import PreImage from "../../assets/Pre.png";
+import AgriculturalEvolution from "../../assets/AgriculturalEvolution.png";
+import Gradient1 from "../../assets/Gradient.png";
+import Gradient2 from "../../assets/Gradient2.png";
+// import colors from "../../fonts/color";
 export default function BrandingPage() {
   const [position, setPosition] = useState(0);
   function onScroll() {
@@ -15,15 +29,155 @@ export default function BrandingPage() {
       window.removeEventListener("scroll", onScroll);
     };
   });
+
+  const DivWrapper = styled.div`
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+  `;
+  const ImageContainer = styled.img`
+    //ㅎ화면에 따라 크기 조절하고 싶으면?
+    //만약 75vw면 화면 width 3/4가 채워짐
+    width: 100vw;
+    height: auto;
+    background-size: cover;
+  `;
+
   const FirstPage = styled.div`
+    width: 100%;
     height: 20%;
     background: var(--gray-95, #000);
     margin-bottom: 50vh;
   `;
   const SecondPage = styled.div`
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 18.19rem;
+  `;
+  const ThirdPage = styled.div`
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 18.19rem;
+  `;
+  const FourthPage = styled.div`
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    justify-content: space-evenly;
+    margin-bottom: 18.19rem;
+  `;
+  const FifthPage = styled.div`
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin-bottom: 18.19rem;
+  `;
+  const SixthPage = styled.div`
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 18.19rem;
+  `;
+  const SeventhPage = styled.div`
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 18.19rem;
+  `;
+  const EighthPage = styled.div`
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: flex-start;
+    margin-bottom: 18.19rem;
+  `;
+  const TextGradientPurple = styled.text`
+    background: linear-gradient(99deg, #c7acff 2.03%, #6a25ff 92.54%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-family: bold;
+    font-size: 10rem;
+  `;
+  const TextGradientGray = styled.text`
+    color: #848484;
+    font-family: bold;
+    font-size: 6rem;
+  `;
+  const NinethPage = styled.div`
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 1000px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    background: conic-gradient(
+      from 270deg at 50% 50%,
+      #6a25ff 0deg,
+      #f523ed 158.389892578125deg,
+      #0043f1 234.94101762771606deg,
+      #401699 360deg
+    );
+
+    filter: blur(310px);
+    margin-bottom: 18.19rem;
+  `;
+  const TenthPage = styled.div`
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin-bottom: 18.19rem;
+  `;
+  const EleventhPage = styled.div`
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
     margin-bottom: 18.19rem;
   `;
   const HugeT = styled.div`
@@ -232,6 +386,190 @@ export default function BrandingPage() {
           alt="그라데이션 이미지"
         ></img>
       </SecondPage>
+      <ThirdPage>
+        <div
+          style={{
+            width: "46rem",
+            height: "23rem",
+            backgroundImage: `url(${BrownBackground})`,
+            backgroundPosition: "center",
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+            marginBottom: "4rem",
+          }}
+          alt="갈색 배경"
+        >
+          <img src={Person} alt="사람"></img>
+          <img src={Animal} alt="동물"></img>
+        </div>
+        <div>
+          <span style={{ color: "#848484" }}>
+            그들은 도구를 통해 사냥을 하여 그들의
+          </span>
+          <span style={{ color: "#fff" }}>생존</span>
+          <span style={{ color: "#848484" }}>과 </span>
+          <span style={{ color: "#fff" }}>안전</span>
+          <span style={{ color: "#848484" }}>을 책임졌다.</span>
+        </div>
+      </ThirdPage>
+      <FourthPage>
+        <div
+          style={{
+            width: "100%",
+            height: "100vh",
+            flexDirection: "column",
+            // backgroundPosition: "center",
+            display: "flex",
+            backgroundSize: "cover", //이미지를 화면에 꽉 채우기
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundImage: `url(${CaveBackground})`,
+          }}
+        >
+          <img src={Cave} alt="벽화"></img>
+          <span style={{ color: "#848484" }}>그리고 그들은 그 현장을 </span>
+          <span style={{ color: "#fff" }}>예술적</span>
+        </div>
+      </FourthPage>
+      <FifthPage>
+        <div
+          style={{ width: "100%", height: "100%", backgroundColor: "#181818" }}
+        >
+          <div
+            style={{
+              width: "50%",
+              height: "100vh",
+              flexDirection: "column",
+              display: "flex",
+              justifyContent: "flex-start", // 화면 왼쪽에 배치
+              backgroundImage: `url(${DiscoveryOfFireBackground})`,
+            }}
+          >
+            <div style={{ flexDirection: "row", display: "flex" }}>
+              <img
+                src={DiscoveryOfFirePerson}
+                alt="불의 사람"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "22rem",
+                  height: "30rem",
+                }}
+              ></img>
+              <img src={DiscoveryOfFireText} alt="텍스트 이미지"></img>
+            </div>
+          </div>
+        </div>
+      </FifthPage>
+      <SixthPage>
+        <div
+          style={{
+            flexDirection: "column",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            width: "120rem",
+          }}
+        >
+          {/* <img
+                src={AgriculturalEvolution}
+                alt="농업혁명"
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "22rem",
+                  height: "30rem",
+                }}
+              ></img> */}
+
+          {/* <ImageContainer
+            src={AgriculturalEvolution}
+            alt="농업혁명"
+          ></ImageContainer> */}
+        </div>
+      </SixthPage>
+
+      <SeventhPage>
+        <div
+          style={{
+            flexDirection: "column",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img src={DiscoveryOfCivil} alt="문명의 발전"></img>
+        </div>
+      </SeventhPage>
+      <NinethPage>
+        <div style={{ flexDirection: "column", display: "flex" }}></div>
+      </NinethPage>
+      <EighthPage>
+        <div
+          style={{
+            flexDirection: "column",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <ImageContainer src={Gradient1} alt="그라데이션1"></ImageContainer>
+          <div
+            style={{
+              backgroundColor: "#fff",
+              height: "50rem",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
+            <TextGradientGray>
+              우리는 새로운{"\u00A0"}
+              {"\u00A0"}
+              {"\u00A0"}
+              {"\u00A0"}
+              {"\u00A0"}
+              {"\u00A0"}
+              {"\u00A0"}
+              시대의
+            </TextGradientGray>
+
+            <TextGradientPurple>
+              우리만의 상징을 <br />
+              창조한다
+            </TextGradientPurple>
+          </div>
+          <ImageContainer src={Gradient2} alt="그라데이션2"></ImageContainer>
+          <ImageContainer
+            src={Gradient1}
+            alt="임시이고 이미지가 들어갈 것"
+          ></ImageContainer>
+        </div>
+      </EighthPage>
+      <ImageContainer src={PreImage} alt="예비"></ImageContainer>
+
+      <NinethPage>
+        <div>
+          <text style={{ fontColor: "#F1F1F1", fontSize: "5.4rem" }}>
+            BRAND ESSENCE
+          </text>
+          <text style={{ fontColor: "#C7C7C7", fontSize: "1.5rem" }}>
+            개인의 고유 정보를 토대로 그래픽형태의 새로운 상징을 누구나 쉽게
+            생성 가능하게 하여 사용자에게 특별한
+            <br />
+            경험을 이끌어가고자 하는 ‘The Symbol’의 브랜드 에센스는 ‘build a
+            symbol’로 정의한다. 이는 사용자의
+            <br />
+            취향과 성향을 반영하는 알고리즘을 통해, 개인의 아이덴티티를 표현하는
+            자산들이 적층되어 각자의 상징을
+            <br /> 더욱 입체적이고 깊이 있는 방식으로 풍부하게 발전시키는 것을
+            나타낸다.
+          </text>
+        </div>
+      </NinethPage>
     </>
   );
 }
