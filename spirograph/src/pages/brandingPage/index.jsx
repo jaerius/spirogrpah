@@ -15,6 +15,7 @@ import PreImage from "../../assets/Pre.png";
 import AgriculturalEvolution from "../../assets/AgriculturalEvolution.png";
 import Gradient1 from "../../assets/Gradient.png";
 import Gradient2 from "../../assets/Gradient2.png";
+import GraphicMotive from "../../assets/GraphicMotive.png";
 // import colors from "../../fonts/color";
 export default function BrandingPage() {
   const [position, setPosition] = useState(0);
@@ -115,7 +116,8 @@ export default function BrandingPage() {
   const EighthPage = styled.div`
     width: 100%;
     height: 100%;
-
+    //window 크기 다 채우는 거
+    //background-size:cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -137,16 +139,13 @@ export default function BrandingPage() {
     font-size: 6rem;
   `;
   const NinethPage = styled.div`
-    width: 100%;
-    height: 100%;
-
+    height: 100rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     border-radius: 1000px;
     border: 1px solid rgba(255, 255, 255, 0.3);
-
     background: conic-gradient(
       from 270deg at 50% 50%,
       #6a25ff 0deg,
@@ -154,7 +153,6 @@ export default function BrandingPage() {
       #0043f1 234.94101762771606deg,
       #401699 360deg
     );
-
     filter: blur(310px);
     margin-bottom: 18.19rem;
   `;
@@ -166,8 +164,18 @@ export default function BrandingPage() {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-
+    text-align: flex-start;
     margin-bottom: 18.19rem;
+  `;
+  const BrandEssence = styled.text`
+    color: #f1f1f1;
+    font-family: bold;
+    font-size: 5.6rem;
+  `;
+  const UnderBrandEssence = styled.text`
+    color: #c7c7c7;
+    font-family: bold;
+    font-size: 1.2rem;
   `;
   const EleventhPage = styled.div`
     width: 100%;
@@ -505,7 +513,12 @@ export default function BrandingPage() {
         </div>
       </SeventhPage>
       <NinethPage>
-        <div style={{ flexDirection: "column", display: "flex" }}></div>
+        <div style={{ flexDirection: "column", display: "flex" }}>
+          <span style={{ color: "red", fontSize: "3rem" }}>
+            바야흐로 2024 인류는 인공지능이라는 <br />
+            새로운 국면을 맞이했다.
+          </span>
+        </div>
       </NinethPage>
       <EighthPage>
         <div
@@ -551,12 +564,10 @@ export default function BrandingPage() {
       </EighthPage>
       <ImageContainer src={PreImage} alt="예비"></ImageContainer>
 
-      <NinethPage>
-        <div>
-          <text style={{ fontColor: "#F1F1F1", fontSize: "5.4rem" }}>
-            BRAND ESSENCE
-          </text>
-          <text style={{ fontColor: "#C7C7C7", fontSize: "1.5rem" }}>
+      <TenthPage>
+        <DivWrapper>
+          <BrandEssence>BRAND ESSENCE</BrandEssence>
+          <UnderBrandEssence>
             개인의 고유 정보를 토대로 그래픽형태의 새로운 상징을 누구나 쉽게
             생성 가능하게 하여 사용자에게 특별한
             <br />
@@ -567,9 +578,15 @@ export default function BrandingPage() {
             자산들이 적층되어 각자의 상징을
             <br /> 더욱 입체적이고 깊이 있는 방식으로 풍부하게 발전시키는 것을
             나타낸다.
-          </text>
-        </div>
-      </NinethPage>
+          </UnderBrandEssence>
+        </DivWrapper>
+      </TenthPage>
+      <elevenPage>
+        <ImageContainer
+          src={GraphicMotive}
+          alt="GraphicMotive"
+        ></ImageContainer>
+      </elevenPage>
     </>
   );
 }
