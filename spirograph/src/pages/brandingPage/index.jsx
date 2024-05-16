@@ -16,6 +16,7 @@ import AgriculturalEvolution from "../../assets/AgriculturalEvolution.png";
 import Gradient1 from "../../assets/Gradient.png";
 import Gradient2 from "../../assets/Gradient2.png";
 import GraphicMotive from "../../assets/GraphicMotive.png";
+import AIEvolution from "../../assets/AIEvolution.png";
 // import colors from "../../fonts/color";
 export default function BrandingPage() {
   const [position, setPosition] = useState(0);
@@ -36,38 +37,84 @@ export default function BrandingPage() {
     display: flex;
     justify-content: center;
   `;
-  const ImageContainer = styled.img`
+  const ImageContainerFull = styled.img`
     //ㅎ화면에 따라 크기 조절하고 싶으면?
     //만약 75vw면 화면 width 3/4가 채워짐
     width: 100vw;
     height: auto;
     background-size: cover;
+    /* object-fit: cover; */
+    @media only screen and (max-width: 500px) {
+      width: 100vw;
+    }
+  `;
+
+  const ImageContainerSm = styled.img`
+    //ㅎ화면에 따라 크기 조절하고 싶으면?
+    //만약 75vw면 화면 width 3/4가 채워짐
+    width: 60vw;
+    height: 50vh;
+    background-size: cover;
+    /* object-fit: cover; */
+    @media only screen and (max-width: 500px) {
+      width: 50vw;
+    }
+    @media only screen and (max-height: 900px) {
+      height: 20vh;
+    }
   `;
 
   const FirstPage = styled.div`
-    width: 100%;
-    height: 20%;
+    width: 100vw;
+    height: 100%;
     background: var(--gray-95, #000);
     margin-bottom: 50vh;
+    @media only screen and (max-width: 500px) {
+      width: 100vw;
+    }
   `;
   const SecondPage = styled.div`
-    width: 100%;
+    width: 100vw;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 18.19rem;
+    @media only screen and (max-width: 500px) {
+      width: 100vw;
+    }
   `;
   const ThirdPage = styled.div`
     width: 100%;
-    height: 100%;
+    height: 100vw;
 
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
     justify-content: space-evenly;
-    margin-bottom: 18.19rem;
+
+    @media only screen and (max-width: 500px) {
+      width: 100vw;
+    }
+  `;
+
+  const ThirdPerAni = styled.img`
+    width: 20vw;
+    height: 20vw;
+    @media only screen and (max-width: 500px) {
+      width: 20vw;
+    }
+    @media only screen and (max-height: 900px) {
+      height: 20vw;
+    }
+  `;
+  const ThirdT = styled.text`
+    font-size: 3vw;
+
+    @media only screen and (max-width: 500px) {
+      font-size: 3vw;
+    }
   `;
   const FourthPage = styled.div`
     width: 100%;
@@ -79,6 +126,9 @@ export default function BrandingPage() {
     align-items: center;
     justify-content: space-evenly;
     margin-bottom: 18.19rem;
+    @media only screen and (max-width: 500px) {
+      width: 100vw;
+    }
   `;
   const FifthPage = styled.div`
     width: 100%;
@@ -99,19 +149,22 @@ export default function BrandingPage() {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    @media only screen and (max-width: 500px) {
+      width: 100vw;
+    }
     margin-bottom: 18.19rem;
   `;
   const SeventhPage = styled.div`
     width: 100%;
-    height: 100%;
+    height: 100vh;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    margin-bottom: 18.19rem;
+    @media only screen and (max-width: 500px) {
+      width: 100vw;
+    }
   `;
   const EighthPage = styled.div`
     width: 100%;
@@ -124,6 +177,9 @@ export default function BrandingPage() {
     align-items: center;
     text-align: flex-start;
     margin-bottom: 18.19rem;
+    @media only screen and (max-width: 500px) {
+      width: 100vw;
+    }
   `;
   const TextGradientPurple = styled.text`
     background: linear-gradient(99deg, #c7acff 2.03%, #6a25ff 92.54%);
@@ -132,20 +188,29 @@ export default function BrandingPage() {
     color: transparent;
     font-family: bold;
     font-size: 10rem;
+    @media only screen and (max-width: 500px) {
+      font-size: 2.6rem;
+    }
   `;
   const TextGradientGray = styled.text`
     color: #848484;
     font-family: bold;
     font-size: 6rem;
+    @media only screen and (max-width: 500px) {
+      font-size: 1.56rem;
+    }
   `;
+
+  //보라색 그라데이션 페이지
   const NinethPage = styled.div`
-    height: 100rem;
+    height: 30rem;
+    /* width: 100vw; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    border-radius: 1000px;
     border: 1px solid rgba(255, 255, 255, 0.3);
+    background-size: cover;
     background: conic-gradient(
       from 270deg at 50% 50%,
       #6a25ff 0deg,
@@ -153,8 +218,11 @@ export default function BrandingPage() {
       #0043f1 234.94101762771606deg,
       #401699 360deg
     );
-    filter: blur(310px);
-    margin-bottom: 18.19rem;
+    filter: blur(20rem);
+
+    @media only screen and (max-width: 500px) {
+      width: 390px;
+    }
   `;
   const TenthPage = styled.div`
     width: 100%;
@@ -170,12 +238,13 @@ export default function BrandingPage() {
   const BrandEssence = styled.text`
     color: #f1f1f1;
     font-family: bold;
-    font-size: 5.6rem;
+    font-size: 3vh;
+    margin-bottom: 1.2vh;
   `;
   const UnderBrandEssence = styled.text`
     color: #c7c7c7;
     font-family: bold;
-    font-size: 1.2rem;
+    font-size: 1vh;
   `;
   const EleventhPage = styled.div`
     width: 100%;
@@ -226,7 +295,10 @@ export default function BrandingPage() {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 3.25rem;
+    font-size: 4vw;
+    @media only screen and (max-width: 500px) {
+      font-size: 5vw;
+    }
     line-height: 180%; /* 5.85rem */
     font-weight: 800;
     color: black;
@@ -251,7 +323,7 @@ export default function BrandingPage() {
   const Horizon = styled.div`
     // display: "block",
 
-    width: 49.75rem;
+    width: 100vw;
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
 
@@ -260,7 +332,7 @@ export default function BrandingPage() {
   return (
     <>
       <FirstPage>
-        <NavBar />
+        {/* <NavBar /> */}
         <TextWrapper>
           <HugeT>
             {" "}
@@ -361,7 +433,8 @@ export default function BrandingPage() {
         <div style={{ marginTop: "15rem" }}></div>
         <text
           style={{
-            fontSize: "1.75rem",
+            // vw로 설정해도 너무 커보이거나 작아보일 수 있어. 그럴 때 쓰는게 window.innerWidth
+            fontSize: window.innerWidth <= 500 ? "5vw" : "2vw",
             color: "#fff",
             display: "flex",
             alignContent: "center",
@@ -374,7 +447,8 @@ export default function BrandingPage() {
         <Horizon />
         <text
           style={{
-            fontSize: "1.125rem",
+            fontSize: window.innerWidth <= 500 ? "2vw" : "0.5vw",
+
             color: "#C7C7C7",
             display: "flex",
             alignContent: "center",
@@ -397,28 +471,28 @@ export default function BrandingPage() {
       <ThirdPage>
         <div
           style={{
-            width: "46rem",
-            height: "23rem",
+            width: "60vw",
             backgroundImage: `url(${BrownBackground})`,
             backgroundPosition: "center",
             display: "flex",
             justifyContent: "space-around",
             alignItems: "center",
-            marginBottom: "4rem",
+            marginBottom: "0.01vh",
+            height: window.innerHeight <= 900 ? "40vw" : "50vh",
           }}
           alt="갈색 배경"
         >
-          <img src={Person} alt="사람"></img>
-          <img src={Animal} alt="동물"></img>
+          <ThirdPerAni src={Person} alt="사람"></ThirdPerAni>
+          <ThirdPerAni src={Animal} alt="동물"></ThirdPerAni>
         </div>
         <div>
-          <span style={{ color: "#848484" }}>
+          <ThirdT style={{ color: "#848484" }}>
             그들은 도구를 통해 사냥을 하여 그들의
-          </span>
-          <span style={{ color: "#fff" }}>생존</span>
-          <span style={{ color: "#848484" }}>과 </span>
-          <span style={{ color: "#fff" }}>안전</span>
-          <span style={{ color: "#848484" }}>을 책임졌다.</span>
+          </ThirdT>
+          <ThirdT style={{ color: "#fff" }}>생존</ThirdT>
+          <ThirdT style={{ color: "#848484" }}>과 </ThirdT>
+          <ThirdT style={{ color: "#fff" }}>안전</ThirdT>
+          <ThirdT style={{ color: "#848484" }}>을 책임졌다.</ThirdT>
         </div>
       </ThirdPage>
       <FourthPage>
@@ -435,12 +509,12 @@ export default function BrandingPage() {
             backgroundImage: `url(${CaveBackground})`,
           }}
         >
-          <img src={Cave} alt="벽화"></img>
+          <ImageContainerSm src={Cave} alt="벽화"></ImageContainerSm>
           <span style={{ color: "#848484" }}>그리고 그들은 그 현장을 </span>
           <span style={{ color: "#fff" }}>예술적</span>
         </div>
       </FourthPage>
-      <FifthPage>
+      {/* <FifthPage>
         <div
           style={{ width: "100%", height: "100%", backgroundColor: "#181818" }}
         >
@@ -466,11 +540,14 @@ export default function BrandingPage() {
                   height: "30rem",
                 }}
               ></img>
-              <img src={DiscoveryOfFireText} alt="텍스트 이미지"></img>
+              <ImageContainer
+                src={DiscoveryOfFireText}
+                alt="텍스트 이미지"
+              ></ImageContainer>
             </div>
           </div>
         </div>
-      </FifthPage>
+      </FifthPage> */}
       <SixthPage>
         <div
           style={{
@@ -503,21 +580,27 @@ export default function BrandingPage() {
       <SeventhPage>
         <div
           style={{
+            width: "100%",
+            height: "100vh",
             flexDirection: "column",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <img src={DiscoveryOfCivil} alt="문명의 발전"></img>
+          <ImageContainerFull
+            src={DiscoveryOfCivil}
+            alt="문명의 발전"
+          ></ImageContainerFull>
         </div>
       </SeventhPage>
       <NinethPage>
         <div style={{ flexDirection: "column", display: "flex" }}>
-          <span style={{ color: "red", fontSize: "3rem" }}>
+          {/* <span style={{ color: "red", fontSize: "3rem" }}>
             바야흐로 2024 인류는 인공지능이라는 <br />
             새로운 국면을 맞이했다.
-          </span>
+          </span> */}
+          <ImageContainerSm src={AIEvolution} alt="AI혁명"></ImageContainerSm>
         </div>
       </NinethPage>
       <EighthPage>
@@ -528,7 +611,10 @@ export default function BrandingPage() {
             justifyContent: "center",
           }}
         >
-          <ImageContainer src={Gradient1} alt="그라데이션1"></ImageContainer>
+          <ImageContainerFull
+            src={Gradient1}
+            alt="그라데이션1"
+          ></ImageContainerFull>
           <div
             style={{
               backgroundColor: "#fff",
@@ -543,10 +629,6 @@ export default function BrandingPage() {
               우리는 새로운{"\u00A0"}
               {"\u00A0"}
               {"\u00A0"}
-              {"\u00A0"}
-              {"\u00A0"}
-              {"\u00A0"}
-              {"\u00A0"}
               시대의
             </TextGradientGray>
 
@@ -555,14 +637,17 @@ export default function BrandingPage() {
               창조한다
             </TextGradientPurple>
           </div>
-          <ImageContainer src={Gradient2} alt="그라데이션2"></ImageContainer>
-          <ImageContainer
+          <ImageContainerFull
+            src={Gradient2}
+            alt="그라데이션2"
+          ></ImageContainerFull>
+          <ImageContainerFull
             src={Gradient1}
             alt="임시이고 이미지가 들어갈 것"
-          ></ImageContainer>
+          ></ImageContainerFull>
         </div>
       </EighthPage>
-      <ImageContainer src={PreImage} alt="예비"></ImageContainer>
+      <ImageContainerFull src={PreImage} alt="예비"></ImageContainerFull>
 
       <TenthPage>
         <DivWrapper>
@@ -582,10 +667,10 @@ export default function BrandingPage() {
         </DivWrapper>
       </TenthPage>
       <elevenPage>
-        <ImageContainer
+        <ImageContainerFull
           src={GraphicMotive}
           alt="GraphicMotive"
-        ></ImageContainer>
+        ></ImageContainerFull>
       </elevenPage>
     </>
   );
