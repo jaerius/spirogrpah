@@ -240,6 +240,7 @@ export default function BrandingPage() {
     font-family: bold;
     font-size: 3vh;
     margin-bottom: 1.2vh;
+    margin-top: 3vh;
   `;
   const UnderBrandEssence = styled.text`
     color: #c7c7c7;
