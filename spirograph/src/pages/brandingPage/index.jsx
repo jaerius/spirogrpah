@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import * as S from "./styles";
 import NavBar from "../../components/NavBar/navBar";
 import styled, { keyframes } from "styled-components";
 import BlueGradient from "../../assets/blueGradient.png";
@@ -17,6 +18,7 @@ import Gradient1 from "../../assets/Gradient.png";
 import Gradient2 from "../../assets/Gradient2.png";
 import GraphicMotive from "../../assets/GraphicMotive.png";
 import AIEvolution from "../../assets/AIEvolution.png";
+
 // import colors from "../../fonts/color";
 export default function BrandingPage() {
   const [position, setPosition] = useState(0);
@@ -32,316 +34,18 @@ export default function BrandingPage() {
     };
   });
 
-  const DivWrapper = styled.div`
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-  `;
-  const ImageContainerFull = styled.img`
-    //ㅎ화면에 따라 크기 조절하고 싶으면?
-    //만약 75vw면 화면 width 3/4가 채워짐
-    width: 100vw;
-    height: auto;
-    background-size: cover;
-    /* object-fit: cover; */
-    @media only screen and (max-width: 500px) {
-      width: 100vw;
-    }
-  `;
-
-  const ImageContainerSm = styled.img`
-    //ㅎ화면에 따라 크기 조절하고 싶으면?
-    //만약 75vw면 화면 width 3/4가 채워짐
-    width: 60vw;
-    height: 50vh;
-    background-size: cover;
-    /* object-fit: cover; */
-    @media only screen and (max-width: 500px) {
-      width: 50vw;
-    }
-    @media only screen and (max-height: 900px) {
-      height: 20vh;
-    }
-  `;
-
-  const FirstPage = styled.div`
-    width: 100vw;
-    height: 100%;
-    background: var(--gray-95, #000);
-    margin-bottom: 50vh;
-    @media only screen and (max-width: 500px) {
-      width: 100vw;
-    }
-  `;
-  const SecondPage = styled.div`
-    width: 100vw;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 18.19rem;
-    @media only screen and (max-width: 500px) {
-      width: 100vw;
-    }
-  `;
-  const ThirdPage = styled.div`
-    width: 100%;
-    height: 100vw;
-
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-    justify-content: space-evenly;
-
-    @media only screen and (max-width: 500px) {
-      width: 100vw;
-    }
-  `;
-
-  const ThirdPerAni = styled.img`
-    width: 20vw;
-    height: 20vw;
-    @media only screen and (max-width: 500px) {
-      width: 20vw;
-    }
-    @media only screen and (max-height: 900px) {
-      height: 20vw;
-    }
-  `;
-  const ThirdT = styled.text`
-    font-size: 3vw;
-
-    @media only screen and (max-width: 500px) {
-      font-size: 3vw;
-    }
-  `;
-  const FourthPage = styled.div`
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-    justify-content: space-evenly;
-    margin-bottom: 18.19rem;
-    @media only screen and (max-width: 500px) {
-      width: 100vw;
-    }
-  `;
-  const FifthPage = styled.div`
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-
-    margin-bottom: 18.19rem;
-  `;
-  const SixthPage = styled.div`
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    @media only screen and (max-width: 500px) {
-      width: 100vw;
-    }
-    margin-bottom: 18.19rem;
-  `;
-  const SeventhPage = styled.div`
-    width: 100%;
-    height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    @media only screen and (max-width: 500px) {
-      width: 100vw;
-    }
-  `;
-  const EighthPage = styled.div`
-    width: 100%;
-    height: 100%;
-    //window 크기 다 채우는 거
-    //background-size:cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: flex-start;
-    margin-bottom: 18.19rem;
-    @media only screen and (max-width: 500px) {
-      width: 100vw;
-    }
-  `;
-  const TextGradientPurple = styled.text`
-    background: linear-gradient(99deg, #c7acff 2.03%, #6a25ff 92.54%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    font-family: bold;
-    font-size: 10rem;
-    @media only screen and (max-width: 500px) {
-      font-size: 2.6rem;
-    }
-  `;
-  const TextGradientGray = styled.text`
-    color: #848484;
-    font-family: bold;
-    font-size: 6rem;
-    @media only screen and (max-width: 500px) {
-      font-size: 1.56rem;
-    }
-  `;
-
-  //보라색 그라데이션 페이지
-  const NinethPage = styled.div`
-    height: 30rem;
-    /* width: 100vw; */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    background-size: cover;
-    background: conic-gradient(
-      from 270deg at 50% 50%,
-      #6a25ff 0deg,
-      #f523ed 158.389892578125deg,
-      #0043f1 234.94101762771606deg,
-      #401699 360deg
-    );
-    filter: blur(20rem);
-
-    @media only screen and (max-width: 500px) {
-      width: 390px;
-    }
-  `;
-  const TenthPage = styled.div`
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: flex-start;
-    margin-bottom: 18.19rem;
-  `;
-  const BrandEssence = styled.text`
-    color: #f1f1f1;
-    font-family: bold;
-    font-size: 3vh;
-    margin-bottom: 1.2vh;
-    margin-top: 3vh;
-  `;
-  const UnderBrandEssence = styled.text`
-    color: #c7c7c7;
-    font-family: bold;
-    font-size: 1vh;
-  `;
-  const EleventhPage = styled.div`
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-
-    margin-bottom: 18.19rem;
-  `;
-  const HugeT = styled.div`
-    font-size: 7vw;
-    color: #fff;
-    text-align: center;
-    margin-left: 1rem;
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 2rem;
-  `;
-
-  const SmallT = styled.div`
-    font-size: 1vw;
-    color: #fff;
-    text-align: start;
-    margin-right: 3rem;
-  `;
-
-  const TextWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 20vw;
-  `;
-  const fadeInUp = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateY(100px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  `;
-  const GradientT = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 4vw;
-    @media only screen and (max-width: 500px) {
-      font-size: 5vw;
-    }
-    line-height: 180%; /* 5.85rem */
-    font-weight: 800;
-    color: black;
-    visibility: visible;
-    /* Text에만 배경 그라데이션 효과를 적용 */
-    background: linear-gradient(180deg, #fff 0%, #4d4d4d 100%);
-    /* 배경 그라데이션 효과가 텍스트 위에 오버레이되도록 */
-    -webkit-background-clip: text;
-    background-clip: text;
-    /* 텍스트의 배경을 투명으로 */
-    color: transparent;
-    letter-spacing: -0.0975rem;
-    animation: ${fadeInUp} 1s ease-in-out; // 키 프레임 애니메이션 적용
-
-    animation-duration: 1s;
-    animation-name: fadeInUp;
-    /* transition: opacity 3s all ease-in-out; */
-    /* transition: opacity 0.3s ease-in-out; // opacity에 대한 transition을 추가합니다.
- */
-  `;
-
-  const Horizon = styled.div`
-    // display: "block",
-
-    width: 100vw;
-    margin-bottom: 1.5rem;
-    margin-top: 1.5rem;
-
-    border-bottom: 1px solid #646464;
-  `;
   return (
     <>
-      <FirstPage>
-        {/* <NavBar /> */}
-        <TextWrapper>
-          <HugeT>
+      <S.FirstPage>
+        <NavBar />
+        <S.TextWrapper>
+          <S.HugeT>
             {" "}
             PROJECT <br />
             OVERVIEW
-          </HugeT>
+          </S.HugeT>
 
-          <SmallT>
+          <S.SmallT>
             ‘The Symbol’은 곧 다가올 AI혁명을 대비하여 기존 ‘시리’와 ‘빅스비'와
             같은
             <br />
@@ -362,14 +66,14 @@ export default function BrandingPage() {
             선사한다.
             <br />
             이를 통해 사용자의 일상에 깊이 통합되는 개인화된 동반자를 제공한다.
-          </SmallT>
-        </TextWrapper>
-      </FirstPage>
+          </S.SmallT>
+        </S.TextWrapper>
+      </S.FirstPage>
 
       {/* =================================================================== */}
-      <SecondPage>
+      <S.SecondPage>
         <div style={{ position: "relative" }}>
-          <GradientT
+          <S.GradientT
             style={{
               opacity: (position - 300) / 200,
               // transition: "ease-in-out",
@@ -384,9 +88,9 @@ export default function BrandingPage() {
             }}
           >
             각 시대정신을 반영하는 ‘상징'은 인류의
-          </GradientT>
+          </S.GradientT>
 
-          <GradientT
+          <S.GradientT
             style={{
               opacity: (position - 400) / 200,
               transition: "ease-in-out",
@@ -401,10 +105,10 @@ export default function BrandingPage() {
             }}
           >
             발전과 함께했다.
-          </GradientT>
+          </S.GradientT>
           <br />
           <br />
-          <GradientT
+          <S.GradientT
             style={{
               opacity: (position - 600) / 200,
               // transition: "ease-in-out",
@@ -419,8 +123,8 @@ export default function BrandingPage() {
             }}
           >
             그것은 기존 가치를 해체하고 새로운 의미를
-          </GradientT>
-          <GradientT
+          </S.GradientT>
+          <S.GradientT
             style={{
               opacity: (position - 700) / 200,
               // transition: "ease-in-out",
@@ -429,10 +133,10 @@ export default function BrandingPage() {
             }}
           >
             창출하는 역할을 해왔다.
-          </GradientT>
+          </S.GradientT>
         </div>
         <div style={{ marginTop: "15rem" }}></div>
-        <text
+        <span
           style={{
             // vw로 설정해도 너무 커보이거나 작아보일 수 있어. 그럴 때 쓰는게 window.innerWidth
             fontSize: window.innerWidth <= 500 ? "5vw" : "2vw",
@@ -444,9 +148,9 @@ export default function BrandingPage() {
         >
           상징
           <br />
-        </text>
-        <Horizon />
-        <text
+        </span>
+        <S.Horizon />
+        <span
           style={{
             fontSize: window.innerWidth <= 500 ? "2vw" : "0.5vw",
 
@@ -462,41 +166,48 @@ export default function BrandingPage() {
           <br />
           십자가가 크리스트교를, 태극기가 한국을, 교통 신호가 교통 법규를
           나타내는 따위.
-        </text>
+        </span>
         <img
           style={{ width: "100%", height: "auto" }}
           src={BlueGradient}
           alt="그라데이션 이미지"
         ></img>
-      </SecondPage>
-      <ThirdPage>
+      </S.SecondPage>
+      <S.ThirdPage>
         <div
           style={{
-            width: "60vw",
+            width: "50vw",
             backgroundImage: `url(${BrownBackground})`,
             backgroundPosition: "center",
             display: "flex",
             justifyContent: "space-around",
             alignItems: "center",
-            marginBottom: "0.01vh",
+            marginBottom: "5vh",
+            // marginBottom: "0.01vh",
             height: window.innerHeight <= 900 ? "40vw" : "50vh",
           }}
           alt="갈색 배경"
         >
-          <ThirdPerAni src={Person} alt="사람"></ThirdPerAni>
-          <ThirdPerAni src={Animal} alt="동물"></ThirdPerAni>
+          <S.ThirdPerAni src={Person} alt="사람"></S.ThirdPerAni>
+          <S.ThirdPerAni src={Animal} alt="동물"></S.ThirdPerAni>
         </div>
-        <div>
-          <ThirdT style={{ color: "#848484" }}>
+        <div style={{ display: "flex" }}>
+          <S.ThirdT style={{ color: "#848484" }}>
             그들은 도구를 통해 사냥을 하여 그들의
-          </ThirdT>
-          <ThirdT style={{ color: "#fff" }}>생존</ThirdT>
-          <ThirdT style={{ color: "#848484" }}>과 </ThirdT>
-          <ThirdT style={{ color: "#fff" }}>안전</ThirdT>
-          <ThirdT style={{ color: "#848484" }}>을 책임졌다.</ThirdT>
+          </S.ThirdT>
+          <S.ThirdT style={{ color: "#fff" }}>
+            {"\u00A0"}
+            생존
+          </S.ThirdT>
+          <S.ThirdT style={{ color: "#848484" }}>과 </S.ThirdT>
+          <S.ThirdT style={{ color: "#fff" }}>
+            {"\u00A0"}
+            안전
+          </S.ThirdT>
+          <S.ThirdT style={{ color: "#848484" }}>을 책임졌다.</S.ThirdT>
         </div>
-      </ThirdPage>
-      <FourthPage>
+      </S.ThirdPage>
+      <S.FourthPage>
         <div
           style={{
             width: "100%",
@@ -508,16 +219,21 @@ export default function BrandingPage() {
             justifyContent: "center",
             alignItems: "center",
             backgroundImage: `url(${CaveBackground})`,
+            marginBottom: "18.19rem",
           }}
         >
-          <ImageContainerSm src={Cave} alt="벽화"></ImageContainerSm>
+          <S.ImageContainerSm src={Cave} alt="벽화"></S.ImageContainerSm>
           <span style={{ color: "#848484" }}>그리고 그들은 그 현장을 </span>
           <span style={{ color: "#fff" }}>예술적</span>
         </div>
-      </FourthPage>
-      {/* <FifthPage>
+      </S.FourthPage>
+      <S.FifthPage>
         <div
-          style={{ width: "100%", height: "100%", backgroundColor: "#181818" }}
+          style={{
+            width: "100vw",
+            height: "100vh",
+            backgroundColor: "#181818",
+          }}
         >
           <div
             style={{
@@ -537,74 +253,60 @@ export default function BrandingPage() {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  width: "22rem",
-                  height: "30rem",
+                  width: "100vw",
+                  height: "30vh",
                 }}
               ></img>
-              <ImageContainer
-                src={DiscoveryOfFireText}
-                alt="텍스트 이미지"
-              ></ImageContainer>
+              <img src={DiscoveryOfFireText} alt="텍스트 이미지"></img>
             </div>
           </div>
         </div>
-      </FifthPage> */}
-      <SixthPage>
-        <div
-          style={{
-            flexDirection: "column",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            width: "120rem",
-          }}
-        >
-          {/* <img
-                src={AgriculturalEvolution}
-                alt="농업혁명"
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  width: "22rem",
-                  height: "30rem",
-                }}
-              ></img> */}
-
-          {/* <ImageContainer
+      </S.FifthPage>
+      <S.SixthPage>
+        {console.log("sixth rendered")}
+        {/* SixthPage에 width,height 반응형 설정했는데 여기 div에 또 해준 이유:여기ImageContainerFull에
+        height:auto로 설정되어 있기 때문-다른 애들이 heightAuto가 필요해 */}
+        <div style={{ width: "100vw", height: "100vh" }}>
+          <S.ImageContainerFull
             src={AgriculturalEvolution}
             alt="농업혁명"
-          ></ImageContainer> */}
+          ></S.ImageContainerFull>
         </div>
-      </SixthPage>
-
-      <SeventhPage>
-        <div
-          style={{
-            width: "100%",
-            height: "100vh",
-            flexDirection: "column",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <ImageContainerFull
+      </S.SixthPage>
+      <S.SeventhPage>
+        {console.log("Seven rendered")}
+        <div style={{ width: "100vw", height: "100vh" }}>
+          <S.ImageContainerFull
             src={DiscoveryOfCivil}
             alt="문명의 발전"
-          ></ImageContainerFull>
+          ></S.ImageContainerFull>
         </div>
-      </SeventhPage>
-      <NinethPage>
-        <div style={{ flexDirection: "column", display: "flex" }}>
+      </S.SeventhPage>
+
+      {/* 인류사 발명품-Yet */}
+      <S.EighthPage>d</S.EighthPage>
+      {/* 상징의 발전-Yet */}
+      <S.NinethPage></S.NinethPage>
+      {/* 산업혁명-Yet */}
+      <S.TenthPage></S.TenthPage>
+      {/* AI발전-ing */}
+      <S.EleventhPage>
+        {console.log("EleventhPage rendered")}
+
+        <div style={{ height: "100vh" }}>
           {/* <span style={{ color: "red", fontSize: "3rem" }}>
             바야흐로 2024 인류는 인공지능이라는 <br />
             새로운 국면을 맞이했다.
           </span> */}
-          <ImageContainerSm src={AIEvolution} alt="AI혁명"></ImageContainerSm>
+          <S.ImageContainerSm
+            src={AIEvolution}
+            alt="AI혁명"
+          ></S.ImageContainerSm>
         </div>
-      </NinethPage>
-      <EighthPage>
+      </S.EleventhPage>
+
+      {/* black-> white 그라데이션-Done */}
+      <S.TwelvePage>
         <div
           style={{
             flexDirection: "column",
@@ -612,10 +314,10 @@ export default function BrandingPage() {
             justifyContent: "center",
           }}
         >
-          <ImageContainerFull
+          <S.ImageContainerFull
             src={Gradient1}
             alt="그라데이션1"
-          ></ImageContainerFull>
+          ></S.ImageContainerFull>
           <div
             style={{
               backgroundColor: "#fff",
@@ -626,34 +328,33 @@ export default function BrandingPage() {
               flexDirection: "column",
             }}
           >
-            <TextGradientGray>
+            <S.TextGradientGray>
               우리는 새로운{"\u00A0"}
               {"\u00A0"}
               {"\u00A0"}
               시대의
-            </TextGradientGray>
+            </S.TextGradientGray>
 
-            <TextGradientPurple>
+            <S.TextGradientPurple>
               우리만의 상징을 <br />
               창조한다
-            </TextGradientPurple>
+            </S.TextGradientPurple>
           </div>
-          <ImageContainerFull
+          <S.ImageContainerFull
             src={Gradient2}
             alt="그라데이션2"
-          ></ImageContainerFull>
-          <ImageContainerFull
+          ></S.ImageContainerFull>
+          <S.ImageContainerFull
             src={Gradient1}
             alt="임시이고 이미지가 들어갈 것"
-          ></ImageContainerFull>
+          ></S.ImageContainerFull>
         </div>
-      </EighthPage>
-      <ImageContainerFull src={PreImage} alt="예비"></ImageContainerFull>
-
-      <TenthPage>
-        <DivWrapper>
-          <BrandEssence>BRAND ESSENCE</BrandEssence>
-          <UnderBrandEssence>
+      </S.TwelvePage>
+      {/* brandEssence+Images-ing */}
+      <S.ThirteenPage>
+        <S.DivWrapper>
+          <S.BrandEssence>BRAND ESSENCE</S.BrandEssence>
+          <S.UnderBrandEssence>
             개인의 고유 정보를 토대로 그래픽형태의 새로운 상징을 누구나 쉽게
             생성 가능하게 하여 사용자에게 특별한
             <br />
@@ -664,15 +365,43 @@ export default function BrandingPage() {
             자산들이 적층되어 각자의 상징을
             <br /> 더욱 입체적이고 깊이 있는 방식으로 풍부하게 발전시키는 것을
             나타낸다.
-          </UnderBrandEssence>
-        </DivWrapper>
-      </TenthPage>
-      <elevenPage>
-        <ImageContainerFull
+          </S.UnderBrandEssence>
+        </S.DivWrapper>
+      </S.ThirteenPage>
+      {/* co-creative 효과 */}
+      <S.FourteenPage>
+        <S.TestAnimation>
+          <div
+            style={{
+              width: "100vw",
+              display: "flex",
+              flexDirection: "row",
+              marginTop: "10vh",
+
+              // spaceBtween이 안먹어 왜
+            }}
+          >
+            <S.BrandVisionT style={{ marginLeft: "5vw", marginRight: "40vw" }}>
+              BRAND VISION
+            </S.BrandVisionT>
+            <S.BrandVisionT2 style={{ marginRight: "5vw" }}>
+              우리는 개개인의 유일무이한 특성을 존중하고 발전시키며, <br />
+              이를 통해 보다 만족스럽고 충족된 삶을 누릴 수 있도록 돕는다
+            </S.BrandVisionT2>
+          </div>
+          <S.AnimatedText>
+            Co-Creating Identities,Enriching Lives
+          </S.AnimatedText>
+        </S.TestAnimation>
+      </S.FourteenPage>
+      {/* Graphic Motive-물방울 */}
+      <S.FifteenPage>
+        <S.ImageContainerFull
           src={GraphicMotive}
           alt="GraphicMotive"
-        ></ImageContainerFull>
-      </elevenPage>
+        ></S.ImageContainerFull>
+        <S.ImageContainerFull src={PreImage} alt="예비"></S.ImageContainerFull>
+      </S.FifteenPage>
     </>
   );
 }
