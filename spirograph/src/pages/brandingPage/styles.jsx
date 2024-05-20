@@ -11,12 +11,22 @@ export const ImageContainerFull = styled.img`
     width: 100vw;
   }
 `;
-
+export const ImageContainerFullMulH = styled.img`
+  //ㅎ화면에 따라 크기 조절하고 싶으면?
+  //만약 75vw면 화면 width 3/4가 채워짐
+  width: 98vw;
+  height: 200vh;
+  /* background-size: cover; */
+  /* object-fit: cover; */
+  @media only screen and (max-width: 500px) {
+    width: 100vw;
+  }
+`;
 export const ImageContainerSm = styled.img`
   //ㅎ화면에 따라 크기 조절하고 싶으면?
   //만약 75vw면 화면 width 3/4가 채워짐
   width: 60vw;
-  height: auto;
+  height: 200vh;
   /* background-size: cover; */
   /* object-fit: cover; */
   @media only screen and (max-width: 500px) {
@@ -107,11 +117,11 @@ export const FifthPage = styled.div`
 `;
 export const SixthPage = styled.div`
   width: 100vw;
-  height: 100vh;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: space-between;
   @media only screen and (max-width: 500px) {
     width: 100vw;
   }
@@ -120,36 +130,67 @@ export const SixthPage = styled.div`
 export const SeventhPage = styled.div`
   width: 100vw;
   //요소가 두개면 200vh
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @media only screen and (max-width: 500px) {
+    width: 100vw;
+  }
+`;
+//인류사 발명품
+export const EighthPage = styled.div`
+  width: 100vw;
+  //요소가 두개면 200vh
   height: 100vh;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 18.19rem;
   @media only screen and (max-width: 500px) {
     width: 100vw;
   }
-  margin-bottom: 18.19rem;
 `;
-//인류사 발명품
-export const EighthPage = styled.div``;
 
 //상징의 발전
-export const NinethPage = styled.div``;
+export const NinethPage = styled.div`
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 60vh;
+  background: #181818;
+`;
 //산업혁명
-export const TenthPage = styled.div``;
+export const TenthPage = styled.div`
+  margin-top: 20vh;
+`;
 //AI 발전 그라데이션
 export const EleventhPage = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 400vh;
 
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
+  z-index: 1;
+  position: relative;
   align-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-
-  /* 
+  @media only screen and (max-width: 500px) {
+    width: 390px;
+  }
+`;
+export const BackGradient = styled.div`
+  width: 100vw;
+  height: 400vh;
+  z-index: 5; /* z-index를 낮게 설정*/
+  position: relative; //위치를 상대적으로 설정 */
   background: conic-gradient(
     from 270deg at 50% 50%,
     #6a25ff 0deg,
@@ -157,12 +198,21 @@ export const EleventhPage = styled.div`
     #0043f1 234.94101762771606deg,
     #401699 360deg
   );
-  filter: blur(20rem); */
 
-  @media only screen and (max-width: 500px) {
-    width: 390px;
-  }
+  /* filter: blur(10px); */
+  //뿌옇게 블러처리
+  /* filter: blur(2px); */
 `;
+export const ImgContainer = styled.img`
+  height: 350vh;
+  width: 80vw;
+  position: absolute; /* 위치를 절대적으로 설정 */
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%); /* 가운데 정렬 */
+  z-index: 10; //z-index를 높게 설정
+`;
+
 export const HugeT = styled.div`
   font-size: 7vw;
   color: #fff;
@@ -217,13 +267,11 @@ export const GradientT = styled.div`
   /* 텍스트의 배경을 투명으로 */
   color: transparent;
   letter-spacing: -0.0975rem;
-  animation: ${fadeInUp} 1s ease-in-out; // 키 프레임 애니메이션 적용
+  /* 작동은 하는데 잠시 주석처리 */
+  /* animation: ${fadeInUp} 1s ease-in-out; // 키 프레임 애니메이션 적용
 
   animation-duration: 1s;
-  animation-name: fadeInUp;
-  /* transition: opacity 3s all ease-in-out; */
-  /* transition: opacity 0.3s ease-in-out; // opacity에 대한 transition을 추가합니다.
- */
+  animation-name: fadeInUp; */
 `;
 
 export const Horizon = styled.div`
@@ -236,8 +284,8 @@ export const Horizon = styled.div`
   border-bottom: 1px solid #646464;
 `;
 export const TwelvePage = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: auto;
   //window 크기 다 채우는 거
   //background-size:cover;
   display: flex;
@@ -257,6 +305,7 @@ export const TextGradientPurple = styled.span`
   color: transparent;
   font-family: bold;
   font-size: 10rem;
+  text-align: start;
   @media only screen and (max-width: 500px) {
     font-size: 2.6rem;
   }
@@ -265,6 +314,8 @@ export const TextGradientGray = styled.span`
   color: #848484;
   font-family: bold;
   font-size: 6rem;
+  text-align: start;
+
   @media only screen and (max-width: 500px) {
     font-size: 1.56rem;
   }
@@ -299,15 +350,21 @@ export const UnderBrandEssence = styled.span`
   font-size: 1vh;
 `;
 
-export const FourteenPage = styled.div``;
+export const FourteenPage = styled.div`
+  margin-bottom: 30vh;
+`;
 
 export const flowText = keyframes`
      0%{
+     
         transform: translateX(100%);
       }
       100%{
+ 
+
         transform: translateX(-100%);
       }
+ 
 `;
 
 export const BrandVisionT = styled.div`
@@ -323,7 +380,7 @@ export const BrandVisionT = styled.div`
 export const BrandVisionT2 = styled.div`
   flex: 1; // Flexbox에서 공간을 차지하도록 설정
   text-align: right; // 오른쪽 정렬
-  color: black;
+  color: ${(props) => props.bgColor};
   font-size: 1vw;
 `;
 
@@ -331,24 +388,55 @@ export const TestAnimation = styled.div`
   white-space: nowrap;
   overflow: hidden;
   display: flex; // inline-block 대신 flex 사용
-  background-color: #fff;
+  background-color: ${(props) => props.bgColor};
   width: 100vw;
   height: 50vh;
 `;
 
-export const AnimatedText = styled.span`
+export const AnimatedText1 = styled.span`
   display: inline-block; // 텍스트를 블록 요소로
-  animation: ${flowText} 10s linear infinite;
+  //option : 10s linear(혹은 ease-in,ease-out,ease-in-out)
+  animation: ${flowText} 10s infinite;
   color: #000;
   font-size: 10vw;
 
-  width: 100vw;
   margin-top: 9rem;
   //text를 맨 밑으로
   align-self: end;
 `;
-
+export const AnimatedText2 = styled.span`
+  display: inline-block; // 텍스트를 블록 요소로
+  animation: ${flowText} 8s infinite;
+  color: #fff;
+  font-size: 10vw;
+  animation-delay: 2s;
+  margin-top: 9rem;
+  //text를 맨 밑으로
+  align-self: end;
+`;
 export const FifteenPage = styled.div`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-bottom: 18.19rem;
+`;
+export const SixteenthPage = styled.div`
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-bottom: 18.19rem;
+`;
+export const SeventeenthPage = styled.div`
   width: 100%;
   height: 100%;
 

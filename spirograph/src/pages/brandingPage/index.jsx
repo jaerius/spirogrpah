@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./styles";
 import NavBar from "../../components/NavBar/navBar";
-import styled, { keyframes } from "styled-components";
 import BlueGradient from "../../assets/blueGradient.png";
 import BrownBackground from "../../assets/brownBackground.png";
 import Animal from "../../assets/animal.png";
@@ -18,6 +17,14 @@ import Gradient1 from "../../assets/Gradient.png";
 import Gradient2 from "../../assets/Gradient2.png";
 import GraphicMotive from "../../assets/GraphicMotive.png";
 import AIEvolution from "../../assets/AIEvolution.png";
+import Mankind from "../../assets/MankindInvention.png";
+import IndustryEvolution from "../../assets/IndustryEvolution.png";
+import DevelopmentOfSymbol1 from "../../assets/DevelopmentOfSymbol1.png";
+import DevelopmentOfSymbol2 from "../../assets/DevelopmentOfSymbol2.png";
+import Beauty from "../../assets/BeautyAndGrowth.png";
+
+import DesignConcept from "../../assets/DesignConcept.png";
+import ShapeAnalydid from "../../assets/ShapeAnalydidR.png";
 
 // import colors from "../../fonts/color";
 export default function BrandingPage() {
@@ -263,46 +270,47 @@ export default function BrandingPage() {
         </div>
       </S.FifthPage>
       <S.SixthPage>
-        {console.log("sixth rendered")}
         {/* SixthPage에 width,height 반응형 설정했는데 여기 div에 또 해준 이유:여기ImageContainerFull에
         height:auto로 설정되어 있기 때문-다른 애들이 heightAuto가 필요해 */}
-        <div style={{ width: "100vw", height: "100vh" }}>
-          <S.ImageContainerFull
-            src={AgriculturalEvolution}
-            alt="농업혁명"
-          ></S.ImageContainerFull>
-        </div>
+        {/* <div style={{ width: "100vw", height: "100vh" }}> */}
+        <S.ImageContainerFull
+          src={AgriculturalEvolution}
+          alt="농업혁명"
+        ></S.ImageContainerFull>
       </S.SixthPage>
       <S.SeventhPage>
-        {console.log("Seven rendered")}
-        <div style={{ width: "100vw", height: "100vh" }}>
-          <S.ImageContainerFull
-            src={DiscoveryOfCivil}
-            alt="문명의 발전"
-          ></S.ImageContainerFull>
-        </div>
+        {/* <div style={{ width: "100vw", height: "100vh" }}> */}
+        <img
+          style={{ height: "200vh", width: "100vw", marginBottom: "50vh" }}
+          src={DiscoveryOfCivil}
+          alt="문명의 발전"
+        ></img>
+        {/* </div> */}
       </S.SeventhPage>
 
       {/* 인류사 발명품-Yet */}
-      <S.EighthPage>d</S.EighthPage>
+      <S.EighthPage>
+        <img
+          style={{ height: "200vh", width: "100vw" }}
+          src={Mankind}
+          alt="인류사 발명품"
+        ></img>
+      </S.EighthPage>
       {/* 상징의 발전-Yet */}
-      <S.NinethPage></S.NinethPage>
+      <S.NinethPage>
+        <img src={DevelopmentOfSymbol1} alt="상징의 발전1"></img>
+        <img src={DevelopmentOfSymbol2} alt="상징의 발전2"></img>
+      </S.NinethPage>
       {/* 산업혁명-Yet */}
-      <S.TenthPage></S.TenthPage>
+      <S.TenthPage>
+        {" "}
+        <img src={IndustryEvolution} alt="산업혁명"></img>
+      </S.TenthPage>
       {/* AI발전-ing */}
       <S.EleventhPage>
-        {console.log("EleventhPage rendered")}
-
-        <div style={{ height: "100vh" }}>
-          {/* <span style={{ color: "red", fontSize: "3rem" }}>
-            바야흐로 2024 인류는 인공지능이라는 <br />
-            새로운 국면을 맞이했다.
-          </span> */}
-          <S.ImageContainerSm
-            src={AIEvolution}
-            alt="AI혁명"
-          ></S.ImageContainerSm>
-        </div>
+        <S.BackGradient>
+          <S.ImgContainer src={AIEvolution} alt="AI혁명"></S.ImgContainer>
+        </S.BackGradient>
       </S.EleventhPage>
 
       {/* black-> white 그라데이션-Done */}
@@ -321,15 +329,21 @@ export default function BrandingPage() {
           <div
             style={{
               backgroundColor: "#fff",
-              height: "50rem",
+              // height: "50rem",
+              width: "auto",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
               flexDirection: "column",
+              textAlign: "start",
             }}
           >
             <S.TextGradientGray>
               우리는 새로운{"\u00A0"}
+              {"\u00A0"}
+              {"\u00A0"}
+              {"\u00A0"}
+              {"\u00A0"}
               {"\u00A0"}
               {"\u00A0"}
               시대의
@@ -339,15 +353,15 @@ export default function BrandingPage() {
               우리만의 상징을 <br />
               창조한다
             </S.TextGradientPurple>
+            <S.ImageContainerFull
+              src={Gradient2}
+              alt="그라데이션2"
+            ></S.ImageContainerFull>
+            <S.ImageContainerFull
+              src={Gradient1}
+              alt="임시이고 이미지가 들어갈 것"
+            ></S.ImageContainerFull>
           </div>
-          <S.ImageContainerFull
-            src={Gradient2}
-            alt="그라데이션2"
-          ></S.ImageContainerFull>
-          <S.ImageContainerFull
-            src={Gradient1}
-            alt="임시이고 이미지가 들어갈 것"
-          ></S.ImageContainerFull>
         </div>
       </S.TwelvePage>
       {/* brandEssence+Images-ing */}
@@ -370,10 +384,9 @@ export default function BrandingPage() {
       </S.ThirteenPage>
       {/* co-creative 효과 */}
       <S.FourteenPage>
-        <S.TestAnimation>
+        <S.TestAnimation bgColor="#fff">
           <div
             style={{
-              width: "100vw",
               display: "flex",
               flexDirection: "row",
               marginTop: "10vh",
@@ -384,24 +397,55 @@ export default function BrandingPage() {
             <S.BrandVisionT style={{ marginLeft: "5vw", marginRight: "40vw" }}>
               BRAND VISION
             </S.BrandVisionT>
-            <S.BrandVisionT2 style={{ marginRight: "5vw" }}>
+            <S.BrandVisionT2 bgColor="#000" style={{ marginRight: "5vw" }}>
               우리는 개개인의 유일무이한 특성을 존중하고 발전시키며, <br />
               이를 통해 보다 만족스럽고 충족된 삶을 누릴 수 있도록 돕는다
             </S.BrandVisionT2>
           </div>
-          <S.AnimatedText>
+          <S.AnimatedText1>
             Co-Creating Identities,Enriching Lives
-          </S.AnimatedText>
+          </S.AnimatedText1>
+        </S.TestAnimation>
+        {/* ========================================= */}
+        <S.TestAnimation bgColor="#333333">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              marginTop: "10vh",
+
+              // spaceBtween이 안먹어 왜
+            }}
+          >
+            <S.BrandVisionT style={{ marginLeft: "5vw", marginRight: "55vw" }}>
+              BRAND VISION
+            </S.BrandVisionT>
+            <S.BrandVisionT2 bgColor="#fff">
+              당신의 인생을 창조하라
+            </S.BrandVisionT2>
+          </div>
+          <S.AnimatedText2>Create your Life</S.AnimatedText2>
         </S.TestAnimation>
       </S.FourteenPage>
-      {/* Graphic Motive-물방울 */}
+      {/* Design Concept */}
       <S.FifteenPage>
+        <S.ImageContainerFullMulH src={DesignConcept} alt="DesignConcept" />
+      </S.FifteenPage>
+      <S.SixteenthPage>
+        <S.ImageContainerFullMulH src={Beauty} alt="각자의 아름다움" />
+      </S.SixteenthPage>
+
+      {/* Graphic Motive-물방울 */}
+      <S.SeventeenthPage>
         <S.ImageContainerFull
           src={GraphicMotive}
           alt="GraphicMotive"
         ></S.ImageContainerFull>
         <S.ImageContainerFull src={PreImage} alt="예비"></S.ImageContainerFull>
-      </S.FifteenPage>
+      </S.SeventeenthPage>
+      <div>
+        <S.ImageContainerFullMulH src={ShapeAnalydid} alt="DesignConcept" />
+      </div>
     </>
   );
 }
