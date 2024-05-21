@@ -10,9 +10,10 @@ import Cave from "../../assets/mural.png";
 import DiscoveryOfFirePerson from "../../assets/DiscoveryOfFire.png";
 import DiscoveryOfFireBackground from "../../assets/Background_DiscoveryOfFire.png";
 import DiscoveryOfFireText from "../../assets/DiscoveryOfFireText.png";
+import DiscoveryOfFireR from "../../assets/DiscoveryOfFireR.png";
 import DiscoveryOfCivil from "../../assets/DiscoveryOfCivil.png";
 import PreImage from "../../assets/Pre.png";
-import AgriculturalEvolution from "../../assets/AgriculturalEvolution.png";
+import AgriculturalEvolution from "../../assets/EvolutionOfAgriculture.png";
 import Gradient1 from "../../assets/Gradient.png";
 import Gradient2 from "../../assets/Gradient2.png";
 import GraphicMotive from "../../assets/GraphicMotive.png";
@@ -21,11 +22,12 @@ import Mankind from "../../assets/MankindInvention.png";
 import IndustryEvolution from "../../assets/IndustryEvolution.png";
 import DevelopmentOfSymbol1 from "../../assets/DevelopmentOfSymbol1.png";
 import DevelopmentOfSymbol2 from "../../assets/DevelopmentOfSymbol2.png";
-import Beauty from "../../assets/BeautyAndGrowth.png";
-
+import Beauty from "../../assets/BeautyAnd.png";
+import BrandEssence from "../../assets/BrandEssence.png";
 import DesignConcept from "../../assets/DesignConcept.png";
-import ShapeAnalydid from "../../assets/ShapeAnalydidR.png";
-
+import ShapeAnalydid from "../../assets/Analydid.png";
+import Interaction from "../../assets/Interaction.png";
+import GradientBackground from "../../assets/GradientBackground.png";
 // import colors from "../../fonts/color";
 export default function BrandingPage() {
   const [position, setPosition] = useState(0);
@@ -189,8 +191,8 @@ export default function BrandingPage() {
             display: "flex",
             justifyContent: "space-around",
             alignItems: "center",
+
             marginBottom: "5vh",
-            // marginBottom: "0.01vh",
             height: window.innerHeight <= 900 ? "40vw" : "50vh",
           }}
           alt="갈색 배경"
@@ -218,7 +220,7 @@ export default function BrandingPage() {
         <div
           style={{
             width: "100%",
-            height: "100vh",
+            // height: "100vh",
             flexDirection: "column",
             // backgroundPosition: "center",
             display: "flex",
@@ -226,12 +228,23 @@ export default function BrandingPage() {
             justifyContent: "center",
             alignItems: "center",
             backgroundImage: `url(${CaveBackground})`,
-            marginBottom: "18.19rem",
+            // marginBottom: "18.19rem",
           }}
         >
-          <S.ImageContainerSm src={Cave} alt="벽화"></S.ImageContainerSm>
-          <span style={{ color: "#848484" }}>그리고 그들은 그 현장을 </span>
-          <span style={{ color: "#fff" }}>예술적</span>
+          <S.ImageContainerSm
+            src={Cave}
+            alt="벽화"
+            style={{ marginBottom: "5vh" }}
+          ></S.ImageContainerSm>
+          <div>
+            <span style={{ color: "#848484" }}>그리고 그들은 그 현장을 </span>
+            <span style={{ color: "#fff" }}> {"\u00A0"}예술적</span>
+            <span style={{ color: "#848484" }}> {"\u00A0"}목적과</span>
+            <span style={{ color: "#fff" }}> {"\u00A0"}영적</span>
+            <span style={{ color: "#848484" }}> {"\u00A0"}목적으로</span>
+          </div>
+          <br />
+          <div style={{ color: "#848484" }}>또한 어떠한 목적으로 기록했다.</div>
         </div>
       </S.FourthPage>
       <S.FifthPage>
@@ -239,17 +252,20 @@ export default function BrandingPage() {
           style={{
             width: "100vw",
             height: "100vh",
-            backgroundColor: "#181818",
+            // backgroundColor: "#181818",
           }}
         >
-          <div
+          <img src={DiscoveryOfFireR} alt="불의 발견"></img>
+        </div>
+      </S.FifthPage>
+      {/* <div
             style={{
               width: "50%",
               height: "100vh",
               flexDirection: "column",
               display: "flex",
-              justifyContent: "flex-start", // 화면 왼쪽에 배치
-              backgroundImage: `url(${DiscoveryOfFireBackground})`,
+              // justifyContent: "flex-start", // 화면 왼쪽에 배치
+              // backgroundImage: `url(${DiscoveryOfFireBackground})`,
             }}
           >
             <div style={{ flexDirection: "row", display: "flex" }}>
@@ -263,12 +279,10 @@ export default function BrandingPage() {
                   width: "100vw",
                   height: "30vh",
                 }}
-              ></img>
-              <img src={DiscoveryOfFireText} alt="텍스트 이미지"></img>
-            </div>
-          </div>
-        </div>
-      </S.FifthPage>
+              ></img> */}
+      {/* </div>
+          </div> */}
+
       <S.SixthPage>
         {/* SixthPage에 width,height 반응형 설정했는데 여기 div에 또 해준 이유:여기ImageContainerFull에
         height:auto로 설정되어 있기 때문-다른 애들이 heightAuto가 필요해 */}
@@ -366,7 +380,11 @@ export default function BrandingPage() {
       </S.TwelvePage>
       {/* brandEssence+Images-ing */}
       <S.ThirteenPage>
-        <S.DivWrapper>
+        <div>
+          <img src={BrandEssence} alt="BrandEssence"></img>
+        </div>
+        {/* <S.DivWrapper>
+          
           <S.BrandEssence>BRAND ESSENCE</S.BrandEssence>
           <S.UnderBrandEssence>
             개인의 고유 정보를 토대로 그래픽형태의 새로운 상징을 누구나 쉽게
@@ -380,7 +398,7 @@ export default function BrandingPage() {
             <br /> 더욱 입체적이고 깊이 있는 방식으로 풍부하게 발전시키는 것을
             나타낸다.
           </S.UnderBrandEssence>
-        </S.DivWrapper>
+        </S.DivWrapper> */}
       </S.ThirteenPage>
       {/* co-creative 효과 */}
       <S.FourteenPage>
@@ -429,10 +447,10 @@ export default function BrandingPage() {
       </S.FourteenPage>
       {/* Design Concept */}
       <S.FifteenPage>
-        <S.ImageContainerFullMulH src={DesignConcept} alt="DesignConcept" />
+        <S.ImageContainerFull src={DesignConcept} alt="DesignConcept" />
       </S.FifteenPage>
       <S.SixteenthPage>
-        <S.ImageContainerFullMulH src={Beauty} alt="각자의 아름다움" />
+        <S.ImageContainerFull src={Beauty} alt="각자의 아름다움" />
       </S.SixteenthPage>
 
       {/* Graphic Motive-물방울 */}
@@ -441,10 +459,16 @@ export default function BrandingPage() {
           src={GraphicMotive}
           alt="GraphicMotive"
         ></S.ImageContainerFull>
-        <S.ImageContainerFull src={PreImage} alt="예비"></S.ImageContainerFull>
+        <S.ImageContainerFull src={ShapeAnalydid} alt="ShapeAnalydid" />
       </S.SeventeenthPage>
+      <S.EighteenthPage>
+        <S.ImageContainerFull src={PreImage} alt="예비" />
+      </S.EighteenthPage>
       <div>
-        <S.ImageContainerFullMulH src={ShapeAnalydid} alt="DesignConcept" />
+        <S.ImageContainerFull src={PreImage} alt="예비"></S.ImageContainerFull>
+        <S.ImageContainerFull src={Interaction} alt="Interaction" />
+
+        <S.ImageContainerFull src={GradientBackground} alt="ShapeAnalydid" />
       </div>
     </>
   );

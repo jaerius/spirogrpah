@@ -26,14 +26,14 @@ export const ImageContainerSm = styled.img`
   //ㅎ화면에 따라 크기 조절하고 싶으면?
   //만약 75vw면 화면 width 3/4가 채워짐
   width: 60vw;
-  height: 200vh;
+  height: 30vw;
   /* background-size: cover; */
   /* object-fit: cover; */
   @media only screen and (max-width: 500px) {
     width: 50vw;
   }
   @media only screen and (max-height: 900px) {
-    height: 100vw;
+    height: 50vw;
   }
 `;
 
@@ -60,8 +60,8 @@ export const SecondPage = styled.div`
 `;
 export const ThirdPage = styled.div`
   width: 100%;
-  height: 100vw;
-
+  /* height: 100vw; */
+  margin-bottom: 30vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -92,7 +92,7 @@ export const ThirdT = styled.span`
 `;
 export const FourthPage = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -122,6 +122,7 @@ export const SixthPage = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: space-between;
+  margin-bottom: 50vh;
   @media only screen and (max-width: 500px) {
     width: 100vw;
   }
@@ -439,6 +440,18 @@ export const SixteenthPage = styled.div`
 export const SeventeenthPage = styled.div`
   width: 100%;
   height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  margin-bottom: 18.19rem;
+`;
+
+export const EighteenthPage = styled.div`
+  width: 100vw;
+  height: auto;
 
   display: flex;
   flex-direction: column;
