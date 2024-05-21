@@ -63,7 +63,7 @@ init({
 
 
 
-const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
+const Sketch = ({ firstName, lastName, isSubmitted, onEnd, onProgress }) => {
 
   const navigate = useNavigate();
 
@@ -78,6 +78,7 @@ const Sketch = ({ firstName, lastName, isSubmitted, onEnd }) => {
 
   const [Url,setUrl] = useState(false);
   const [aiUrl, setAiUrl]= useState(false)
+  const [isProgress, setIsProgress] = useState(0);
 
   // 지갑 훅
   const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
@@ -151,6 +152,7 @@ useEffect(() => {
       let currentRotation = 0;
       let firstHalf;
       let lastHalf;
+      let counter=0;
 
       p.setup = () => {
         // 캔버스 생성 및 DOM에 추가
@@ -185,6 +187,8 @@ useEffect(() => {
           p.line(x1, y1, x2, y2);
           console.log("ing")
 
+          const progressPercentage = Math.min((currentRotation / (totalRotations * p.TWO_PI)) * 100, 100);
+          onProgress(progressPercentage.toFixed(2));
           currentRotation += angleIncrement;
         } else {
           console.log("end");
@@ -325,12 +329,35 @@ useEffect(() => {
       <div className="nft">
       {IsEnd&&
         <div className="buttons">
+          {/*
         <button className="button1" onClick={() => mintNFT(aiUrl)}>NFT 발행하기</button>
         <button disabled={connecting} onClick={() => (wallet ? disconnect(wallet) : connect())}>
           {connecting ? "연결 중" : wallet ? "연결 해제" : "지갑 연결"}
         </button>
-        <button className="button2">출력하기</button>
-        <button className="button3" onClick={goToNewPage}>AI 수정하기</button>
+        */}
+        <button className="button2">
+          <span className="button-text">
+          출력하기
+          </span>
+
+          <div className="tooltip">
+              AI를 활용하여 자신의 취향을 담아 <br/> 더 멋진 심볼을 만들어 보아요!
+          </div>
+
+        </button>
+
+        <button className="button3" onClick={goToNewPage}>
+          <span className="button-text">
+          AI 수정하기
+          </span>
+
+          <div className="tooltip">
+              AI를 활용하여 자신의 취향을 담아 <br/> 더 멋진 심볼을 만들어 보아요!
+          </div>
+
+          </button>
+        
+        
         </div>
         }
       </div>

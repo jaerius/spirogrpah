@@ -1,28 +1,32 @@
 import React, { useState } from 'react';
 import Sketch from '../Sketch/Sketch.jsx';
 import { button } from '@material-tailwind/react';
+import './NameBox.scss';
 
-function NameBox() {
+function NameBox({ isSubmitted, onNameSubmit, Counter}) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
   const [isEnd, setIsEnd] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   const handleSubmit = () => {
-    setIsSubmitted(!isSubmitted); // Toggle the submission state to force re-render
+    onNameSubmit(isSubmitted); // Toggle the submission state to force re-render
   }
 
   const handleEnd = () => {
     setIsEnd(true);
   }
   
+  const handleProgress = (progress) => {
+    setProgress(progress);
+  }
 
   const boxClass = isSubmitted ? "box" : "box center";
-  const buttonClass = isEnd ? "endButton" : "button";
+  const buttonClass = isEnd ? "SymbolEndButton" : "SymbolButton";
 
   return (
     <div className="Name">
-        <h1 className="h1">Graphic</h1>
+       
         <div className={boxClass}>
         <div className="name">
         <input
@@ -38,7 +42,7 @@ function NameBox() {
           onChange={(e) => setLastName(e.target.value)}
         />
         </div>
-        <button className={buttonClass} onClick={handleSubmit}>그래픽 생성하기</button>
+        <button className={buttonClass} onClick={handleSubmit}>{isEnd ? "심볼 생성완료" : isSubmitted ? `그래픽 생성 중 ${progress}%`: "그래픽 생성하기"}</button>
         </div>
       
 
@@ -49,6 +53,7 @@ function NameBox() {
         lastName={lastName}
         isSubmitted={isSubmitted}
         onEnd={handleEnd}
+        onProgress={handleProgress}
       />}
       </div>
     </div>

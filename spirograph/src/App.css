@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
+
 .App {
   text-align: center;
   background-color: black;
@@ -5,8 +8,8 @@
   flex-direction: column; /* 세로 방향으로 내용을 정렬 */
   align-items: center; /* 세로 축의 중앙에 항목을 배치 */
   min-height: 100vh; /* 최소 높이를 뷰포트 높이의 100%로 설정 */
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 0px;
+  padding-right: 0px;
   box-sizing: border-box;
 }
 
