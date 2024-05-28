@@ -4,7 +4,7 @@ import * as S from "./styles";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Horizon from "../../components/NavBar/horizon";
-import Logo from "../../assets/SymbolLogo.svg";
+import Logo from "../../assets/Logoo.svg";
 const ImageWrapper = styled.div`
   display: flex;
   width: 100%;
@@ -39,6 +39,7 @@ export function Nav() {
     navigate("/about");
   }
 
+  //NavBar  효과
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;

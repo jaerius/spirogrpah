@@ -7,10 +7,7 @@ import Animal from "../../assets/animal.png";
 import Person from "../../assets/person.png";
 import CaveBackground from "../../assets/caveBackground.png";
 import Cave from "../../assets/mural.png";
-import DiscoveryOfFirePerson from "../../assets/DiscoveryOfFire.png";
-import DiscoveryOfFireBackground from "../../assets/Background_DiscoveryOfFire.png";
-import DiscoveryOfFireText from "../../assets/DiscoveryOfFireText.png";
-import DiscoveryOfFireR from "../../assets/DiscoveryOfFireR.png";
+import DiscoveryOfFireR from "../../assets/DiscoveryOfFire.png";
 import DiscoveryOfCivil from "../../assets/DiscoveryOfCivil.png";
 import PreImage from "../../assets/Pre.png";
 import AgriculturalEvolution from "../../assets/EvolutionOfAgriculture.png";
@@ -20,9 +17,8 @@ import GraphicMotive from "../../assets/GraphicMotive.png";
 import AIEvolution from "../../assets/AI.png";
 import AIEvol from "../../assets/AIEvol.png";
 import Mankind from "../../assets/Mankind.png";
-import IndustryEvolution from "../../assets/IndustryEvolution.png";
-import DevelopmentOfSymbol1 from "../../assets/DevelopmentOfSymbol1.png";
-import DevelopmentOfSymbol2 from "../../assets/DevelopmentOfSymbol2.png";
+import IndustryEvolution from "../../assets/Industry.png";
+import DevelopmentOfSymbol from "../../assets/DevelopmentOfSymbol.png";
 import Beauty from "../../assets/BeautyAnd.png";
 import BrandEssence from "../../assets/BrandEssence.png";
 import BrandCoreValues from "../../assets/BrandCoreValues.png";
@@ -250,15 +246,10 @@ export default function BrandingPage() {
         </div>
       </S.FourthPage>
       <S.FifthPage>
-        <div
-          style={{
-            width: "100vw",
-            height: "100vh",
-            // backgroundColor: "#181818",
-          }}
-        >
-          <img src={DiscoveryOfFireR} alt="불의 발견"></img>
-        </div>
+        <S.ImageContainerFull
+          src={DiscoveryOfFireR}
+          alt="불의 발견"
+        ></S.ImageContainerFull>
       </S.FifthPage>
       {/* <div
             style={{
@@ -312,17 +303,21 @@ export default function BrandingPage() {
           alt="인류사 발명품"
         ></S.ImageContainerFull>
       </S.EighthPage>
-      {/* 상징의 발전-Yet */}
+      {/* 상징의 발전 */}
       <S.NinethPage>
-        <img src={DevelopmentOfSymbol1} alt="상징의 발전1"></img>
-        <img src={DevelopmentOfSymbol2} alt="상징의 발전2"></img>
+        <S.ImageContainerFull
+          src={DevelopmentOfSymbol}
+          alt="상징의 발전"
+        ></S.ImageContainerFull>
       </S.NinethPage>
-      {/* 산업혁명-Yet */}
+      {/* 산업혁명*/}
       <S.TenthPage>
-        {" "}
-        <img src={IndustryEvolution} alt="산업혁명"></img>
+        <S.ImageContainerFull
+          src={IndustryEvolution}
+          alt="산업혁명"
+        ></S.ImageContainerFull>
       </S.TenthPage>
-      {/* AI발전-ing */}
+      {/* AI발전 */}
       <S.EleventhPage>
         <S.BackGradient>
           <S.ImageContainerFull
