@@ -295,7 +295,7 @@ export default function BrandingPage() {
         {/* </div> */}
       </S.SeventhPage>
 
-      {/* 인류사 발명품-Yet */}
+      {/* 인류사 발명품 */}
       <S.EighthPage>
         <S.ImageContainerFull
           // style={{ height: "200vh", width: "100vw" }}
