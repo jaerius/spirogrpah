@@ -17,7 +17,7 @@ import AgriculturalEvolution from "../../assets/EvolutionOfAgriculture.png";
 import Gradient1 from "../../assets/Gradient.png";
 import Gradient2 from "../../assets/Gradient2.png";
 import GraphicMotive from "../../assets/GraphicMotive.png";
-import AIEvolution from "../../assets/3.png";
+import AIEvolution from "../../assets/AI.png";
 import AIEvol from "../../assets/AIEvol.png";
 import Mankind from "../../assets/Mankind.png";
 import IndustryEvolution from "../../assets/IndustryEvolution.png";
