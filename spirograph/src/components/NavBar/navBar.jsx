@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
 import * as S from "./styles";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
@@ -30,13 +31,38 @@ const Group = styled.div`
 `;
 export function Nav() {
   const navigate = useNavigate();
+  const [topOffset, setTopOffset] = useState(0);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   function handleClick() {
     console.log("NavMenu가 클릭!");
     navigate("/about");
   }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY === 0) {
+        // 스크롤 위치가 0이면 고정
+        setTopOffset(20);
+      } else if (currentScrollY > lastScrollY) {
+        // 스크롤 다운
+        setTopOffset(-60); // navBar를 40px 위로 이동
+      } else {
+        // 스크롤 업
+        setTopOffset(0); // navBar를 맨 위에 붙이기
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
   return (
-    <S.NavBar>
+    <S.NavBar style={{ top: `${topOffset}px`, transition: "top 0.3s" }}>
       <ImageWrapper>
         <Image src={Logo} alt="logo" />
       </ImageWrapper>
@@ -62,25 +88,14 @@ export function Nav() {
       </Group>
       <Group>
         <Horizon />
-        <S.NavMenu onClick={handleClick} style={{ fontSize: "1.12rem" }}>
+        <S.NavMenu
+          onClick={handleClick}
+          style={{ fontSize: "1.12rem" }}
+          hoverColor="#5339FD"
+        >
           Model Graphic {">"}{" "}
         </S.NavMenu>
       </Group>
-
-      {/* <Link style={S.NavMenu}>Main</Link>
-      <Link style={S.NavMenu}>About</Link> */}
-      {/* <Link to={"/"} style={S.NavMenu}>
-        Business Model
-      </Link>
-      <Link to={"/"} style={S.NavMenu}>
-        Contact
-      </Link>
-      <Link to={"/"} style={S.NavMenu}>
-        Shop
-      </Link>
-      <Link to={"/"} style={S.NavMenu}>
-        Made Graphic
-      </Link> */}
     </S.NavBar>
   );
 }

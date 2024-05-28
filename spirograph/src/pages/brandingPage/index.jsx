@@ -17,13 +17,15 @@ import AgriculturalEvolution from "../../assets/EvolutionOfAgriculture.png";
 import Gradient1 from "../../assets/Gradient.png";
 import Gradient2 from "../../assets/Gradient2.png";
 import GraphicMotive from "../../assets/GraphicMotive.png";
-import AIEvolution from "../../assets/AIEvolution.png";
-import Mankind from "../../assets/MankindInvention.png";
+import AIEvolution from "../../assets/3.png";
+import AIEvol from "../../assets/AIEvol.png";
+import Mankind from "../../assets/Mankind.png";
 import IndustryEvolution from "../../assets/IndustryEvolution.png";
 import DevelopmentOfSymbol1 from "../../assets/DevelopmentOfSymbol1.png";
 import DevelopmentOfSymbol2 from "../../assets/DevelopmentOfSymbol2.png";
 import Beauty from "../../assets/BeautyAnd.png";
 import BrandEssence from "../../assets/BrandEssence.png";
+import BrandCoreValues from "../../assets/BrandCoreValues.png";
 import DesignConcept from "../../assets/DesignConcept.png";
 import ShapeAnalydid from "../../assets/Analydid.png";
 import Interaction from "../../assets/Interaction.png";
@@ -161,8 +163,8 @@ export default function BrandingPage() {
         <S.Horizon />
         <span
           style={{
-            fontSize: window.innerWidth <= 500 ? "2vw" : "0.5vw",
-
+            // fontSize: window.innerWidth <= 500 ? "2vw" : "0.5vw",
+            fontSize: "1vw",
             color: "#C7C7C7",
             display: "flex",
             alignContent: "center",
@@ -294,21 +296,21 @@ export default function BrandingPage() {
       </S.SixthPage>
       <S.SeventhPage>
         {/* <div style={{ width: "100vw", height: "100vh" }}> */}
-        <img
-          style={{ height: "200vh", width: "100vw", marginBottom: "50vh" }}
+        <S.ImageContainerFull
+          // style={{ height: "200vh", marginBottom: "50vh" }}
           src={DiscoveryOfCivil}
           alt="문명의 발전"
-        ></img>
+        ></S.ImageContainerFull>
         {/* </div> */}
       </S.SeventhPage>
 
       {/* 인류사 발명품-Yet */}
       <S.EighthPage>
-        <img
-          style={{ height: "200vh", width: "100vw" }}
+        <S.ImageContainerFull
+          // style={{ height: "200vh", width: "100vw" }}
           src={Mankind}
           alt="인류사 발명품"
-        ></img>
+        ></S.ImageContainerFull>
       </S.EighthPage>
       {/* 상징의 발전-Yet */}
       <S.NinethPage>
@@ -323,7 +325,14 @@ export default function BrandingPage() {
       {/* AI발전-ing */}
       <S.EleventhPage>
         <S.BackGradient>
-          <S.ImgContainer src={AIEvolution} alt="AI혁명"></S.ImgContainer>
+          <S.ImageContainerFull
+            src={AIEvolution}
+            alt="AI혁명"
+          ></S.ImageContainerFull>
+          <S.ImageContainerFull
+            src={AIEvol}
+            alt="AI혁명 밑 글씨"
+          ></S.ImageContainerFull>
         </S.BackGradient>
       </S.EleventhPage>
 
@@ -380,25 +389,15 @@ export default function BrandingPage() {
       </S.TwelvePage>
       {/* brandEssence+Images-ing */}
       <S.ThirteenPage>
-        <div>
-          <img src={BrandEssence} alt="BrandEssence"></img>
-        </div>
-        {/* <S.DivWrapper>
-          
-          <S.BrandEssence>BRAND ESSENCE</S.BrandEssence>
-          <S.UnderBrandEssence>
-            개인의 고유 정보를 토대로 그래픽형태의 새로운 상징을 누구나 쉽게
-            생성 가능하게 하여 사용자에게 특별한
-            <br />
-            경험을 이끌어가고자 하는 ‘The Symbol’의 브랜드 에센스는 ‘build a
-            symbol’로 정의한다. 이는 사용자의
-            <br />
-            취향과 성향을 반영하는 알고리즘을 통해, 개인의 아이덴티티를 표현하는
-            자산들이 적층되어 각자의 상징을
-            <br /> 더욱 입체적이고 깊이 있는 방식으로 풍부하게 발전시키는 것을
-            나타낸다.
-          </S.UnderBrandEssence>
-        </S.DivWrapper> */}
+        <S.ImageContainerFull
+          src={BrandEssence}
+          alt="BrandEssence"
+        ></S.ImageContainerFull>
+
+        <S.ImageContainerFull
+          src={BrandCoreValues}
+          alt="brandcorevalues"
+        ></S.ImageContainerFull>
       </S.ThirteenPage>
       {/* co-creative 효과 */}
       <S.FourteenPage>
@@ -409,7 +408,7 @@ export default function BrandingPage() {
               flexDirection: "row",
               marginTop: "10vh",
 
-              // spaceBtween이 안먹어 왜
+              // spaceBetween이 안먹어 왜
             }}
           >
             <S.BrandVisionT style={{ marginLeft: "5vw", marginRight: "40vw" }}>
@@ -432,7 +431,7 @@ export default function BrandingPage() {
               flexDirection: "row",
               marginTop: "10vh",
 
-              // spaceBtween이 안먹어 왜
+              // spaceBetween이 안먹어 왜
             }}
           >
             <S.BrandVisionT style={{ marginLeft: "5vw", marginRight: "55vw" }}>

@@ -176,7 +176,7 @@ export const TenthPage = styled.div`
 export const EleventhPage = styled.div`
   width: 100vw;
   height: 400vh;
-
+  margin-top: 50vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -192,13 +192,13 @@ export const BackGradient = styled.div`
   height: 400vh;
   z-index: 5; /* z-index를 낮게 설정*/
   position: relative; //위치를 상대적으로 설정 */
-  background: conic-gradient(
+  /* background: conic-gradient(
     from 270deg at 50% 50%,
     #6a25ff 0deg,
     #f523ed 158.389892578125deg,
     #0043f1 234.94101762771606deg,
     #401699 360deg
-  );
+  ); */
 
   /* filter: blur(10px); */
   //뿌옇게 블러처리
@@ -236,7 +236,7 @@ export const TextWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-top: 20vw;
+  margin-top: 35vw;
 `;
 export const fadeInUp = keyframes`
   0% {
@@ -323,8 +323,8 @@ export const TextGradientGray = styled.span`
 `;
 
 export const ThirteenPage = styled.div`
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: auto;
 
   display: flex;
   flex-direction: column;

@@ -12,6 +12,7 @@ const Horizon = ({ text }) => {
         lineHeight: "0.1rem",
         marginRight: "1.25rem",
         overflow: "hidden",
+        // marginBottom: "0.4rem",
       }}
     ></div>
   );

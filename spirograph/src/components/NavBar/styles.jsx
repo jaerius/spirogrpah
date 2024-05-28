@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
 //로고+메뉴바
-export const NavBar = styled.div`
+export const NavBar = styled.nav`
   width: 100%;
-  background-color: black;
+  /* background-color: black; */
   display: flex;
   flex-direction: row;
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
+  height: 5vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  transition: top 0.3s;
 `;
 //
 export const NavMenu = styled.div`
@@ -17,8 +22,12 @@ export const NavMenu = styled.div`
   cursor: pointer;
   font-size: 1rem;
   font-family: bold;
+  height: 1rem;
+  padding: 0.5rem 0;
   &:hover {
-    color: #000;
-    transition: color 0.8s;
+    background-color: #fff;
+    color: ${(props) => props.hoverColor || "#000"};
+
+    transition: color 0.8s, background-color 0.8s;
   }
 `;
