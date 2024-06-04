@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as S from "./styles";
 import NavBar from "../../components/NavBar/navBar";
 import BlueGradient from "../../assets/blueGradient.png";
@@ -26,8 +26,19 @@ import DesignConcept from "../../assets/DesignConcept.png";
 import ShapeAnalydid from "../../assets/Analydid.png";
 import Interaction from "../../assets/Interaction.png";
 import GradientBackground from "../../assets/GradientBackground.png";
+import Sym1 from "../../assets/brandingImg/sym1.png";
+import Sym2 from "../../assets/brandingImg/sym2.png";
+import Sym3 from "../../assets/brandingImg/sym3.png";
+import Sym4 from "../../assets/brandingImg/sym4.png";
+import Sym5 from "../../assets/brandingImg/sym5.png";
+import Sym6 from "../../assets/brandingImg/sym6.png";
+import Sym7 from "../../assets/brandingImg/sym7.png";
+import Sym8 from "../../assets/brandingImg/last.png";
+
 // import colors from "../../fonts/color";
 export default function BrandingPage() {
+  const [isVisible, setIsVisible] = useState(false);
+  const textRef = useRef(null);
   const [position, setPosition] = useState(0);
   function onScroll() {
     console.log(window.scrollY);
@@ -76,22 +87,13 @@ export default function BrandingPage() {
           </S.SmallT>
         </S.TextWrapper>
       </S.FirstPage>
-
       {/* =================================================================== */}
       <S.SecondPage>
         <div style={{ position: "relative" }}>
           <S.GradientT
             style={{
-              opacity: (position - 300) / 200,
-              // transition: "ease-in-out",
-              animationDuration: "1s",
-              animationName: "fadeInUp",
-              // transition: "fadeIn opacity 0.5s ease-in-out",
-              transition: "opacity .95s all ease-in-out",
-              // opacity: (position - 200) / 100,
-              // animationDuration: "1s",
-              // animationName: "fadeInUp",
-              // overflow: "hidden",
+              opacity: (position - 200) / 200,
+              transition: "opacity 0.95s all ease-out",
             }}
           >
             각 시대정신을 반영하는 ‘상징'은 인류의
@@ -99,16 +101,8 @@ export default function BrandingPage() {
 
           <S.GradientT
             style={{
-              opacity: (position - 400) / 200,
-              transition: "ease-in-out",
-              animationDuration: "2s",
-              animationName: "fadeInUp",
-              // transition: "fadeIn opacity 0.5s ease-in-out",
-              // transition: "opacity .95s all ease-in-out",
-              // opacity: (position - 200) / 100,
-              // animationDuration: "1s",
-              // animationName: "fadeInUp",
-              // overflow: "hidden",
+              opacity: (position - 300) / 200,
+              transition: "opacity 0.95s all ease-out",
             }}
           >
             발전과 함께했다.
@@ -117,26 +111,16 @@ export default function BrandingPage() {
           <br />
           <S.GradientT
             style={{
-              opacity: (position - 600) / 200,
-              // transition: "ease-in-out",
-              animationDuration: "2s",
-              animationName: "fadeInUp",
-              // // transition: "fadeIn opacity 0.5s ease-in-out",
-              // transition: "opacity .95s all ease-in-out",
-              // opacity: (position - 210) / 100,
-              // animationDuration: "1s",
-              // animationName: "fadeInUp",
-              // overflow: "hidden",
+              opacity: (position - 400) / 200,
+              transition: "opacity .95s all ease-in-out",
             }}
           >
             그것은 기존 가치를 해체하고 새로운 의미를
           </S.GradientT>
           <S.GradientT
             style={{
-              opacity: (position - 700) / 200,
-              // transition: "ease-in-out",
-              animationDuration: "2s",
-              animationName: "fadeInUp",
+              opacity: (position - 500) / 200,
+              transition: "opacity .95s all ease-in-out",
             }}
           >
             창출하는 역할을 해왔다.
@@ -251,39 +235,15 @@ export default function BrandingPage() {
           alt="불의 발견"
         ></S.ImageContainerFull>
       </S.FifthPage>
-      {/* <div
-            style={{
-              width: "50%",
-              height: "100vh",
-              flexDirection: "column",
-              display: "flex",
-              // justifyContent: "flex-start", // 화면 왼쪽에 배치
-              // backgroundImage: `url(${DiscoveryOfFireBackground})`,
-            }}
-          >
-            <div style={{ flexDirection: "row", display: "flex" }}>
-              <img
-                src={DiscoveryOfFirePerson}
-                alt="불의 사람"
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  width: "100vw",
-                  height: "30vh",
-                }}
-              ></img> */}
-      {/* </div>
-          </div> */}
-
       <S.SixthPage>
         {/* SixthPage에 width,height 반응형 설정했는데 여기 div에 또 해준 이유:여기ImageContainerFull에
         height:auto로 설정되어 있기 때문-다른 애들이 heightAuto가 필요해 */}
-        {/* <div style={{ width: "100vw", height: "100vh" }}> */}
-        <S.ImageContainerFull
-          src={AgriculturalEvolution}
-          alt="농업혁명"
-        ></S.ImageContainerFull>
+        <div style={{ width: "100vw", height: "100vh" }}>
+          <S.ImageContainerFull
+            src={AgriculturalEvolution}
+            alt="농업혁명"
+          ></S.ImageContainerFull>
+        </div>
       </S.SixthPage>
       <S.SeventhPage>
         {/* <div style={{ width: "100vw", height: "100vh" }}> */}
@@ -294,7 +254,6 @@ export default function BrandingPage() {
         ></S.ImageContainerFull>
         {/* </div> */}
       </S.SeventhPage>
-
       {/* 인류사 발명품 */}
       <S.EighthPage>
         <S.ImageContainerFull
@@ -330,7 +289,6 @@ export default function BrandingPage() {
           ></S.ImageContainerFull>
         </S.BackGradient>
       </S.EleventhPage>
-
       {/* black-> white 그라데이션-Done */}
       <S.TwelvePage>
         <div
@@ -374,10 +332,6 @@ export default function BrandingPage() {
             <S.ImageContainerFull
               src={Gradient2}
               alt="그라데이션2"
-            ></S.ImageContainerFull>
-            <S.ImageContainerFull
-              src={Gradient1}
-              alt="임시이고 이미지가 들어갈 것"
             ></S.ImageContainerFull>
           </div>
         </div>
@@ -440,13 +394,15 @@ export default function BrandingPage() {
         </S.TestAnimation>
       </S.FourteenPage>
       {/* Design Concept */}
-      <S.FifteenPage>
-        <S.ImageContainerFull src={DesignConcept} alt="DesignConcept" />
-      </S.FifteenPage>
-      <S.SixteenthPage>
-        <S.ImageContainerFull src={Beauty} alt="각자의 아름다움" />
-      </S.SixteenthPage>
+      <div>
+        <S.ImageContainerFull
+          style={{ marginRight: "0.5rem", marginLeft: "0.5rem" }}
+          src={DesignConcept}
+          alt="DesignConcept"
+        />
 
+        <S.ImageContainerFull src={Beauty} alt="각자의 아름다움" />
+      </div>{" "}
       {/* Graphic Motive-물방울 */}
       <S.SeventeenthPage>
         <S.ImageContainerFull
@@ -455,14 +411,28 @@ export default function BrandingPage() {
         ></S.ImageContainerFull>
         <S.ImageContainerFull src={ShapeAnalydid} alt="ShapeAnalydid" />
       </S.SeventeenthPage>
-      <S.EighteenthPage>
-        <S.ImageContainerFull src={PreImage} alt="예비" />
-      </S.EighteenthPage>
       <div>
-        <S.ImageContainerFull src={PreImage} alt="예비"></S.ImageContainerFull>
-        <S.ImageContainerFull src={Interaction} alt="Interaction" />
+        <S.ImageContainerFull src={Sym1} alt="Sym1" />
+        <S.ImageContainerFull src={Sym2} alt="Sym2" />
+      </div>
+      <div style={{ backgroundColor: "#fff" }}>
+        <S.ImageContainerFull
+          style={{ marginBottom: "5rem" }}
+          src={Sym3}
+          alt="Sym3"
+        />
+        <S.ImageContainerFull src={Sym4} alt="Sym4" />
+      </div>
+      <div>
+        <S.ImageContainerFull src={Sym5} alt="Sym5" />
+        <S.ImageContainerFull src={Sym6} alt="Sym6" />
+        <S.ImageContainerFull src={Sym7} alt="Sym7" />
+        <S.ImageContainerFull src={Sym8} alt="last" />
 
-        <S.ImageContainerFull src={GradientBackground} alt="ShapeAnalydid" />
+        <S.ImageContainerFull
+          src={GradientBackground}
+          alt="GradientBackground"
+        />
       </div>
     </>
   );

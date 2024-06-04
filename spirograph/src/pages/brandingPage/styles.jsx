@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import React, { useEffect, useRef, useState } from "react";
 
 export const ImageContainerFull = styled.img`
   //ㅎ화면에 따라 크기 조절하고 싶으면?
@@ -249,6 +250,10 @@ export const fadeInUp = keyframes`
   }
   `;
 export const GradientT = styled.div`
+  /* transition: opacity 0.95s ease-in-out; */
+  opacity: ${(props) => (props.isVisible ? 1 : 0)};
+  transition: opacity 0.95s ease-in-out; /* 투명도 변화에 따라 애니메이션 효과 적용 */
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -259,7 +264,7 @@ export const GradientT = styled.div`
   line-height: 180%; /* 5.85rem */
   font-weight: 800;
   color: black;
-  visibility: visible;
+  /* visibility: visible; */
   /* Text에만 배경 그라데이션 효과를 적용 */
   background: linear-gradient(180deg, #fff 0%, #4d4d4d 100%);
   /* 배경 그라데이션 효과가 텍스트 위에 오버레이되도록 */
@@ -307,6 +312,7 @@ export const TextGradientPurple = styled.span`
   font-family: bold;
   font-size: 10rem;
   text-align: start;
+  margin-bottom: 5rem;
   @media only screen and (max-width: 500px) {
     font-size: 2.6rem;
   }
@@ -316,6 +322,7 @@ export const TextGradientGray = styled.span`
   font-family: bold;
   font-size: 6rem;
   text-align: start;
+  margin-top: 5rem;
 
   @media only screen and (max-width: 500px) {
     font-size: 1.56rem;
@@ -332,6 +339,8 @@ export const ThirteenPage = styled.div`
   align-items: center;
   text-align: flex-start;
   margin-bottom: 18.19rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 `;
 export const DivWrapper = styled.div`
   flex-direction: column;

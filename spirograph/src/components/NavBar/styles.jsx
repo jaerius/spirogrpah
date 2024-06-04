@@ -21,7 +21,7 @@ export const NavMenu = styled.div`
   //원래 폰트 0.875rem인데 너무 작아보여서 일단 1rem으로
   cursor: pointer;
   font-size: 1rem;
-  font-family: bold;
+  font-family: "Pretendard-Regular";
   height: 1rem;
   padding: 0.5rem 0;
   &:hover {

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SaleListPage from "./pages/SaleList/index";
 import BrandingPage from "./pages/brandingPage/index";
-import TestPage from "./pages/testPage/index";
+import TestPage from "./pages/test";
 import BusinessPage from "./pages/businessPage/index";
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
           <Route path="/" element={<BrandingPage />} />
           <Route path="/test" element={<TestPage />} />
           <Route path="/business" element={<BusinessPage />} />
+          <Route path="/test" element={<TestPage />} />
         </Routes>
       </BrowserRouter>
     </div>

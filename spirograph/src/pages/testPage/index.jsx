@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import item1 from "../../assets/blueGradient.png";
-import item2 from "../../assets/blueGradient.png";
+
 import "./index.css";
 export default function Parallax() {
   const [position, setPosition] = useState(0);
