@@ -294,7 +294,7 @@ const Sketch = ({
     return () => {
       newSketchInstance.remove();
     };
-  }, [isSubmitted]);
+  }, []);
 
   useEffect(() => {
     if (url) {
