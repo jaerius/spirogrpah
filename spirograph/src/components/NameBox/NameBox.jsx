@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Sketch from "../Sketch/Sketch.jsx";
-import { button } from "@material-tailwind/react";
 import "./NameBox.scss";
 
 function NameBox({ isSubmitted, onNameSubmit, Counter }) {
