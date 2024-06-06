@@ -4,4 +4,4 @@
   publish = "spirograph/build"
 
 [functions]
-  directory = "spirograph/netlify/functions"
+  directory = "netlify/functions"
