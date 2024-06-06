@@ -1,0 +1,165 @@
+/* main.css */
+.image-slider {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.image-wrapper {
+  display: flex;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.box img {
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.flex {
+  max-width: 100%;
+}
+
+.img-container {
+  margin-top: 10px;
+}
+
+.rainbow {
+  width: 100%;
+  height: 100%;
+}
+
+.gradient-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 220px;
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(to bottom right, #000000 11%, #333333 16%, #666666 24%, #999999 71%, #cccccc 93%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  position: relative;
+}
+
+.gotosymbol {
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  background-image: black;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 2px;
+  display: none;
+  z-index: 10;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.gotosymbol:hover {
+  background-color: gray;
+  color: black;
+}
+
+.gradient-text:hover .gotosymbol {
+  display: block;
+}
+
+.gradient-text:hover {
+  background: var(--white, #FFF);
+  transition: background 0.5s, color 0.5s;
+}
+
+.gradient-text:hover .gradient-texttext {
+  background-image: linear-gradient(104deg, #000AFF 15.42%, #618DFF 19.06%, #2D35FF 25.85%, #48A3D7 64.11%, #2026C4 82.41%, #000347 85.92%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background 0.5s, color 0.5s;
+}
+
+@media (max-width: 768px) {
+  .gradient-text {
+    font-size: 2xl;
+  }
+}
+
+.circle-gradient {
+  display: inline;
+  background: linear-gradient(to right, #CCCCCC 0%, #525252 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  white-space: nowrap;
+}
+
+.button-text-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 20px;
+  background: var(--gray-95, #181818);
+  color: var(--white, #FFF);
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 28px 79px;
+  width: 336px;
+  height: 84px;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background: var(--gray-40, #D6D6D6);
+
+    .button-text {
+      background-image: linear-gradient(90deg, #A839FF 0%, #5539FF 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+}
+
+.button-text {
+  color: var(--white, #FFF);
+}
+
+
+.buttom-buttom-color{
+  color: #b4acac
+}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./styles";
-import NavBar from "../../components/NavBar/navBar";
+import NavBar from "../../components/NavBar2/navBar";
 import BlueGradient from "../../assets/brandingImg/blueGradient.png";
 import BrownBackground from "../../assets/brandingImg/brownBackground.png";
 import Animal from "../../assets/brandingImg/animal.png";

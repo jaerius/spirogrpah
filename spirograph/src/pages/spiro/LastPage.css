@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css');
+
+@keyframes blink-effect {
+    0% { opacity: 10%; }  /* 시작 투명도 */
+  25% { opacity: 80%; }  /* 점점 불투명해짐 */
+  75% { opacity: 80%; }  /* 유지 */
+  100% { opacity: 10%; }
+
+  }
+  
+  .blink {
+    animation: blink-effect 3s ease-in-out infinite;
+  
+    /*
+    animation-name: blink-effect;
+    animation-duration: 1s;
+    animation-iteration-count:infinite;
+    animation-timing-function:step-end;
+    */
+  }

@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css');
+.model-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
