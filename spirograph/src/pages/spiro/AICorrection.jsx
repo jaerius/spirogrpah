@@ -43,7 +43,7 @@ function AICorrection() {
   };
 
   const handleSubmit = async () => {
-    const response = await fetch("http://localhost:5001/save-url", {
+    const response = await fetch("/.netlify/functions/save-url", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
