@@ -3,3 +3,8 @@
   command = "npm run build"
   publish = "spirograph/build"
   functions = "netlify/functions"
+
+[[redirects]]
+from ="/*"
+to = "/index.html"
+status = 200
