@@ -1,0 +1,7 @@
+[build]
+  base = "spirograph"
+  command = "npm run build"
+  publish = "spirograph/build"
+
+[functions]
+  directory = "netlify/functions"
