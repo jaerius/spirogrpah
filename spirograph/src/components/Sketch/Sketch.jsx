@@ -45,7 +45,7 @@ const Sketch = ({
 
   async function sendUrlToServer(url) {
     try {
-      const response = await fetch("/.netlify/functions/save-url", {
+      const response = await fetch("/.netlify/functions/saveUrl", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -145,7 +145,7 @@ const Sketch = ({
 
           try {
             const response = await fetch(
-              "/.netlify/function/upload-to-ipfs",
+              "/.netlify/function/uploadToIpfs",
               {
                 method: "POST",
                 body: formData, // FormData 객체 전송

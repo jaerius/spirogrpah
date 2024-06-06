@@ -14,9 +14,7 @@ export default function LastPage() {
   useEffect(() => {
     const interval = setInterval(async () => {
       try {
-        const response = await fetch(
-          `http://localhost:5001/check-status?url=${encodeURIComponent(url)}`
-        );
+        const response = await fetch(`/.netlify/functions/checkStatus?url=${encodeURIComponent(url)}`);
         const data = await response.json();
         if (data.status === "completed") {
           setImageUrl(data.correctedUrl);
