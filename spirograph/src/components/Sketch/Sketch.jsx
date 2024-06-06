@@ -145,7 +145,7 @@ const Sketch = ({
 
           try {
             const response = await fetch(
-              "/.netlify/function/uploadToIpfs",
+              "/.netlify/functions/uploadToIpfs",
               {
                 method: "POST",
                 body: formData, // FormData 객체 전송
