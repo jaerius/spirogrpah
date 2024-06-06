@@ -8,6 +8,8 @@ import SketchPage from './pages/spiro/SketchPage'; // 이 경로가 SketchPage �
 import AICorrection from './pages/spiro/AICorrection'; // 이 경로가 AICorrection 컴포넌트의 위치와 일치해야 합니다.
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Main from './pages/main/main.jsx';
+import LastPage from './pages/spiro/LastPage.jsx';
+import LogicPage from './pages/Logic/LogicPage.jsx';
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/sketch" element={<SketchPage />} />
           <Route path="/aiCorrection" element={<AICorrection />} />
+          <Route path="/LastPage" element={<LastPage/>}/>
+          <Route path="/LogicPage" element={<LogicPage/>}/>
         </Routes>
       </Router>
       

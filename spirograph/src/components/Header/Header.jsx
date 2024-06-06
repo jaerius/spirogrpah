@@ -1,7 +1,12 @@
 import * as React from "react";
 import '../../pages/main/main.css';
 
+import { useNavigate } from "react-router-dom";
+
+
 export const Header = () => {
+
+    const navigate = useNavigate();
     return (
 
      
@@ -15,7 +20,7 @@ export const Header = () => {
                 className="self-center border border-solid border-stone-500 stroke-[1px] stroke-stone-500 w-[218px]"
                 style={{height: "0px"}}
             />
-            <div className="mt-1 text-custom text-left">Symbol Logic</div>
+            <div className="mt-1 text-custom text-left" onClick={()=>navigate('./LogicPage')}>Symbol Logic</div>
             </div>
             </div>
             <div className="flex flex-col whitespace-nowrap">

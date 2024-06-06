@@ -172,7 +172,7 @@ export default function Main() {
         />
         <img
           loading="lazy"
-          src="/assets/images/underbar11.svg"
+          src="/assets/images/underbar111.svg"
           className="shrink-0 self-stretch bg-blend-multiply aspect-square w-[41px]"
         />
         <img
