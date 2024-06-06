@@ -1,13 +1,134 @@
 import * as React from "react";
 import './main.css';
+import { useRef, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
+import gsap from 'gsap';
 
 
 export default function Main() {
 
   const navigate = useNavigate();
+  const imageWrapperRef = useRef(null);
+  const boxesRef = useRef([]);
+
+  useEffect(() => {
+   
+    const boxes = gsap.utils.toArray(boxesRef.current);
+
+    const loop = horizontalLoop(boxes, {
+      paused: false,
+      repeat: -1,
+      reversed: true,
+      speed: 1,
+    });
+  }, []);
+
+  function horizontalLoop(items, config) {
+    items = gsap.utils.toArray(items);
+    config = config || {};
+    let tl = gsap.timeline({
+        repeat: config.repeat,
+        paused: config.paused,
+        defaults: { ease: "none" },
+        onReverseComplete: () => tl.totalTime(tl.rawTime() + tl.duration() * 100),
+      }),
+      length = items.length,
+      startX = items[0].offsetLeft,
+      times = [],
+      widths = [],
+      xPercents = [],
+      curIndex = 0,
+      pixelsPerSecond = (config.speed || 1) * 100,
+      snap =
+        config.snap === false
+          ? (v) => v
+          : gsap.utils.snap(config.snap || 1),
+      totalWidth,
+      curX,
+      distanceToStart,
+      distanceToLoop,
+      item,
+      i;
+
+    gsap.set(items, {
+      xPercent: (i, el) => {
+        let w = (widths[i] = parseFloat(gsap.getProperty(el, "width", "px")));
+        xPercents[i] = snap(
+          (parseFloat(gsap.getProperty(el, "x", "px")) / w) * 100 +
+            gsap.getProperty(el, "xPercent")
+        );
+        return xPercents[i];
+      },
+    });
+    gsap.set(items, {
+      xPercent: (i, el) => {
+        let w = (widths[i] = parseFloat(gsap.getProperty(el, "width", "px")));
+        xPercents[i] = snap(
+          (parseFloat(gsap.getProperty(el, "x", "px")) / w) * 100 +
+            gsap.getProperty(el, "xPercent")
+        );
+        return xPercents[i];
+      },
+    });
+    gsap.set(items, { x: 0 });
+    totalWidth =
+      items[length - 1].offsetLeft +
+      (xPercents[length - 1] / 100) * widths[length - 1] -
+      startX +
+      items[length - 1].offsetWidth * gsap.getProperty(items[length - 1], "scaleX") +
+      (parseFloat(config.paddingRight) || 0);
+    for (i = 0; i < length; i++) {
+      item = items[i];
+      curX = (xPercents[i] / 100) * widths[i];
+      distanceToStart = item.offsetLeft + curX - startX;
+      distanceToLoop = distanceToStart + widths[i] * gsap.getProperty(item, "scaleX");
+
+      tl.to(
+        item,
+        { xPercent: snap((curX - distanceToLoop) / widths[i] * 100), duration: distanceToLoop / pixelsPerSecond },
+        0
+      )
+        .fromTo(
+          item,
+          { xPercent: snap((curX - distanceToLoop + totalWidth) / widths[i] * 100) },
+          { xPercent: xPercents[i], duration: (curX - distanceToLoop + totalWidth - curX) / pixelsPerSecond, immediateRender: false },
+          distanceToLoop / pixelsPerSecond
+        )
+        .add("label" + i, distanceToStart / pixelsPerSecond);
+      times[i] = distanceToStart / pixelsPerSecond;
+    }
+
+    function toIndex(index, vars) {
+      vars = vars || {};
+      Math.abs(index - curIndex) > length / 2 && (index += index > curIndex ? -length : length);
+      let newIndex = gsap.utils.wrap(0, length, index),
+        time = times[newIndex];
+      if (time > tl.time() !== index > curIndex) {
+        vars.modifiers = { time: gsap.utils.wrap(0, tl.duration()) };
+        time += tl.duration() * (index > curIndex ? 1 : -1);
+      }
+      curIndex = newIndex;
+      vars.overwrite = true;
+      return tl.tweenTo(time, vars);
+    }
+
+    tl.next = (vars) => toIndex(curIndex + 1, vars);
+    tl.previous = (vars) => toIndex(curIndex - 1, vars);
+    tl.current = () => curIndex;
+    tl.toIndex = (index, vars) => toIndex(index, vars);
+    tl.times = times;
+    tl.progress(1, true).progress(0, true);
+
+    if (config.reversed) {
+      tl.vars.onReverseComplete();
+      tl.reverse();
+    }
+    return tl;
+  }
+
+  
 
   return (
     <div className="bg-black font-pretendard">
@@ -17,41 +138,49 @@ export default function Main() {
     <div className="flex justify-center items-center mt-5 w-full text-sm font-semibold leading-4 text-center text-white whitespace-nowrap bg-black max-md:px-5 max-md:mt-10 max-md:max-w-full">
       <div className="flex gap-4 w-full max-w-[1589px] max-md:flex-wrap max-md:max-w-full">
 
-        <img
+        <video
           loading="lazy"
-          src="/assets/images/background.png"
+          src="/assets/videos/main1.mp4"
           className="w-full  max-md:max-w-full"
+          loop
+          autoPlay
+          muted
+          playsInline
         />
       </div>
     </div>
 
     <div className="text-left text-custom leading-custom self-start mt-24 ml-5 md:w-1/3 text-sm font-medium text-neutral-400  max-md:mt-10 max-md:max-w-full">
-    농업에서 인터넷에 이르는 기술의 발전은 인류에게 생존과 편의의 혁명적 변화를 가져왔다. 바퀴의 '속도', 인쇄술의 '지식', 전구의 '빛', 컴퓨터와 인터넷의 '연결'은 우리 문명을 전례 없이 도약시키는 계기가 되었다. 그리고 2024년 현재, 인공지능은 '지능'의 혁명을 예고하며 산업, 의료, 교육 등 삶의 전 영역에 대변혁을 몰고 오고 있다.
+    농업에서 인터넷에 이르는 기술의 발전은 인류에게 생존과 편의의 혁명적 변화를 가져왔다. <br/> 바퀴의 '속도', 인쇄술의 '지식', 전구의 '빛', 컴퓨터와 인터넷의 '연결'은 우리 문명을 전례 없이 <br/> 도약시키는 계기가 되었다. 그리고 2024년 현재, 인공지능은 '지능'의 혁명을 예고하며 산업, <br/>의료, 교육 등 삶의 전 영역에 대변혁을 몰고 오고 있다.
 
     </div>
 
 
-    <div className="flex justify-end mt-12 w-full max-w-full ml-20">
-      <div className="w-2/3">
+    <div className="flex justify-center mt-14 w-full max-w-full ml-20">
+      <div className="w-3/4">
         <div className="flex justify-between mt-3.5 ml-10">
-          <div className="text-custom text-left w-1/2 text-sm font-medium leading-custom text-white">
+          <div className="text-custom text-left w-2/3 text-sm ml-5 font-medium leading-custom text-white">
             <p>
               기하학에서 하이포사이클로이드(hypocycloid)는 큰 
-              <span className="underline">원</span> 안에서 작은 원을
+              <span className="underline">원</span> 안에서 작은 원을<br/>
               굴렸을 때 작은 원 위의 정점이 그리는 궤적을 말한다. 직선 위에서 원을
-              굴렸을 때 얻어지는{" "} 
+              굴렸<br/>을 때 얻어지는{" "} 
               <span className="underline">사이클로이드</span>와
               비교된다.
             </p>
           </div>
-          <div className="w-1/2 circle-gradient flex items-center justify-center ml-10">
-            <p className="text-2xl font-bold underline">
-              원 이야기 보러가기 &gt;
+          <div className="text-custom text-left w-2/3 text-sm ml-14 font-medium leading-custom text-white">
+            <p>
+            원의 모든것은 시초이자 전체이다. 우리는 원을 통해 형성되어 세상을 보고<br/> 원 안에서 유기적으로 살아간다.
+            각 원은 그 안에서 자신만의 의미를 갖고있<br/>으며 아름다움의 가치를 지니고 있다.
             </p>
           </div>
-          <div className="w-1/3">
-            {/* 또 다른 컨텐츠가 필요하다면 여기에 추가 */}
+          <div className="w-1/2 circle-gradient flex items-center justify-center ml-14">
+            <button className="text-2xl font-bold underline" onClick={()=>{navigate('/sketch')}}>
+              원 이야기 보러가기 &gt;
+            </button>
           </div>
+         
         </div>
       </div>
     </div>
@@ -64,29 +193,18 @@ export default function Main() {
 
     <div className="max-w-0 min-h-0" />
 
-<div className="flex gap-0 self-start mt-2 font-medium leading-4">
-      <div className="text-rose-300">
-        INCHEON Metropolitan City, <br />
-        South KOREA
-      </div>
-      <div className="text-yellow-100">
-        INCHEON Metropolitan City, <br />
-        South KOREA
-      </div>
-      <div className="text-lime-200">
-        INCHEON Metropolitan City, <br />
-        South KOREA
-      </div>
-      <div className="text-indigo-300">
-        INCHEON Metropolitan City, <br />
-        South KOREA
-      </div>
-      <div className="text-violet-500">
-        INCHEON Metropolitan City, <br />
-        South KOREA
-      </div>
-    </div>
-
+    <div className="flex gap-0 self-start mt-2 font-medium leading-4 image-slider">
+        <div className="wrapper">
+          <div className="image-wrapper" ref={imageWrapperRef}>
+            {["/assets/images/longText.png", "/assets/images/longText.png", "/assets/images/longText.png", "/assets/images/longText.png"].map((src, index) => (
+              <div className="box" ref={(el) => (boxesRef.current[index] = el)} key={index}>
+                <img src={src} alt="Scrolling" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>  
+      
 
       
       <div className="gradient-text">

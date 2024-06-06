@@ -1,51 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
-@import url('https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css');
+/* main.css */
+.image-slider {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.image-wrapper {
+  display: flex;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.box img {
+  height: auto;
+  width: auto;
+  max-width: 100%;
+  object-fit: cover;
+}
 
 body {
-    overflow-x: hidden; /* 수평 스크롤 숨김 */
+  overflow-x: hidden;
 }
 
 .flex {
-    max-width: 100%; /* 최대 너비를 100%로 설정 */
-    /* 내부 요소가 넘칠 경우 숨김 처리 */
-  }
-
-.img-container{
-    margin-top: 10px;
+  max-width: 100%;
 }
 
-.symbol-img {
-    height: 120px !important; /* 높이 강제 적용 */
-    width: 1600px; /* 너비를 비율에 맞게 자동 조정 */
-  }
+.img-container {
+  margin-top: 10px;
+}
 
+.rainbow {
+  width: 100%;
+  height: 100%;
+}
 
-
-
-  .gradient-text {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    font-size: 220px; /* 큰 화면에서의 폰트 크기 */
-    font-weight: bold; /* 글자 굵기 */
-    text-align: center; /* 텍스트 중앙 정렬 */
-    background: linear-gradient(
-      to bottom right, 
-      #000000 11%, 
-      #333333 16%, 
-      #666666 24%, 
-      #999999 71%, 
-      #cccccc 93%
-    ); /* 그라디언트 적용 */
-    -webkit-background-clip: text; /* 크롬, 사파리 등 웹킷 기반 브라우저에서의 텍스트 클리핑 */
-    background-clip: text; /* 텍스트 클리핑 */
-    -webkit-text-fill-color: transparent; /* 웹킷 기반 브라우저에서의 텍스트 색상 투명 처리 */
-    color: transparent; /* 텍스트 색상 투명 처리 */
-    cursor: pointer; /* 포인터 커서 적용 */
-    transition: background-color 0.3s, color 0.3s; /* 애니메이션 효과 추가 */
-    position: relative;
-  }
+.gradient-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 220px;
+  font-weight: bold;
+  text-align: center;
+  background: linear-gradient(to bottom right, #000000 11%, #333333 16%, #666666 24%, #999999 71%, #cccccc 93%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  position: relative;
+}
 
 .gotosymbol {
   font-size: 20px;
@@ -55,97 +77,89 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-color: black; /* 버튼 배경을 흰색으로 설정, 약간 투명 */
+  background-color: black;
   border: none;
   padding: 10px 20px;
   border-radius: 10px;
-  position: absolute; /* 버튼을 절대 위치로 설정 */
-  bottom: 2px; /* 버튼의 위치를 텍스트 아래로 설정 */
-  display: none; /* 기본적으로 버튼을 숨김 */
-  z-index: 10; /* 버튼을 텍스트 위로 올리기 위해 z-index 설정 */
-  transition: background-color 0.3, color 0.3s;
+  position: absolute;
+  bottom: 2px;
+  display: none;
+  z-index: 10;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .gotosymbol:hover {
-  background-color: gray; /* 호버 시 버튼 배경을 흰색으로 변경 */
-  color: black; /* 호버 시 글자 색상을 검은색으로 변경 */
+  background-color: gray;
+  color: black;
 }
 
 .gradient-text:hover .gotosymbol {
-  display: block; /* 텍스트가 호버될 때 버튼을 표시 */
+  display: block;
 }
 
-
-
 .gradient-text:hover {
-    background: var(--white, #FFF);
-    transition: background 0.5s, color 0.5s;
+  background: var(--white, #FFF);
+  transition: background 0.5s, color 0.5s;
 }
 
 .gradient-text:hover .gradient-texttext {
-    background-image: linear-gradient(104deg, #000AFF 15.42%, #618DFF 19.06%, #2D35FF 25.85%, #48A3D7 64.11%, #2026C4 82.41%, #000347 85.92%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: background 0.5s, color 0.5s;
+  background-image: linear-gradient(104deg, #000AFF 15.42%, #618DFF 19.06%, #2D35FF 25.85%, #48A3D7 64.11%, #2026C4 82.41%, #000347 85.92%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background 0.5s, color 0.5s;
 }
-  
-  @media (max-width: 768px) { /* 작은 화면에서의 스타일 */
-    .gradient-text {
-      font-size: 2xl; /* 작은 화면에서의 폰트 크기 조정 */
+
+@media (max-width: 768px) {
+  .gradient-text {
+    font-size: 2xl;
+  }
+}
+
+.circle-gradient {
+  display: inline;
+  background: linear-gradient(to right, #CCCCCC 0%, #525252 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  white-space: nowrap;
+}
+
+.button-text-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 20px;
+  background: var(--gray-95, #181818);
+  color: var(--white, #FFF);
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 28px 79px;
+  width: 336px;
+  height: 84px;
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background: var(--gray-40, #D6D6D6);
+
+    .button-text {
+      background-image: linear-gradient(90deg, #A839FF 0%, #5539FF 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
+}
 
-  .circle-gradient {
-    display: inline; /* 블록 요소가 아닌 인라인 요소처럼 동작하게 설정 */
-    background: linear-gradient(
-      to right, 
-      #CCCCCC 0%, 
-      #525252 100%
-    );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    white-space: nowrap; /* 줄바꿈 없이 한 줄에 텍스트 표시 */
-  }
+.button-text {
+  color: var(--white, #FFF);
+}
 
- 
 
-  .button-text-main {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 20px;
-    background: var(--gray-95, #181818);
-    color: var(--white, #FFF);
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 28px 79px;
-    width: 336px;
-    height: 84px;
-    transition: background-color 0.3s, color 0.3s;
-  
-    &:hover {
-      background: var(--gray-40, #D6D6D6);
-  
-      .button-text {
-        background-image: linear-gradient(90deg, #A839FF 0%, #5539FF 100%);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-    }
-  }
-  
-  .button-text {
-    color: var(--white, #FFF);
-  }
-  
-
-  .buttom-buttom-color{
-    color: #b4acac
-  }
+.buttom-buttom-color{
+  color: #b4acac
+}

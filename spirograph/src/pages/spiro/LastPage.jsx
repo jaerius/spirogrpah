@@ -41,32 +41,32 @@ export default function LastPage() {
   );
 
   return (
-    <div className="bg-black font-pretendard items-center">
+    <div className="bg-black font-pretendard justify-center items-center">
         <Header/>
-     
-      <div className="flex flex-col items-center px-4  font-bold bg-black">
-            {loading ? (
-                <div className="blink">
-                <img
-                loading="lazy"
-                src={url}
-                className="flex items-center w-[850px] h-[400px] "
-                />
-                <div className="text-white text-xl">Loading...</div>
-                </div>
-                ) : (
-                <div>
-                <img
-                loading="lazy"
-                src={imageUrl}
-                alt="Generated content"
-                className="flex justify-center w-[1100px] h-[556px]"
-                />
-                <div className=" text-2xl text-center text-gray-200 max-md:max-w-full">
-                    세상에 하나 밖에 없는 그래픽이 생성이 되었습니다.
-                </div>
-                </div>
-            )}
+      
+        <div className="flex flex-col justify-center items-center px-4 font-bold bg-black w-full">
+        {loading ? (
+          <div className="flex flex-col items-center justify-center blink w-full">
+            <img
+              loading="lazy"
+              src={url}
+              className="w-3/5 h-3/5"
+            />
+            <div className="text-white text-xl mt-4">Loading...</div>
+          </div>
+        ) : (
+          <div className="flex flex-col items-center justify-center w-full">
+            <img
+              loading="lazy"
+              src={imageUrl}
+              alt="Generated content"
+              className="w-3/5 h-3/5"
+            />
+            <div className="text-2xl text-center text-gray-200 max-md:max-w-full mt-4">
+              세상에 하나 밖에 없는 그래픽이 생성이 되었습니다.
+            </div>
+          </div>
+        )}
       
       
       <div className="flex gap-5 justify-center  max-w-full text-2xl whitespace-nowrap w-[708px]  ">

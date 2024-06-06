@@ -104,12 +104,13 @@ function AICorrection() {
   return (
     <div className="h-screen w-screen bg-black font-pretendard flex items-center justify-center no-scroll">
       <div className="h-full w-full max-md:pl-5 flex flex-col md:flex-row">
-        <div className="flex items-center ml-12 justify-center w-full md:w-6/12 max-md:w-full h-full bg-black p-10">
-          <div className="h-full w-full custom-container bg-black flex items-center justify-center ml-12">
+        <div className="flex items-center ml-12 justify-center  md:w-6/12  h-full bg-black p-10" >
+          <div className=" custom-container bg-black flex items-center justify-center ml-12" style={{width: '100%', height: '100%'}}>
             <img
               loading="lazy"
               src={url}
-              className="w-full h-full object-cover rounded-lg ml-12"
+              style={{width: '100%', height: '80%'}}
+              className=" object-cover rounded-lg ml-12"
             />
           </div>
         </div>

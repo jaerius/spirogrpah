@@ -10,13 +10,17 @@
     margin-top: -10px;
 }
 
+.spirograph-container {
+    width: 120%
+}
+
 .custom-size:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .custom-container {
-    width: 90%;
+    width: 120%;
     height: 90%;
 }
 
