@@ -1,42 +1,4 @@
-<<<<<<< HEAD
-.MySketch{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
-    .nft{
-
-        margin-top: 10px;
-
-        .buttons{
-            .button1{
-                width: auto;
-                min-width: 120px;
-                height: 30px;
-                border-radius: 20px;
-                margin: 10px 10px;
-                padding: 0 20px;
-            }
-            .button2{
-                width: auto;
-                min-width: 120px;
-                height: 30px;
-                border-radius: 20px;
-                margin: 10px 10px;
-                padding: 0 20px;
-            }
-            .button3{
-                width: auto;
-                min-width: 120px;
-                height: 30px;
-                border-radius: 20px;
-                margin: 10px 10px;
-                padding: 0 20px;
-            }
-        }
-    }
-=======
-@import url('https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css');
+@import url("https://cdn.jsdelivr.net/npm/pretendard/dist/web/static/pretendard.css");
 
 .MySketch {
   display: flex;
@@ -57,7 +19,9 @@
     margin-top: 5vh;
     margin-bottom: 9vh;
 
-    .button1, .button2, .button3 {
+    .button1,
+    .button2,
+    .button3 {
       position: relative;
       display: flex;
       width: 17.5vw; /* 336 / 1920 * 100 */
@@ -68,46 +32,47 @@
       align-items: center;
       gap: 0.93vw;
       border-radius: 1.85vh;
-      color: var(--white, #FFF);
+      color: var(--white, #fff);
       font-size: 1.48vw;
       font-weight: bold;
       cursor: pointer;
     }
 
-    .button1, .button2 {
+    .button1,
+    .button2 {
       background: var(--gray-95, #181818);
 
       &:hover {
-        background: var(--gray-40, #D6D6D6);
+        background: var(--gray-40, #d6d6d6);
 
         .button-text {
-          background-image: linear-gradient(90deg, #A839FF 0%, #5539FF 100%);
+          background-image: linear-gradient(90deg, #a839ff 0%, #5539ff 100%);
           background-clip: text;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
 
         .tooltip {
-            display: block;
-          }
+          display: block;
+        }
       }
     }
 
     .button3 {
-      background: linear-gradient(94deg, #5539FF 12.76%, #001687 104.25%);;
+      background: linear-gradient(94deg, #5539ff 12.76%, #001687 104.25%);
 
       &:hover {
-        background: var(--gray-40, #D6D6D6);
+        background: var(--gray-40, #d6d6d6);
 
         .button-text {
-          background-image: linear-gradient(90deg, #A839FF 0%, #5539FF 100%);
+          background-image: linear-gradient(90deg, #a839ff 0%, #5539ff 100%);
           background-clip: text;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
         .tooltip {
-            display: block;
-          }
+          display: block;
+        }
       }
     }
   }
@@ -118,7 +83,7 @@
     font-size: 12px;
     top: 11.33vh; /* Adjust as needed */
     width: 200px; /* Adjust as needed */
-    color: var(--white, #FFF);
+    color: var(--white, #fff);
     text-align: center;
     border-radius: 10px;
     padding: 5px;
@@ -131,4 +96,3 @@
     z-index: 10;
   }
 }
->>>>>>> upstream/main

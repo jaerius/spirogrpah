@@ -30,6 +30,7 @@
     "react-use": "^17.5.0",
     "replicate": "^0.29.0",
     "stream-browserify": "^3.0.0",
+    "styled-components": "^6.1.11",
     "three": "^0.165.0",
     "url": "^0.11.3",
     "web-vitals": "^2.1.4"
@@ -41,6 +42,12 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "rules": {
+      "no-mixed-operators": "off",
+      "strict": "off",
+      "no-unused-vars": "off",
+      "jsx-a11y/alt-text": "off"
+    },
     "extends": [
       "react-app",
       "react-app/jest"
