@@ -1,58 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-import p5 from "p5"; // p5 라이브러리 가져오기
-import "./Sketch.scss";
-import { useNavigate } from "react-router-dom";
-import { init, useConnectWallet } from "@web3-onboard/react";
-import injectedModule from "@web3-onboard/injected-wallets";
-import { ethers } from "ethers";
-import abi from "./abi";
-
-// 1. 지갑 모듈
-const wallets = [injectedModule()];
-
-// 2. 블록체인 네트워크
-const chains = [
-  {
-    id: "0x250",
-    token: "ASTR",
-    label: "Astar",
-    icon: '<svg width="20px" height="20px" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">...</svg>',
-    color: "#0085ff",
-    rpcUrl: "https://evm.astar.network",
-    publicRpcUrl: "https://evm.astar.network",
-    blockExplorerUrl: "https://astar.subscan.io",
-  },
-  {
-    id: "0x1111",
-    token: "LOC",
-    label: "Localhost",
-    icon: '<svg width="20px" height="20px" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">...</svg>',
-    color: "#2c3335",
-    rpcUrl: "http://locahost:8545",
-    publicRpcUrl: "http://locahost:8545",
-    blockExplorerUrl:
-      "https://polkadot.js.org/apps/?rpc=ws%3A%2F%2Flocalhost%3A9944#/explorer",
-  },
-];
-
-// 3. 지갑 메타데이터
-const appMetadata = {
-  name: "BlueNode",
-  icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 20 20">...</svg>',
-  logo: '<svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 20 20">...</svg>',
-  description: "We are BlueNode",
-  recommendedInjectedWallets: [
-    { name: "Talisman", url: "https://www.talisman.xyz/" },
-    { name: "MetaMask", url: "https://metamask.io" },
-  ],
-};
-
-// 온보드 초기화
-init({
-  wallets,
-  chains,
-  appMetadata,
-});
+import React, { useEffect, useRef, useState, useCallback } from 'react';
+import p5 from 'p5';
+import { useNavigate } from 'react-router-dom';
+// import { useConnectWallet } from 'use-wallet';
+// import { ethers } from 'ethers';
+// import abi from './abi'; // Assuming abi.js is exported from this path
 
 const Sketch = ({
   firstName,
@@ -70,27 +21,27 @@ const Sketch = ({
   const [aiUrl, setAiUrl] = useState("");
   const [progress, setProgress] = useState(0);
 
-  const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
-  let ethersProvider;
-  if (wallet) {
-    ethersProvider = new ethers.providers.Web3Provider(wallet.provider, "any");
-  }
-  const CA = "0x96DefAc7d1E8F0F4258779A8343c97850C6de7fa";
+  // const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
+  // let ethersProvider;
+  // if (wallet) {
+  //   ethersProvider = new ethers.providers.Web3Provider(wallet.provider, "any");
+  // }
+  // const CA = "0x96DefAc7d1E8F0F4258779A8343c97850C6de7fa";
 
-  const mintNFT = async (aiUrl) => {
-    if (!aiUrl) {
-      console.error("AI URL is not set.");
-      return;
-    }
-    try {
-      const contract = new ethers.Contract(CA, abi, ethersProvider.getSigner());
-      const mint = await contract.awardItem(aiUrl);
-      await mint.wait();
-      console.log("NFT has been minted with AI URL:", aiUrl);
-    } catch (error) {
-      console.error("error minting NFT:", error);
-    }
-  };
+  // const mintNFT = async (aiUrl) => {
+  //   if (!aiUrl) {
+  //     console.error("AI URL is not set.");
+  //     return;
+  //   }
+  //   try {
+  //     const contract = new ethers.Contract(CA, abi, ethersProvider.getSigner());
+  //     const mint = await contract.awardItem(aiUrl);
+  //     await mint.wait();
+  //     console.log("NFT has been minted with AI URL:", aiUrl);
+  //   } catch (error) {
+  //     console.error("error minting NFT:", error);
+  //   }
+  // };
 
   async function sendUrlToServer(url) {
     try {
@@ -113,17 +64,42 @@ const Sketch = ({
     }
   }
 
+  // useRef를 사용하여 참조 유지
+  const firstNameRef = useRef(firstName);
+  const lastNameRef = useRef(lastName);
+  const birthRef = useRef(birth);
+  const handleProgressRef = useRef(onProgress);
+  const handleEndRef = useRef(onEnd);
+
+  const handleProgress = useCallback(
+    (progress) => {
+      handleProgressRef.current(progress);
+    },
+    []
+  );
+
+  const handleEnd = useCallback(() => {
+    handleEndRef.current();
+  }, []);
+
+  useEffect(() => {
+    firstNameRef.current = firstName;
+    lastNameRef.current = lastName;
+    birthRef.current = birth;
+    handleProgressRef.current = onProgress;
+    handleEndRef.current = onEnd;
+  }, [firstName, lastName, birth, onProgress, onEnd]);
+
   useEffect(() => {
     if (!isSubmitted) return;
 
     const sketch = (p) => {
       let R, r, R2, r2;
-      let k, k2;
       let totalRotations = 80;
       let baseAngleIncrement = 2.0;
       let currentRotation = 0;
-      const hash1 = nameHash(firstName, lastName);
-      const hash2 = nameHash(birth);
+      const hash1 = nameHash(firstNameRef.current, lastNameRef.current);
+      const hash2 = nameHash(birthRef.current);
       const values1 = extractValuesFromHash(hash1);
       const values2 = extractValuesFromHash(hash2);
 
@@ -133,8 +109,6 @@ const Sketch = ({
       r2 = values2[1];
       numericalCorrection();
       numericalCorrectionForBirthdate();
-      k = R / r;
-      k2 = R2 / r2;
 
       p.setup = () => {
         p.createCanvas(1800, 1080).parent(sketchRef.current);
@@ -145,15 +119,8 @@ const Sketch = ({
 
       p.draw = () => {
         p.translate(p.width / 2, p.height / 2);
-        drawSpirograph(p, R, r, currentRotation, getRandomColor(p), firstName);
-        drawSpirograph(
-          p,
-          R2,
-          r2,
-          currentRotation,
-          getRandomColor(p),
-          firstName
-        );
+        drawSpirograph(p, R, r, currentRotation, getRandomColor(p), firstNameRef.current);
+        drawSpirograph(p, R2, r2, currentRotation, getRandomColor(p), firstNameRef.current);
         currentRotation += baseAngleIncrement;
 
         const progressPercentage = Math.min(
@@ -161,11 +128,11 @@ const Sketch = ({
           100
         );
         setProgress(progressPercentage.toFixed(2));
-        onProgress(progressPercentage.toFixed(2));
+        handleProgress(progressPercentage.toFixed(2));
 
         if (currentRotation >= totalRotations * p.TWO_PI) {
           setIsEnd(true);
-          onEnd();
+          handleEnd();
           p.noLoop();
           handleSaveImage(p);
         }
@@ -207,28 +174,16 @@ const Sketch = ({
               y = (R / r) * p.sin(angle) - (r - R) * p.sin(angle * (R - r));
               break;
             case "이":
-              x =
-                (R - r) * p.cos(angle) +
-                r * p.cos((angle * (R - r)) / r + p.PI / 4);
-              y =
-                (R - r) * p.sin(angle) -
-                r * p.sin((angle * (R - r)) / r + p.PI / 4);
+              x = (R - r) * p.cos(angle) + r * p.cos((angle * (R - r)) / r + p.PI / 4);
+              y = (R - r) * p.sin(angle) - r * p.sin((angle * (R - r)) / r + p.PI / 4);
               break;
             case "박":
-              x =
-                (R - r) * p.cos(angle) +
-                r * p.cos((angle * (R - r)) / r - p.PI / 4);
-              y =
-                (R - r) * p.sin(angle) -
-                r * p.sin((angle * (R - r)) / r - p.PI / 4);
+              x = (R - r) * p.cos(angle) + r * p.cos((angle * (R - r)) / r - p.PI / 4);
+              y = (R - r) * p.sin(angle) - r * p.sin((angle * (R - r)) / r - p.PI / 4);
               break;
             case "최":
-              x =
-                (R - r) * p.cos(angle) +
-                r * p.cos((angle * (R - r)) / r + p.PI / 2);
-              y =
-                (R - r) * p.sin(angle) -
-                r * p.sin((angle * (R - r)) / r + p.PI / 2);
+              x = (R - r) * p.cos(angle) + r * p.cos((angle * (R - r)) / r + p.PI / 2);
+              y = (R - r) * p.sin(angle) - r * p.sin((angle * (R - r)) / r + p.PI / 2);
               break;
             default:
               x = (R - r) * p.cos(angle) + r * p.cos((angle * (R - r)) / r);
@@ -254,12 +209,7 @@ const Sketch = ({
           let hash = 0x811c9dc5;
           for (let i = 0; i < str.length; i++) {
             hash ^= str.charCodeAt(i);
-            hash +=
-              (hash << 1) +
-              (hash << 4) +
-              (hash << 7) +
-              (hash << 8) +
-              (hash << 24);
+            hash += (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
           }
           return hash >>> 0;
         };
@@ -294,8 +244,9 @@ const Sketch = ({
     return () => {
       newSketchInstance.remove();
     };
-  }, [isSubmitted]);
+  }, [isSubmitted, handleEnd, handleProgress]);
 
+  // 두 번째 useEffect: url 의존성
   useEffect(() => {
     if (url) {
       sendUrlToServer(url)
@@ -303,10 +254,7 @@ const Sketch = ({
           console.log("URL was sent to the server successfully.");
         })
         .catch((error) => {
-          console.error(
-            "There was an error sending the URL to the server:",
-            error
-          );
+          console.error("There was an error sending the URL to the server:", error);
         });
     }
   }, [url]);
