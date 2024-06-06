@@ -5,7 +5,8 @@ const HorizonLine = ({ text }) => {
     <div
       style={{
         // display: "block",
-        width: "100%",
+        width: "17rem",
+        height: "auto",
         textAlign: "center",
         borderBottom: "1px solid #333",
         lineHeight: "0.1rem",

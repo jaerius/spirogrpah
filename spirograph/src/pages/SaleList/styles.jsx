@@ -15,12 +15,13 @@ export const TitleT = styled.div`
   background-clip: text;
   /* 텍스트의 배경을 투명으로 */
   color: transparent;
+  font-weight: bold;
   margin-bottom: 2.31rem;
+  margin-top: 8rem;
 `;
 export const SmallTitleT = styled.div`
   font-size: 1.25rem;
   color: #f1f1f1;
-  margin-bottom: 9.5rem;
 `;
 
 export const CardContainer = styled.div`
@@ -32,32 +33,49 @@ export const CardContainer = styled.div`
   align-items: center;
   color: #2c2c2c;
   background: #000000;
-  margin-bottom: 6rem;
+
+  margin: 0 1rem 3rem 1rem;
 `;
 
 export const Card = styled.div`
+  transition: opacity 0.3s ease;
+  &:hover {
+    opacity: 0.7;
+    background-color: #4d4d4d;
+  }
+
   flex-direction: column;
   display: flex;
-  border-radius: 1.25rem 1.25rem 0rem 0rem;
-  background: #262525;
+  border-radius: 1.25rem;
+  background: #000;
   /* 원래는 아래 색이 맞음 */
   /* background: #181818; */
   /* margin-bottom: 4%; */
-  width: 25rem;
-  height: 36.4rem;
+  width: auto;
+  height: auto;
   align-items: flex-start;
   justify-content: center;
   font-size: 1rem;
   text-align: center;
 `;
+
 export const ImgWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  margin-bottom: 5rem;
+  flex: "1 0 auto";
 `;
-export const TextWrapper = styled.div``;
+export const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+export const TextWrapper = styled.div`
+  text-align: start;
+`;
 export const TextGroup = styled.div`
   padding-left: 1.5rem;
 `;
@@ -69,5 +87,6 @@ export const Text = styled.div`
   font-size: 0.875rem;
   font-weight: bold;
   color: var(--gray-30, #f1f1f1);
-  margin-bottom: "0.3rem";
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
 `;

@@ -4,7 +4,7 @@ import * as S from "./styles";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Horizon from "../../components/NavBar/horizon";
-import Logo from "../../assets/Logoo.svg";
+import Logo from "../../assets/brandingImg/RealSymbol.png";
 const ImageWrapper = styled.div`
   display: flex;
   width: 100%;

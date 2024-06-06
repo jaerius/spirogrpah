@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import React, { useEffect, useRef, useState } from "react";
 
 export const ImageContainerFull = styled.img`
   //ㅎ화면에 따라 크기 조절하고 싶으면?
@@ -309,8 +308,8 @@ export const TextGradientPurple = styled.span`
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  font-family: bold;
-  font-size: 10rem;
+  font-weight: bold;
+  font-size: 17rem;
   text-align: start;
   margin-bottom: 5rem;
   @media only screen and (max-width: 500px) {
@@ -319,10 +318,10 @@ export const TextGradientPurple = styled.span`
 `;
 export const TextGradientGray = styled.span`
   color: #848484;
-  font-family: bold;
-  font-size: 6rem;
+  font-weight: bold;
+  font-size: 9rem;
   text-align: start;
-  margin-top: 5rem;
+  margin-top: 10rem;
 
   @media only screen and (max-width: 500px) {
     font-size: 1.56rem;

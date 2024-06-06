@@ -1,44 +1,43 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as S from "./styles";
 import NavBar from "../../components/NavBar/navBar";
-import BlueGradient from "../../assets/blueGradient.png";
-import BrownBackground from "../../assets/brownBackground.png";
-import Animal from "../../assets/animal.png";
-import Person from "../../assets/person.png";
-import CaveBackground from "../../assets/caveBackground.png";
-import Cave from "../../assets/mural.png";
-import DiscoveryOfFireR from "../../assets/DiscoveryOfFire.png";
-import DiscoveryOfCivil from "../../assets/DiscoveryOfCivil.png";
-import PreImage from "../../assets/Pre.png";
-import AgriculturalEvolution from "../../assets/EvolutionOfAgriculture.png";
-import Gradient1 from "../../assets/Gradient.png";
-import Gradient2 from "../../assets/Gradient2.png";
-import GraphicMotive from "../../assets/GraphicMotive.png";
-import AIEvolution from "../../assets/AI.png";
-import AIEvol from "../../assets/AIEvol.png";
-import Mankind from "../../assets/Mankind.png";
-import IndustryEvolution from "../../assets/Industry.png";
-import DevelopmentOfSymbol from "../../assets/DevelopmentOfSymbol.png";
-import Beauty from "../../assets/BeautyAnd.png";
-import BrandEssence from "../../assets/BrandEssence.png";
-import BrandCoreValues from "../../assets/BrandCoreValues.png";
-import DesignConcept from "../../assets/DesignConcept.png";
-import ShapeAnalydid from "../../assets/Analydid.png";
-import Interaction from "../../assets/Interaction.png";
-import GradientBackground from "../../assets/GradientBackground.png";
-import Sym1 from "../../assets/brandingImg/sym1.png";
-import Sym2 from "../../assets/brandingImg/sym2.png";
-import Sym3 from "../../assets/brandingImg/sym3.png";
-import Sym4 from "../../assets/brandingImg/sym4.png";
-import Sym5 from "../../assets/brandingImg/sym5.png";
-import Sym6 from "../../assets/brandingImg/sym6.png";
-import Sym7 from "../../assets/brandingImg/sym7.png";
-import Sym8 from "../../assets/brandingImg/last.png";
+import BlueGradient from "../../assets/brandingImg/blueGradient.png";
+import BrownBackground from "../../assets/brandingImg/brownBackground.png";
+import Animal from "../../assets/brandingImg/animal.png";
+import Person from "../../assets/brandingImg/person.png";
+import CaveBackground from "../../assets/brandingImg/caveBackground.png";
+import Cave from "../../assets/brandingImg/mural.png";
+import DiscoveryOfFireR from "../../assets/brandingImg/DiscoveryOfFire.png";
+import DiscoveryOfCivil from "../../assets/brandingImg/DiscoveryOfCivil.png";
+import AgriculturalEvolution from "../../assets/brandingImg/EvolutionOfAgriculture.png";
+import Gradient1 from "../../assets/brandingImg/Gradient.png";
+import Gradient2 from "../../assets/brandingImg/Gradient2.png";
+import GraphicMotive from "../../assets/brandingImg/GraphicMotive.png";
+import AIEvolution from "../../assets/brandingImg/AI.webp";
+import AIEvol from "../../assets/brandingImg/AIEvol.webp";
+import Mankind from "../../assets/brandingImg/Mankind.png";
+import IndustryEvolution from "../../assets/brandingImg/Industry.png";
+import DevelopmentOfSymbol from "../../assets/brandingImg/DevelopmentOfSymbol.png";
+import Beauty from "../../assets/brandingImg/BeautyAnd.png";
+import BrandEssence from "../../assets/brandingImg/BrandEssence.png";
+import BuildASymbol from "../../assets/brandingImg/BuildASymbol.png";
+
+import BrandCoreValues from "../../assets/brandingImg/BrandCoreValues.png";
+import DesignConcept from "../../assets/brandingImg/DesignConcept.png";
+import ShapeAnalydid from "../../assets/brandingImg/Analydid.png";
+import GradientBackground from "../../assets/brandingImg/GradientBackground.png";
+import Typography from "../../assets/brandingImg/Typography.png";
+import Sym1 from "../../assets/brandingImg/sym1.webp";
+import Sym2 from "../../assets/brandingImg/sym2.webp";
+import Sym3 from "../../assets/brandingImg/sym3.webp";
+import Sym4 from "../../assets/brandingImg/sym4.webp";
+import Sym5 from "../../assets/brandingImg/sym5.webp";
+import Sym6 from "../../assets/brandingImg/sym6.webp";
+// import Sym7 from "../../assets/brandingImg/sym7.webp";
+// import Sym8 from "../../assets/brandingImg/last.webp";
 
 // import colors from "../../fonts/color";
 export default function BrandingPage() {
-  const [isVisible, setIsVisible] = useState(false);
-  const textRef = useRef(null);
   const [position, setPosition] = useState(0);
   function onScroll() {
     console.log(window.scrollY);
@@ -93,7 +92,7 @@ export default function BrandingPage() {
           <S.GradientT
             style={{
               opacity: (position - 200) / 200,
-              transition: "opacity 0.95s all ease-out",
+              transition: "opacity 0.95s all  ease-in-out",
             }}
           >
             각 시대정신을 반영하는 ‘상징'은 인류의
@@ -102,7 +101,7 @@ export default function BrandingPage() {
           <S.GradientT
             style={{
               opacity: (position - 300) / 200,
-              transition: "opacity 0.95s all ease-out",
+              transition: "opacity 0.95s all  ease-in-out",
             }}
           >
             발전과 함께했다.
@@ -314,21 +313,24 @@ export default function BrandingPage() {
               textAlign: "start",
             }}
           >
-            <S.TextGradientGray>
-              우리는 새로운{"\u00A0"}
-              {"\u00A0"}
-              {"\u00A0"}
-              {"\u00A0"}
-              {"\u00A0"}
-              {"\u00A0"}
-              {"\u00A0"}
-              시대의
-            </S.TextGradientGray>
+            <div style={{ marginTop: "5rem", marginBottom: "5rem" }}>
+              <S.TextGradientGray>
+                {"\u00A0"}
+                {"\u00A0"}우리는{"\u00A0"}
+                {"\u00A0"}
+                {"\u00A0"}
+                {"\u00A0"} 새로운
+                {"\u00A0"}
+                {"\u00A0"}
+                시대의
+                <br />
+              </S.TextGradientGray>
 
-            <S.TextGradientPurple>
-              우리만의 상징을 <br />
-              창조한다
-            </S.TextGradientPurple>
+              <S.TextGradientPurple>
+                우리만의 상징을 <br />
+              </S.TextGradientPurple>
+              <S.TextGradientPurple>창조한다</S.TextGradientPurple>
+            </div>
             <S.ImageContainerFull
               src={Gradient2}
               alt="그라데이션2"
@@ -338,15 +340,21 @@ export default function BrandingPage() {
       </S.TwelvePage>
       {/* brandEssence+Images-ing */}
       <S.ThirteenPage>
-        <S.ImageContainerFull
+        <img
+          style={{ width: "95vw", height: "auto" }}
           src={BrandEssence}
           alt="BrandEssence"
-        ></S.ImageContainerFull>
-
+        ></img>
         <S.ImageContainerFull
+          style={{ marginTop: "5rem", marginBottom: "10rem" }}
+          src={BuildASymbol}
+          alt="BuildASymbol"
+        ></S.ImageContainerFull>
+        <img
+          style={{ width: "95vw", height: "auto" }}
           src={BrandCoreValues}
           alt="brandcorevalues"
-        ></S.ImageContainerFull>
+        ></img>
       </S.ThirteenPage>
       {/* co-creative 효과 */}
       <S.FourteenPage>
@@ -425,9 +433,11 @@ export default function BrandingPage() {
       </div>
       <div>
         <S.ImageContainerFull src={Sym5} alt="Sym5" />
+
         <S.ImageContainerFull src={Sym6} alt="Sym6" />
-        <S.ImageContainerFull src={Sym7} alt="Sym7" />
-        <S.ImageContainerFull src={Sym8} alt="last" />
+        {/* <S.ImageContainerFull src={Sym7} alt="Sym7" />
+        <S.ImageContainerFull src={Sym8} alt="last" /> */}
+        <S.ImageContainerFull src={Typography} alt="Typography" />
 
         <S.ImageContainerFull
           src={GradientBackground}
