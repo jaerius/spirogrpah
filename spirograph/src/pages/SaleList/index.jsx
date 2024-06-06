@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./styles";
-import Nav from "../../components/NavBar2/navBar";
+import Nav from "../../components/NavBar/Navbar";
 import BIcon from "../../assets/saleListImg/Bicon.svg";
 import HorizonLine from "./horizonLine";
 import Graph1 from "../../assets/saleListImg/graphh1.png";

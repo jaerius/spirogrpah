@@ -14,7 +14,7 @@ import Eleven from "../../assets/businessImg/11.png";
 import Twelve from "../../assets/businessImg/12.png";
 import Thirteen from "../../assets/businessImg/13.png";
 import Fourteen from "../../assets/businessImg/14.png";
-import Nav from "../../components/NavBar2/navBar";
+import Nav from "../../components/NavBar/Navbar";
 export default function BrandingPage() {
   return (
     <>
