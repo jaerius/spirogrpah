@@ -29,8 +29,10 @@ jobs:
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
-          echo "$HEROKU_API_KEY" | heroku auth:token
-          heroku auth:whoami
+          echo "machine api.heroku.com" >> ~/.netrc
+          echo "  login $HEROKU_API_KEY" >> ~/.netrc
+          echo "machine git.heroku.com" >> ~/.netrc
+          echo "  login $HEROKU_API_KEY" >> ~/.netrc
 
       - name: Add Heroku remote
         run: git remote add heroku https://git.heroku.com/calm-eyrie-10609.git
@@ -41,4 +43,7 @@ jobs:
           git config --global user.name "jaewon"
 
       - name: Push to Heroku
-        run: git push heroku `git subtree split --prefix my-replicate-app main`:refs/heads/main --force
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: |
+          git push heroku `git subtree split --prefix my-replicate-app main`:refs/heads/main --force
