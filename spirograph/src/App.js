@@ -6,7 +6,7 @@ import AICorrection from "./pages/spiro/AICorrection"; // 이 경로가 AICorrec
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Main from "./pages/main/main.jsx";
 import LastPage from "./pages/spiro/LastPage.jsx";
-import LogicPage from "./pages/Logic/LogicPage.jsx";
+
 import SaleListPage from "./pages/SaleList/index";
 import BrandingPage from "./pages/brandingPage/index";
 import BusinessPage from "./pages/businessPage/index";
@@ -23,7 +23,7 @@ function App() {
           <Route path="/sketch" element={<SketchPage />} />
           <Route path="/aiCorrection" element={<AICorrection />} />
           <Route path="/LastPage" element={<LastPage />} />
-          <Route path="/LogicPage" element={<LogicPage />} />
+
         </Routes>
       </Router>
     </div>

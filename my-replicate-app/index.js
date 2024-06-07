@@ -13,11 +13,9 @@ import FormData from "form-data";
 import path from "path";
 
 dotenv.config();
-//병합 전
 
 const REPLICATE_API_TOKEN = process.env.REPLICATE_API_TOKEN;
-const JWT2 =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiI3NWQxNDhiNS1kMzQ5LTRlZmUtYTcwYy04YjA2NmIwYWVlYjciLCJlbWFpbCI6InJ5bHlubjEwMjlAbmF2ZXIuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInBpbl9wb2xpY3kiOnsicmVnaW9ucyI6W3siaWQiOiJGUkExIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9LHsiaWQiOiJOWUMxIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9XSwidmVyc2lvbiI6MX0sIm1mYV9lbmFibGVkIjpmYWxzZSwic3RhdHVzIjoiQUNUSVZFIn0sImF1dGhlbnRpY2F0aW9uVHlwZSI6InNjb3BlZEtleSIsInNjb3BlZEtleUtleSI6IjFlNjIwM2Q0NjIzY2I3ZTBlODFkIiwic2NvcGVkS2V5U2VjcmV0IjoiZjczNDVlNDIxZjkzNjNkNjJiYzU3ZWQ5ZTBlY2Y5NzQ5YzEzMjRhM2Q1YjE1ZmQwY2U4MTk4ZDU5ZTBmM2NiMSIsImlhdCI6MTcxMTA4Mzg5M30.ofdRllbxJO2Qk0-co3FXaPpou6EBRqE9gImfu6iR06Q";
+const JWT2 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiI3NWQxNDhiNS1kMzQ5LTRlZmUtYTcwYy04YjA2NmIwYWVlYjciLCJlbWFpbCI6InJ5bHlubjEwMjlAbmF2ZXIuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInBpbl9wb2xpY3kiOnsicmVnaW9ucyI6W3siaWQiOiJGUkExIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9LHsiaWQiOiJOWUMxIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9XSwidmVyc2lvbiI6MX0sIm1mYV9lbmFibGVkIjpmYWxzZSwic3RhdHVzIjoiQUNUSVZFIn0sImF1dGhlbnRpY2F0aW9uVHlwZSI6InNjb3BlZEtleSIsInNjb3BlZEtleUtleSI6IjFlNjIwM2Q0NjIzY2I3ZTBlODFkIiwic2NvcGVkS2V5U2VjcmV0IjoiZjczNDVlNDIxZjkzNjNkNjJiYzU3ZWQ5ZTBlY2Y5NzQ5YzEzMjRhM2Q1YjE1ZmQwY2U4MTk4ZDU5ZTBmM2NiMSIsImlhdCI6MTcxMTA4Mzg5M30.ofdRllbxJO2Qk0-co3FXaPpou6EBRqE9gImfu6iR06Q"; // Replace with your actual JWT token
 
 const PORT = process.env.PORT || 5002;
 const pipeline = promisify(stream.pipeline);
@@ -28,9 +26,11 @@ const upload = multer({ dest: "uploads/" });
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 app.use(bodyParser.json());
+
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "http://localhost:8888", "https://spirographmaker.netlify.app"],
+    credentials: true,
   })
 );
 
@@ -88,8 +88,7 @@ async function runReplicateModel(url, prompt) {
       auth: REPLICATE_API_TOKEN,
     });
 
-    const model =
-      "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b";
+    const model = "stability-ai/sdxl:39ed52f2a78e934b3ba6e2a89f5b1c712de7dfea535525255b1aa35c5565e08b";
     const input = {
       width: 768,
       height: 768,
@@ -149,7 +148,7 @@ app.post("/upload-to-ipfs", upload.single("image"), async (req, res) => {
 app.post("/save-url", async (req, res) => {
   console.log("/save-url 경로로 POST 요청 받음");
   const { url, status1, status2 } = req.body;
-  console.log("Request Body:", req.body); // 추가된 로그
+  console.log("Request Body:", req.body);
   if (!url || !status1 || !status2) {
     console.log("URL이 요청 본문에 없음");
     return res.status(400).send("URL is required");

@@ -1,8 +1,11 @@
-import axios from "axios";
-import FormData from "form-data";
-import Replicate from "replicate";
+const axios = require('axios');
+const FormData = require('form-data');
+const Replicate = require('replicate');
 
-const pinJSONToIPFS = async (json, JWT2) => {
+const JWT2 = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiI3NWQxNDhiNS1kMzQ5LTRlZmUtYTcwYy04YjA2NmIwYWVlYjciLCJlbWFpbCI6InJ5bHlubjEwMjlAbmF2ZXIuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsInBpbl9wb2xpY3kiOnsicmVnaW9ucyI6W3siaWQiOiJGUkExIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9LHsiaWQiOiJOWUMxIiwiZGVzaXJlZFJlcGxpY2F0aW9uQ291bnQiOjF9XSwidmVyc2lvbiI6MX0sIm1mYV9lbmFibGVkIjpmYWxzZSwic3RhdHVzIjoiQUNUSVZFIn0sImF1dGhlbnRpY2F0aW9uVHlwZSI6InNjb3BlZEtleSIsInNjb3BlZEtleUtleSI6IjFlNjIwM2Q0NjIzY2I3ZTBlODFkIiwic2NvcGVkS2V5U2VjcmV0IjoiZjczNDVlNDIxZjkzNjNkNjJiYzU3ZWQ5ZTBlY2Y5NzQ5YzEzMjRhM2Q1YjE1ZmQwY2U4MTk4ZDU5ZTBmM2NiMSIsImlhdCI6MTcxMTA4Mzg5M30.ofdRllbxJO2Qk0-co3FXaPpou6EBRqE9gImfu6iR06Q";
+const REPLICATE_API_TOKEN = "r8_H7e3O10pcldK1gpzMPS9cqJw7uNOGFh0VjODF";
+
+const pinJSONToIPFS = async (json) => {
   const data = JSON.stringify({
     pinataOptions: { cidVersion: 1 },
     pinataMetadata: {
@@ -26,7 +29,7 @@ const pinJSONToIPFS = async (json, JWT2) => {
   return res.data;
 };
 
-async function runReplicateModel(url, prompt, REPLICATE_API_TOKEN) {
+async function runReplicateModel(url, prompt) {
   const replicate = new Replicate({
     auth: REPLICATE_API_TOKEN,
   });
@@ -55,9 +58,6 @@ async function runReplicateModel(url, prompt, REPLICATE_API_TOKEN) {
 }
 
 export const handler = async (event) => {
-  const REPLICATE_API_TOKEN = process.env.REPLICATE_API_TOKEN;
-  const JWT2 = process.env.JWT2;
-
   if (event.httpMethod === "POST") {
     const { url, status1, status2 } = JSON.parse(event.body);
 
@@ -70,7 +70,7 @@ export const handler = async (event) => {
 
     try {
       const prompt = `beautiful shape like ${status1} and ${status2} -like spirograph`;
-      const output = await runReplicateModel(url, prompt, REPLICATE_API_TOKEN);
+      const output = await runReplicateModel(url, prompt);
 
       const response = await axios({
         url: output[0],
@@ -104,7 +104,7 @@ export const handler = async (event) => {
         attributes: [],
       };
 
-      const metadataResult = await pinJSONToIPFS(metadata, JWT2);
+      const metadataResult = await pinJSONToIPFS(metadata);
 
       return {
         statusCode: 200,

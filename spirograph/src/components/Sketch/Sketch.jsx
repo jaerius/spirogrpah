@@ -43,26 +43,26 @@ const Sketch = ({
   //   }
   // };
 
-  async function sendUrlToServer(url) {
-    try {
-      const response = await fetch("/.netlify/functions/saveUrl", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ url }),
-      });
-      if (!response.ok) {
-        throw new Error("Network response was not ok.");
-      }
-      const data = await response.json();
-      console.log(data.metadataResult, "hi");
-      setAiUrl(data.metadataResult);
-      return data;
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
+  // async function sendUrlToServer(url) {
+  //   try {
+  //     const response = await fetch("/.netlify/functions/saveUrl", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ url, status1, status2 }),
+  //     });
+  //     if (!response.ok) {
+  //       throw new Error("Network response was not ok.");
+  //     }
+  //     const data = await response.json();
+  //     console.log(data.metadataResult, "hi");
+  //     setAiUrl(data.metadataResult);
+  //     return data;
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+ // }
 
   // useRef를 사용하여 참조 유지
   const firstNameRef = useRef(firstName);
@@ -145,7 +145,7 @@ const Sketch = ({
 
           try {
             const response = await fetch(
-              "/.netlify/functions/uploadToIpfs",
+              "https://calm-eyrie-10609-82f65a8348a1.herokuapp.com/upload-to-ipfs",
               {
                 method: "POST",
                 body: formData, // FormData 객체 전송
@@ -247,17 +247,17 @@ const Sketch = ({
   }, [isSubmitted, handleEnd, handleProgress]);
 
   // 두 번째 useEffect: url 의존성
-  useEffect(() => {
-    if (url) {
-      sendUrlToServer(url)
-        .then(() => {
-          console.log("URL was sent to the server successfully.");
-        })
-        .catch((error) => {
-          console.error("There was an error sending the URL to the server:", error);
-        });
-    }
-  }, [url]);
+  // useEffect(() => {
+  //   if (url) {
+  //     sendUrlToServer(url)
+  //       .then(() => {
+  //         console.log("URL was sent to the server successfully.");
+  //       })
+  //       .catch((error) => {
+  //         console.error("There was an error sending the URL to the server:", error);
+  //       });
+  //   }
+  // }, [url]);
 
   const handlePrint = () => {
     if (url) {

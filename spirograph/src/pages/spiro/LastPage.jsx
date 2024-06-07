@@ -14,7 +14,7 @@ export default function LastPage() {
   useEffect(() => {
     const interval = setInterval(async () => {
       try {
-        const response = await fetch(`/.netlify/functions/checkStatus?url=${encodeURIComponent(url)}`);
+        const response = await fetch(`https://calm-eyrie-10609-82f65a8348a1.herokuapp.com/check-status?url=${encodeURIComponent(url)}`);
         const data = await response.json();
         if (data.status === "completed") {
           setImageUrl(data.correctedUrl);
