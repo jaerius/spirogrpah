@@ -29,8 +29,10 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:8888", "https://spirographmaker.netlify.app"],
+    origin: ['http://localhost:3000', 'http://localhost:8888', 'https://spirographmaker.netlify.app'],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
+    allowedHeaders: 'Content-Type, Authorization',
   })
 );
 
