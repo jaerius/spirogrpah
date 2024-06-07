@@ -22,9 +22,15 @@ jobs:
         working-directory: ./my-replicate-app
         run: npm install
 
+      - name: Install Heroku CLI
+        run: curl https://cli-assets.heroku.com/install.sh | sh
+
+      - name: Log in to Heroku
+        run: echo "$HEROKU_API_KEY" | heroku auth:token
+
       - name: Deploy to Heroku
         env:
           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: |
           git remote add heroku https://git.heroku.com/calm-eyrie-10609.git
-          git subtree push --prefix my-replicate-app heroku main
+          git push heroku `git subtree split --prefix my-replicate-app main`:refs/heads/main --force
