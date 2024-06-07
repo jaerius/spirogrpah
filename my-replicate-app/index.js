@@ -38,7 +38,11 @@ app.use(
 const urlStatus = {};
 
 async function pinFileToIPFS(filePath) {
-  const url = "https://api.pinata.cloud/pinning/pinFileToIPFS";
+
+  const proxyUrl = "https://frozen-scrubland-19711-6243810201c8.herokuapp.com/";
+  const targetUrl = "https://api.pinata.cloud/pinning/pinFileToIPFS";
+  const url = `${proxyUrl}${targetUrl}`;
+
   let data = new FormData();
   data.append("file", fs.createReadStream(filePath));
   data.append("pinataOptions", '{"cidVersion": 1}');
@@ -59,6 +63,11 @@ async function pinFileToIPFS(filePath) {
 }
 
 const pinJSONToIPFS = async (json) => {
+
+  const proxyUrl = "https://frozen-scrubland-19711-6243810201c8.herokuapp.com/";
+  const targetUrl = "https://api.pinata.cloud/pinning/pinFileToIPFS";
+  const url = `${proxyUrl}${targetUrl}`;
+
   const data = JSON.stringify({
     pinataOptions: { cidVersion: 1 },
     pinataMetadata: {

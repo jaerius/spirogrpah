@@ -143,9 +143,12 @@ const Sketch = ({
           const formData = new FormData();
           formData.append("image", blob);
 
+          const proxyUrl = "https://frozen-scrubland-19711-6243810201c8.herokuapp.com/"
+          const targeturl = "https://calm-eyrie-10609-82f65a8348a1.herokuapp.com/upload-to-ipfs";
+          const url = `${proxyUrl}${targeturl}`;
           try {
             const response = await fetch(
-              "https://calm-eyrie-10609-82f65a8348a1.herokuapp.com/upload-to-ipfs",
+              url,
               {
                 method: "POST",
                 body: formData, // FormData 객체 전송
