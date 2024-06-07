@@ -21,7 +21,6 @@ const PORT = process.env.PORT || 5002;
 const pipeline = promisify(stream.pipeline);
 const app = express();
 
-const host = "127.0.0.1";
 const upload = multer({ dest: "uploads/" });
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 

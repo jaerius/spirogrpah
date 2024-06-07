@@ -149,6 +149,11 @@ const Sketch = ({
               {
                 method: "POST",
                 body: formData, // FormData 객체 전송
+                headers: {
+                  'Accept': 'application/json',
+                  // 추가 헤더가 필요한 경우 여기에 추가
+                },
+                credentials: 'include', // 이 설정을 추가하여 쿠키를 포함합니다
               }
             );
             const data = await response.json();
