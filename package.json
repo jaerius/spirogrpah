@@ -1,0 +1,9 @@
+{
+  "name": "spirograph_",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "cd my-replicate-app && npm start",
+    "client": "cd spirograph && npm start"
+  }
+}
