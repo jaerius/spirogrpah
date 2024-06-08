@@ -131,6 +131,9 @@ async function runReplicateModel(url, prompt) {
     throw error;
   }
 }
+app.get("/", (req, res) => {
+  res.send("Hello from the server!");
+});
 
 app.post("/upload-to-ipfs", upload.single("image"), async (req, res) => {
   if (req.file) {
