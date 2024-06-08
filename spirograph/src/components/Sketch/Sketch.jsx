@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState, useCallback } from 'react';
-import p5 from 'p5';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import p5 from "p5";
+import { useNavigate } from "react-router-dom";
 // import { useConnectWallet } from 'use-wallet';
 // import { ethers } from 'ethers';
 // import abi from './abi'; // Assuming abi.js is exported from this path
@@ -62,7 +62,7 @@ const Sketch = ({
   //   } catch (error) {
   //     console.error("Error:", error);
   //   }
- // }
+  // }
 
   // useRef를 사용하여 참조 유지
   const firstNameRef = useRef(firstName);
@@ -71,12 +71,9 @@ const Sketch = ({
   const handleProgressRef = useRef(onProgress);
   const handleEndRef = useRef(onEnd);
 
-  const handleProgress = useCallback(
-    (progress) => {
-      handleProgressRef.current(progress);
-    },
-    []
-  );
+  const handleProgress = useCallback((progress) => {
+    handleProgressRef.current(progress);
+  }, []);
 
   const handleEnd = useCallback(() => {
     handleEndRef.current();
@@ -119,8 +116,22 @@ const Sketch = ({
 
       p.draw = () => {
         p.translate(p.width / 2, p.height / 2);
-        drawSpirograph(p, R, r, currentRotation, getRandomColor(p), firstNameRef.current);
-        drawSpirograph(p, R2, r2, currentRotation, getRandomColor(p), firstNameRef.current);
+        drawSpirograph(
+          p,
+          R,
+          r,
+          currentRotation,
+          getRandomColor(p),
+          firstNameRef.current
+        );
+        drawSpirograph(
+          p,
+          R2,
+          r2,
+          currentRotation,
+          getRandomColor(p),
+          firstNameRef.current
+        );
         currentRotation += baseAngleIncrement;
 
         const progressPercentage = Math.min(
@@ -143,23 +154,22 @@ const Sketch = ({
           const formData = new FormData();
           formData.append("image", blob);
 
-          const proxyUrl = "https://frozen-scrubland-19711-6243810201c8.herokuapp.com/"
-          const targeturl = "https://calm-eyrie-10609-82f65a8348a1.herokuapp.com/upload-to-ipfs";
+          const proxyUrl =
+            "https://frozen-scrubland-19711-6243810201c8.herokuapp.com/";
+          const targeturl =
+            "https://calm-eyrie-10609-82f65a8348a1.herokuapp.com/upload-to-ipfs";
           const url = `${proxyUrl}${targeturl}`;
           try {
-            const response = await fetch(
-              url,
-              {
-                method: "POST",
-                body: formData, // FormData 객체 전송
-                headers: {
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/x-www-form-urlencoded',
-                  // 추가 헤더가 필요한 경우 여기에 추가
-                },
-                credentials: 'include', // 이 설정을 추가하여 쿠키를 포함합니다
-              }
-            );
+            const response = await fetch(url, {
+              method: "POST",
+              body: formData, // FormData 객체 전송
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/x-www-form-urlencoded",
+                // 추가 헤더가 필요한 경우 여기에 추가
+              },
+              credentials: "include", // 이 설정을 추가하여 쿠키를 포함합니다
+            });
             const data = await response.json();
             console.log(data.ipfsUrl, "clientside");
             setUrl(data.ipfsUrl);
@@ -183,16 +193,28 @@ const Sketch = ({
               y = (R / r) * p.sin(angle) - (r - R) * p.sin(angle * (R - r));
               break;
             case "이":
-              x = (R - r) * p.cos(angle) + r * p.cos((angle * (R - r)) / r + p.PI / 4);
-              y = (R - r) * p.sin(angle) - r * p.sin((angle * (R - r)) / r + p.PI / 4);
+              x =
+                (R - r) * p.cos(angle) +
+                r * p.cos((angle * (R - r)) / r + p.PI / 4);
+              y =
+                (R - r) * p.sin(angle) -
+                r * p.sin((angle * (R - r)) / r + p.PI / 4);
               break;
             case "박":
-              x = (R - r) * p.cos(angle) + r * p.cos((angle * (R - r)) / r - p.PI / 4);
-              y = (R - r) * p.sin(angle) - r * p.sin((angle * (R - r)) / r - p.PI / 4);
+              x =
+                (R - r) * p.cos(angle) +
+                r * p.cos((angle * (R - r)) / r - p.PI / 4);
+              y =
+                (R - r) * p.sin(angle) -
+                r * p.sin((angle * (R - r)) / r - p.PI / 4);
               break;
             case "최":
-              x = (R - r) * p.cos(angle) + r * p.cos((angle * (R - r)) / r + p.PI / 2);
-              y = (R - r) * p.sin(angle) - r * p.sin((angle * (R - r)) / r + p.PI / 2);
+              x =
+                (R - r) * p.cos(angle) +
+                r * p.cos((angle * (R - r)) / r + p.PI / 2);
+              y =
+                (R - r) * p.sin(angle) -
+                r * p.sin((angle * (R - r)) / r + p.PI / 2);
               break;
             default:
               x = (R - r) * p.cos(angle) + r * p.cos((angle * (R - r)) / r);
@@ -218,7 +240,12 @@ const Sketch = ({
           let hash = 0x811c9dc5;
           for (let i = 0; i < str.length; i++) {
             hash ^= str.charCodeAt(i);
-            hash += (hash << 1) + (hash << 4) + (hash << 7) + (hash << 8) + (hash << 24);
+            hash +=
+              (hash << 1) +
+              (hash << 4) +
+              (hash << 7) +
+              (hash << 8) +
+              (hash << 24);
           }
           return hash >>> 0;
         };
