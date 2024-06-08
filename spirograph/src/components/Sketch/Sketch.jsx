@@ -1,58 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
-import p5 from "p5"; // p5 라이브러리 가져오기
-import "./Sketch.scss";
+import React, { useEffect, useRef, useState, useCallback } from "react";
+import p5 from "p5";
 import { useNavigate } from "react-router-dom";
-import { init, useConnectWallet } from "@web3-onboard/react";
-import injectedModule from "@web3-onboard/injected-wallets";
-import { ethers } from "ethers";
-import abi from "./abi";
-
-// 1. 지갑 모듈
-const wallets = [injectedModule()];
-
-// 2. 블록체인 네트워크
-const chains = [
-  {
-    id: "0x250",
-    token: "ASTR",
-    label: "Astar",
-    icon: '<svg width="20px" height="20px" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">...</svg>',
-    color: "#0085ff",
-    rpcUrl: "https://evm.astar.network",
-    publicRpcUrl: "https://evm.astar.network",
-    blockExplorerUrl: "https://astar.subscan.io",
-  },
-  {
-    id: "0x1111",
-    token: "LOC",
-    label: "Localhost",
-    icon: '<svg width="20px" height="20px" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">...</svg>',
-    color: "#2c3335",
-    rpcUrl: "http://locahost:8545",
-    publicRpcUrl: "http://locahost:8545",
-    blockExplorerUrl:
-      "https://polkadot.js.org/apps/?rpc=ws%3A%2F%2Flocalhost%3A9944#/explorer",
-  },
-];
-
-// 3. 지갑 메타데이터
-const appMetadata = {
-  name: "BlueNode",
-  icon: '<svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 20 20">...</svg>',
-  logo: '<svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 20 20">...</svg>',
-  description: "We are BlueNode",
-  recommendedInjectedWallets: [
-    { name: "Talisman", url: "https://www.talisman.xyz/" },
-    { name: "MetaMask", url: "https://metamask.io" },
-  ],
-};
-
-// 온보드 초기화
-init({
-  wallets,
-  chains,
-  appMetadata,
-});
+// import { useConnectWallet } from 'use-wallet';
+// import { ethers } from 'ethers';
+// import abi from './abi'; // Assuming abi.js is exported from this path
 
 const Sketch = ({
   firstName,
@@ -70,60 +21,82 @@ const Sketch = ({
   const [aiUrl, setAiUrl] = useState("");
   const [progress, setProgress] = useState(0);
 
-  const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
-  let ethersProvider;
-  if (wallet) {
-    ethersProvider = new ethers.providers.Web3Provider(wallet.provider, "any");
-  }
-  const CA = "0x96DefAc7d1E8F0F4258779A8343c97850C6de7fa";
+  // const [{ wallet, connecting }, connect, disconnect] = useConnectWallet();
+  // let ethersProvider;
+  // if (wallet) {
+  //   ethersProvider = new ethers.providers.Web3Provider(wallet.provider, "any");
+  // }
+  // const CA = "0x96DefAc7d1E8F0F4258779A8343c97850C6de7fa";
 
-  const mintNFT = async (aiUrl) => {
-    if (!aiUrl) {
-      console.error("AI URL is not set.");
-      return;
-    }
-    try {
-      const contract = new ethers.Contract(CA, abi, ethersProvider.getSigner());
-      const mint = await contract.awardItem(aiUrl);
-      await mint.wait();
-      console.log("NFT has been minted with AI URL:", aiUrl);
-    } catch (error) {
-      console.error("error minting NFT:", error);
-    }
-  };
+  // const mintNFT = async (aiUrl) => {
+  //   if (!aiUrl) {
+  //     console.error("AI URL is not set.");
+  //     return;
+  //   }
+  //   try {
+  //     const contract = new ethers.Contract(CA, abi, ethersProvider.getSigner());
+  //     const mint = await contract.awardItem(aiUrl);
+  //     await mint.wait();
+  //     console.log("NFT has been minted with AI URL:", aiUrl);
+  //   } catch (error) {
+  //     console.error("error minting NFT:", error);
+  //   }
+  // };
 
-  async function sendUrlToServer(url) {
-    try {
-      const response = await fetch("http://localhost:5001/save-url", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ url }),
-      });
-      if (!response.ok) {
-        throw new Error("Network response was not ok.");
-      }
-      const data = await response.json();
-      console.log(data.metadataResult, "hi");
-      setAiUrl(data.metadataResult);
-      return data;
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  }
+  // async function sendUrlToServer(url) {
+  //   try {
+  //     const response = await fetch("/.netlify/functions/saveUrl", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ url, status1, status2 }),
+  //     });
+  //     if (!response.ok) {
+  //       throw new Error("Network response was not ok.");
+  //     }
+  //     const data = await response.json();
+  //     console.log(data.metadataResult, "hi");
+  //     setAiUrl(data.metadataResult);
+  //     return data;
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // }
+
+  // useRef를 사용하여 참조 유지
+  const firstNameRef = useRef(firstName);
+  const lastNameRef = useRef(lastName);
+  const birthRef = useRef(birth);
+  const handleProgressRef = useRef(onProgress);
+  const handleEndRef = useRef(onEnd);
+
+  const handleProgress = useCallback((progress) => {
+    handleProgressRef.current(progress);
+  }, []);
+
+  const handleEnd = useCallback(() => {
+    handleEndRef.current();
+  }, []);
+
+  useEffect(() => {
+    firstNameRef.current = firstName;
+    lastNameRef.current = lastName;
+    birthRef.current = birth;
+    handleProgressRef.current = onProgress;
+    handleEndRef.current = onEnd;
+  }, [firstName, lastName, birth, onProgress, onEnd]);
 
   useEffect(() => {
     if (!isSubmitted) return;
 
     const sketch = (p) => {
       let R, r, R2, r2;
-      let k, k2;
       let totalRotations = 80;
       let baseAngleIncrement = 2.0;
       let currentRotation = 0;
-      const hash1 = nameHash(firstName, lastName);
-      const hash2 = nameHash(birth);
+      const hash1 = nameHash(firstNameRef.current, lastNameRef.current);
+      const hash2 = nameHash(birthRef.current);
       const values1 = extractValuesFromHash(hash1);
       const values2 = extractValuesFromHash(hash2);
 
@@ -133,8 +106,6 @@ const Sketch = ({
       r2 = values2[1];
       numericalCorrection();
       numericalCorrectionForBirthdate();
-      k = R / r;
-      k2 = R2 / r2;
 
       p.setup = () => {
         p.createCanvas(1800, 1080).parent(sketchRef.current);
@@ -145,14 +116,21 @@ const Sketch = ({
 
       p.draw = () => {
         p.translate(p.width / 2, p.height / 2);
-        drawSpirograph(p, R, r, currentRotation, getRandomColor(p), firstName);
+        drawSpirograph(
+          p,
+          R,
+          r,
+          currentRotation,
+          getRandomColor(p),
+          firstNameRef.current
+        );
         drawSpirograph(
           p,
           R2,
           r2,
           currentRotation,
           getRandomColor(p),
-          firstName
+          firstNameRef.current
         );
         currentRotation += baseAngleIncrement;
 
@@ -161,11 +139,11 @@ const Sketch = ({
           100
         );
         setProgress(progressPercentage.toFixed(2));
-        onProgress(progressPercentage.toFixed(2));
+        handleProgress(progressPercentage.toFixed(2));
 
         if (currentRotation >= totalRotations * p.TWO_PI) {
           setIsEnd(true);
-          onEnd();
+          handleEnd();
           p.noLoop();
           handleSaveImage(p);
         }
@@ -176,14 +154,22 @@ const Sketch = ({
           const formData = new FormData();
           formData.append("image", blob);
 
+          const proxyUrl =
+            "https://frozen-scrubland-19711-6243810201c8.herokuapp.com/";
+          const targeturl =
+            "https://calm-eyrie-10609-82f65a8348a1.herokuapp.com/upload-to-ipfs";
+          const url = `${proxyUrl}${targeturl}`;
           try {
-            const response = await fetch(
-              "http://localhost:5001/upload-to-ipfs",
-              {
-                method: "POST",
-                body: formData, // FormData 객체 전송
-              }
-            );
+            const response = await fetch(url, {
+              method: "POST",
+              body: formData, // FormData 객체 전송
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/x-www-form-urlencoded",
+                // 추가 헤더가 필요한 경우 여기에 추가
+              },
+              credentials: "include", // 이 설정을 추가하여 쿠키를 포함합니다
+            });
             const data = await response.json();
             console.log(data.ipfsUrl, "clientside");
             setUrl(data.ipfsUrl);
@@ -294,22 +280,20 @@ const Sketch = ({
     return () => {
       newSketchInstance.remove();
     };
-  }, []);
+  }, [isSubmitted, handleEnd, handleProgress]);
 
-  useEffect(() => {
-    if (url) {
-      sendUrlToServer(url)
-        .then(() => {
-          console.log("URL was sent to the server successfully.");
-        })
-        .catch((error) => {
-          console.error(
-            "There was an error sending the URL to the server:",
-            error
-          );
-        });
-    }
-  }, [url]);
+  // 두 번째 useEffect: url 의존성
+  // useEffect(() => {
+  //   if (url) {
+  //     sendUrlToServer(url)
+  //       .then(() => {
+  //         console.log("URL was sent to the server successfully.");
+  //       })
+  //       .catch((error) => {
+  //         console.error("There was an error sending the URL to the server:", error);
+  //       });
+  //   }
+  // }, [url]);
 
   const handlePrint = () => {
     if (url) {

@@ -1,7 +1,20 @@
 [build]
   base = "spirograph"
   command = "npm run build"
-  publish = "spirograph/build"
+  publish = "build"
 
 [functions]
   directory = "netlify/functions"
+  external_node_modules = ["axios", "form-data", "fs", "path", "multer"]
+
+[[redirects]]
+  from = "/"
+  to = "/.netlify/functions/"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type, Authorization"

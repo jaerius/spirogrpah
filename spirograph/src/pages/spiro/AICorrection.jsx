@@ -13,6 +13,31 @@ function AICorrection() {
 
   const navigate = useNavigate();
 
+  console.log("URL:", url);
+
+  useEffect(() => {
+    if (url) {
+      // Checking if URL is valid
+      fetch(url)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Network response was not ok: ${response.statusText}`);
+          }
+          return response.blob();
+        })
+        .then((blob) => {
+          if (blob.type.startsWith("image/")) {
+            console.log("Image URL is valid");
+          } else {
+            throw new Error("URL does not point to a valid image");
+          }
+        })
+        .catch((error) => {
+          console.error("Error loading image:", error.message);
+        });
+    }
+  }, [url]);
+
   const handlePanelClick = (index) => {
     setSelectedPanel(index);
     const newSelectedTexts = [...selectedTexts];
@@ -43,7 +68,7 @@ function AICorrection() {
   };
 
   const handleSubmit = async () => {
-    const response = await fetch("http://localhost:5001/save-url", {
+    const response = await fetch("https://calm-eyrie-10609-82f65a8348a1.herokuapp.com/save-url", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
