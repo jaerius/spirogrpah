@@ -22,7 +22,6 @@ export const NavMenu = styled.div`
   cursor: pointer;
   font-size: 1rem;
   font-family: "Pretendard-Regular";
-  height: 1rem;
   padding: 0.5rem 0;
   &:hover {
     background-color: #fff;

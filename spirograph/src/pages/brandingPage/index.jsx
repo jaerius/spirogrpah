@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import * as S from "./styles";
 import NavBar from "../../components/NavBar/Navbar";
+import Project from "../../assets/brandingImg/projectoverview.png";
+
 import BlueGradient from "../../assets/brandingImg/blueGradient.png";
 import BrownBackground from "../../assets/brandingImg/brownBackground.png";
 import Animal from "../../assets/brandingImg/animal.png";
@@ -21,7 +23,6 @@ import DevelopmentOfSymbol from "../../assets/brandingImg/DevelopmentOfSymbol.pn
 import Beauty from "../../assets/brandingImg/BeautyAnd.png";
 import BrandEssence from "../../assets/brandingImg/BrandEssence.png";
 import BuildASymbol from "../../assets/brandingImg/BuildASymbol.png";
-
 import BrandCoreValues from "../../assets/brandingImg/BrandCoreValues.png";
 import DesignConcept from "../../assets/brandingImg/DesignConcept.png";
 import ShapeAnalydid from "../../assets/brandingImg/Analydid.png";
@@ -33,10 +34,8 @@ import Sym3 from "../../assets/brandingImg/sym3.webp";
 import Sym4 from "../../assets/brandingImg/sym4.webp";
 import Sym5 from "../../assets/brandingImg/sym5.webp";
 import Sym6 from "../../assets/brandingImg/sym6.webp";
-// import Sym7 from "../../assets/brandingImg/sym7.webp";
-// import Sym8 from "../../assets/brandingImg/last.webp";
+import Bar from "../../components/UnderBar/Bar";
 
-// import colors from "../../fonts/color";
 export default function BrandingPage() {
   const [position, setPosition] = useState(0);
   function onScroll() {
@@ -55,36 +54,11 @@ export default function BrandingPage() {
     <>
       <S.FirstPage>
         <NavBar />
-        <S.TextWrapper>
-          <S.HugeT>
-            {" "}
-            PROJECT <br />
-            OVERVIEW
-          </S.HugeT>
-
-          <S.SmallT>
-            ‘The Symbol’은 곧 다가올 AI혁명을 대비하여 기존 ‘시리’와 ‘빅스비'와
-            같은
-            <br />
-            AI 어시스던트를 개인의 고유의 정보를 토대로 그래픽을 생성하여
-            인터페이스
-            <br />
-            및 이름의 커스터마이징이 가능하다. 이는 AI 어시스턴트가 각
-            사용자에게 더욱
-            <br />
-            친근하게 다가갈 수 있도록 하며, 정교한 맞춤 알고리즘을 통해 편리함을
-            제공한다.
-            <br />
-            <br />
-            <br />
-            우리의 브랜드는 ‘The Symbol’을 통해 자신만이 가질 수 있는 고유의
-            <br />
-            AI 어시스던트를 창조하여 삶을 더욱 더 특별하고 놀라운 경험을
-            선사한다.
-            <br />
-            이를 통해 사용자의 일상에 깊이 통합되는 개인화된 동반자를 제공한다.
-          </S.SmallT>
-        </S.TextWrapper>
+        <S.ImageContainerFull
+          src={Project}
+          alt="Project Overview"
+          loading="lazy"
+        ></S.ImageContainerFull>
       </S.FirstPage>
       {/* =================================================================== */}
       <S.SecondPage>
@@ -177,9 +151,10 @@ export default function BrandingPage() {
             height: window.innerHeight <= 900 ? "40vw" : "50vh",
           }}
           alt="갈색 배경"
+          loading="lazy"
         >
-          <S.ThirdPerAni src={Person} alt="사람"></S.ThirdPerAni>
-          <S.ThirdPerAni src={Animal} alt="동물"></S.ThirdPerAni>
+          <S.ThirdPerAni src={Person} alt="사람" loading="lazy"></S.ThirdPerAni>
+          <S.ThirdPerAni src={Animal} alt="동물" loading="lazy"></S.ThirdPerAni>
         </div>
         <div style={{ display: "flex" }}>
           <S.ThirdT style={{ color: "#848484" }}>
@@ -232,6 +207,7 @@ export default function BrandingPage() {
         <S.ImageContainerFull
           src={DiscoveryOfFireR}
           alt="불의 발견"
+          loading="lazy"
         ></S.ImageContainerFull>
       </S.FifthPage>
       <S.SixthPage>
@@ -241,6 +217,7 @@ export default function BrandingPage() {
           <S.ImageContainerFull
             src={AgriculturalEvolution}
             alt="농업혁명"
+            loading="lazy"
           ></S.ImageContainerFull>
         </div>
       </S.SixthPage>
@@ -250,6 +227,7 @@ export default function BrandingPage() {
           // style={{ height: "200vh", marginBottom: "50vh" }}
           src={DiscoveryOfCivil}
           alt="문명의 발전"
+          loading="lazy"
         ></S.ImageContainerFull>
         {/* </div> */}
       </S.SeventhPage>
@@ -259,6 +237,7 @@ export default function BrandingPage() {
           // style={{ height: "200vh", width: "100vw" }}
           src={Mankind}
           alt="인류사 발명품"
+          loading="lazy"
         ></S.ImageContainerFull>
       </S.EighthPage>
       {/* 상징의 발전 */}
@@ -266,6 +245,7 @@ export default function BrandingPage() {
         <S.ImageContainerFull
           src={DevelopmentOfSymbol}
           alt="상징의 발전"
+          loading="lazy"
         ></S.ImageContainerFull>
       </S.NinethPage>
       {/* 산업혁명*/}
@@ -273,6 +253,7 @@ export default function BrandingPage() {
         <S.ImageContainerFull
           src={IndustryEvolution}
           alt="산업혁명"
+          loading="lazy"
         ></S.ImageContainerFull>
       </S.TenthPage>
       {/* AI발전 */}
@@ -281,10 +262,12 @@ export default function BrandingPage() {
           <S.ImageContainerFull
             src={AIEvolution}
             alt="AI혁명"
+            loading="lazy"
           ></S.ImageContainerFull>
           <S.ImageContainerFull
             src={AIEvol}
             alt="AI혁명 밑 글씨"
+            loading="lazy"
           ></S.ImageContainerFull>
         </S.BackGradient>
       </S.EleventhPage>
@@ -300,6 +283,7 @@ export default function BrandingPage() {
           <S.ImageContainerFull
             src={Gradient1}
             alt="그라데이션1"
+            loading="lazy"
           ></S.ImageContainerFull>
           <div
             style={{
@@ -334,6 +318,7 @@ export default function BrandingPage() {
             <S.ImageContainerFull
               src={Gradient2}
               alt="그라데이션2"
+              loading="lazy"
             ></S.ImageContainerFull>
           </div>
         </div>
@@ -354,6 +339,7 @@ export default function BrandingPage() {
           style={{ width: "95vw", height: "auto" }}
           src={BrandCoreValues}
           alt="brandcorevalues"
+          loading="lazy"
         ></img>
       </S.ThirteenPage>
       {/* co-creative 효과 */}
@@ -407,9 +393,14 @@ export default function BrandingPage() {
           style={{ marginRight: "0.5rem", marginLeft: "0.5rem" }}
           src={DesignConcept}
           alt="DesignConcept"
+          loading="lazy"
         />
 
-        <S.ImageContainerFull src={Beauty} alt="각자의 아름다움" />
+        <S.ImageContainerFull
+          src={Beauty}
+          alt="각자의 아름다움"
+          loading="lazy"
+        />
       </div>{" "}
       {/* Graphic Motive-물방울 */}
       <S.SeventeenthPage>
@@ -417,11 +408,15 @@ export default function BrandingPage() {
           src={GraphicMotive}
           alt="GraphicMotive"
         ></S.ImageContainerFull>
-        <S.ImageContainerFull src={ShapeAnalydid} alt="ShapeAnalydid" />
+        <S.ImageContainerFull
+          src={ShapeAnalydid}
+          alt="ShapeAnalydid"
+          loading="lazy"
+        />
       </S.SeventeenthPage>
       <div>
-        <S.ImageContainerFull src={Sym1} alt="Sym1" />
-        <S.ImageContainerFull src={Sym2} alt="Sym2" />
+        <S.ImageContainerFull src={Sym1} alt="Sym1" loading="lazy" />
+        <S.ImageContainerFull src={Sym2} alt="Sym2" loading="lazy" />
       </div>
       <div style={{ backgroundColor: "#fff" }}>
         <S.ImageContainerFull
@@ -429,21 +424,27 @@ export default function BrandingPage() {
           src={Sym3}
           alt="Sym3"
         />
-        <S.ImageContainerFull src={Sym4} alt="Sym4" />
+        <S.ImageContainerFull src={Sym4} alt="Sym4" loading="lazy" />
       </div>
       <div>
-        <S.ImageContainerFull src={Sym5} alt="Sym5" />
+        <S.ImageContainerFull src={Sym5} alt="Sym5" loading="lazy" />
 
-        <S.ImageContainerFull src={Sym6} alt="Sym6" />
+        <S.ImageContainerFull src={Sym6} alt="Sym6" loading="lazy" />
         {/* <S.ImageContainerFull src={Sym7} alt="Sym7" />
         <S.ImageContainerFull src={Sym8} alt="last" /> */}
-        <S.ImageContainerFull src={Typography} alt="Typography" />
+        <S.ImageContainerFull
+          src={Typography}
+          alt="Typography"
+          loading="lazy"
+        />
 
         <S.ImageContainerFull
           src={GradientBackground}
           alt="GradientBackground"
+          loading="lazy"
         />
       </div>
+      <Bar />
     </>
   );
 }

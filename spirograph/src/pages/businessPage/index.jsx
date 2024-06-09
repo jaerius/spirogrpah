@@ -1,5 +1,8 @@
 import React from "react";
 import * as S from "./styles";
+import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
+
 import One from "../../assets/businessImg/1.png";
 import Two from "../../assets/businessImg/2.png";
 import Three from "../../assets/businessImg/3.png";
@@ -15,49 +18,65 @@ import Twelve from "../../assets/businessImg/12.png";
 import Thirteen from "../../assets/businessImg/13.png";
 import Fourteen from "../../assets/businessImg/14.png";
 import Nav from "../../components/NavBar/Navbar";
+import Bar from "../../components/UnderBar/Bar";
+
+const images = [
+  { src: One, alt: "1" },
+  { src: Two, alt: "2" },
+  { src: Three, alt: "3" },
+  { src: Four, alt: "4" },
+  { src: Five, alt: "5" },
+  { src: Six, alt: "6" },
+  { src: Seven, alt: "7" },
+];
+const whiteImages = [
+  { src: Eight, alt: "8" },
+  { src: Nine, alt: "9HowToUse" },
+  { src: Ten, alt: "10" },
+  { src: Eleven, alt: "11" },
+  { src: Twelve, alt: "12" },
+  { src: Thirteen, alt: "13" },
+  { src: Fourteen, alt: "14" },
+];
 export default function BrandingPage() {
+  const navigate = useNavigate();
+
+  const Container = styled.div`
+    width: 100vw;
+    height: auto;
+    border-color: #ebebeb;
+    background-image: url(${(props) => props.src});
+  `;
+
   return (
-    <>
+    <div style={{ backgroundColor: "#f1f1f1" }}>
       <Nav />
       <S.FirstPage>
-        <S.ImageContainerFull src={One} alt="1"></S.ImageContainerFull>
-        <S.ImageContainerFull src={Two} alt="2"></S.ImageContainerFull>
-        <S.ImageContainerFull src={Three} alt="3"></S.ImageContainerFull>
-        <S.ImageContainerFull src={Four} alt="4"></S.ImageContainerFull>
-        <S.ImageContainerFull src={Five} alt="5"></S.ImageContainerFull>
-        <S.ImageContainerFull src={Six} alt="6"></S.ImageContainerFull>
-        <S.ImageContainerFull src={Seven} alt="7"></S.ImageContainerFull>
+        {images.map((image, index) => (
+          <S.ImageContainerFull key={index} src={image.src} alt={image.alt} />
+        ))}
       </S.FirstPage>
       <S.SecondPage>
-        <S.ImageContainerFullWhite
-          src={Eight}
-          alt="8"
-        ></S.ImageContainerFullWhite>
-        <S.ImageContainerFullWhite
-          src={Nine}
-          alt="9HowToUse"
-        ></S.ImageContainerFullWhite>
-        <S.ImageContainerFullWhite
-          src={Ten}
-          alt="10"
-        ></S.ImageContainerFullWhite>
-        <S.ImageContainerFullWhite
-          src={Eleven}
-          alt="11"
-        ></S.ImageContainerFullWhite>
-        <S.ImageContainerFullWhite
-          src={Twelve}
-          alt="12"
-        ></S.ImageContainerFullWhite>
-        <S.ImageContainerFullWhite
-          src={Thirteen}
-          alt="13"
-        ></S.ImageContainerFullWhite>
-        <S.ImageContainerFullWhite
-          src={Fourteen}
-          alt="14"
-        ></S.ImageContainerFullWhite>
+        {whiteImages.map((image, index) => (
+          <S.ImageContainerFullWhite
+            key={index}
+            src={image.src}
+            alt={image.alt}
+          />
+        ))}
+        <Container src={Fourteen}></Container>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <S.LastButton
+            style={{ backgroundColor: "#000" }}
+            onClick={() => {
+              navigate("/sketch");
+            }}
+          >
+            AI 비서 생성하기
+          </S.LastButton>
+        </div>
       </S.SecondPage>
-    </>
+      <Bar />
+    </div>
   );
 }
