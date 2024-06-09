@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import * as S from "./styles";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import Horizon from "./horizon";
-import Logo from "../../assets/brandingImg/RealSymbol.png";
-export const ImageWrapper = styled.div`
+import Horizon from "../../components/NavBar/horizon";
+import Logo from "../../assets/brandingImg/Logoo.svg";
+const ImageWrapper = styled.div`
   display: flex;
   width: 100%;
   //원래 1.69
@@ -14,22 +14,23 @@ export const ImageWrapper = styled.div`
   margin-left: 2.5rem;
   height: 100%;
 `;
-export const Image = styled.img`
+const Image = styled.img`
   display: block;
   width: auto;
 `;
-export const Group = styled.div`
+const Group = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
   margin-right: 1.25rem;
   margin-bottom: 7.94rem;
+  text-align: start;
   &:hover {
     background-color: #fff;
     transition: background-color 0.8s;
   }
 `;
-export function Nav() {
+const Navbar = () => {
   const navigate = useNavigate();
   const [topOffset, setTopOffset] = useState(0);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -99,6 +100,6 @@ export function Nav() {
       </Group>
     </S.NavBar>
   );
-}
+};
 
-export default Nav;
+export default Navbar;

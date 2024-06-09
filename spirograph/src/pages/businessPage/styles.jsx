@@ -30,6 +30,7 @@ export const Container = styled.div`
   width: 100vw;
   height: auto;
   border-color: #ebebeb;
+  background-image: url(${(props) => props.src});
 `;
 
 export const ImageContainerFullWhite = styled.img`
@@ -42,9 +43,15 @@ export const ImageContainerFullWhite = styled.img`
 `;
 
 export const LastButton = styled.button`
-  background-color: gray 95;
-  width: 21rem;
-  height: 5rem;
-  color: #fff;
+  width: 25rem;
+  height: 7rem;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: #f1f1f1;
+  margin: 0 auto;
+  position: absolute;
   border-radius: 20px;
+  font-size: 2rem;
+  font-weight: 700;
 `;

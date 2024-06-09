@@ -257,6 +257,9 @@ export default function Main() {
             <div
               className="button-text justify-center items-center px-16 py-7 whitespace-nowrap rounded-3xl max-md:px-5"
               style={{ color: "#b4acac" }}
+              onClick={() => {
+                navigate("/branding");
+              }}
             >
               브랜드 보러가기 &gt;
             </div>
@@ -265,6 +268,9 @@ export default function Main() {
             <div
               className="button-text justify-center items-center px-16 py-7 whitespace-nowrap rounded-3xl max-md:px-5"
               style={{ color: "#b4acac" }}
+              onClick={() => {
+                navigate("/business");
+              }}
             >
               브랜드 비지니스 모델 &gt;
             </div>
@@ -273,6 +279,9 @@ export default function Main() {
             <div
               className="button-text justify-center items-center px-16 py-7 whitespace-nowrap rounded-3xl max-md:px-5"
               style={{ color: "#b4acac" }}
+              onClick={() => {
+                navigate("/salelist");
+              }}
             >
               상징 판매장
             </div>
@@ -281,6 +290,9 @@ export default function Main() {
             <div
               className="button-text justify-center items-center px-16 py-7 whitespace-nowrap rounded-3xl max-md:px-5"
               style={{ color: "#b4acac" }}
+              onClick={() => {
+                navigate("/salelist");
+              }}
             >
               CONTACT
             </div>
