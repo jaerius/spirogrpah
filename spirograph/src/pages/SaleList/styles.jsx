@@ -23,10 +23,15 @@ export const SmallTitleT = styled.div`
   font-size: 1.25rem;
   color: #f1f1f1;
 `;
-
+export const GridContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  margin: 0 1rem;
+`;
 export const CardContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   height: 36.4rem;
   justify-content: center;
@@ -75,7 +80,6 @@ export const Img = styled.img`
   display: flex;
   align-items: center;
   justify-content: center;
-  object-fit: contain;
 `;
 export const TextWrapper = styled.div`
   text-align: start;

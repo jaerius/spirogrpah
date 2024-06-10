@@ -292,7 +292,7 @@ export default function Main() {
               className="button-text justify-center items-center px-16 py-7 whitespace-nowrap rounded-3xl max-md:px-5"
               style={{ color: "#b4acac" }}
               onClick={() => {
-                navigate("/salelist");
+                navigate("/contact");
               }}
             >
               CONTACT

@@ -3,7 +3,7 @@ import * as S from "./styles";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-import One from "../../assets/businessImg/1.png";
+import One from "../../assets/businessImg/EvolReal.png";
 import Two from "../../assets/businessImg/2.png";
 import Three from "../../assets/businessImg/3.png";
 import Four from "../../assets/businessImg/4.png";
@@ -49,7 +49,7 @@ export default function BusinessPage() {
   `;
 
   return (
-    <div style={{ backgroundColor: "#f1f1f1" }}>
+    <div style={{ backgroundColor: "#000" }}>
       <Nav />
       <S.FirstPage>
         {images.map((image, index) => (
