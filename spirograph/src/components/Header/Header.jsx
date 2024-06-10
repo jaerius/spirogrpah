@@ -9,19 +9,21 @@ export const Header = () => {
     <div className="flex flex-col px-5 w-full max-w-full">
       <div className="flex gap-5 items-start text-sm font-bold text-white flex-wrap">
         <div className="flex flex-col">
-          <div className="img-container">
+          <div className="img-container hover-effect">
             <img
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/e273b21e7a814573f6043f3bb8a5765e678dbd03a7dcdd8675469b73c1b547a1?"
               className="self-center border border-solid border-stone-500 stroke-[1px] stroke-stone-500 w-[218px]"
-              style={{ height: "0px" }}
+              style={{ height: "0px", textAlign: "center" }}
+              hoverColor="#5339FD"
             />
-            <div
+            <button
+              hoverColor="#5339FD"
               className="mt-1 text-custom text-left"
               onClick={() => navigate("./LogicPage")}
             >
               Symbol Logic
-            </div>
+            </button>
           </div>
         </div>
         <div className="flex flex-col whitespace-nowrap">

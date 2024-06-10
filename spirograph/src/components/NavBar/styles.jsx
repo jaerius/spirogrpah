@@ -8,7 +8,6 @@ export const NavBar = styled.nav`
   flex-direction: row;
   /* margin-top: 2rem; */
   height: 5vh;
-  position: fixed;
   top: 0;
   width: 100%;
   transition: top 0.3s;

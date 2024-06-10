@@ -4,7 +4,7 @@ import { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header/Header";
 import gsap from "gsap";
-
+import Navbar from "../../components/NavBar/Navbar";
 export default function Main() {
   const navigate = useNavigate();
   const imageWrapperRef = useRef(null);
@@ -140,6 +140,7 @@ export default function Main() {
 
   return (
     <div className="bg-black font-pretendard">
+      {/* <Navbar /> */}
       <Header />
 
       <div className="flex justify-center items-center mt-5 w-full text-sm font-semibold leading-4 text-center text-white whitespace-nowrap bg-black max-md:px-5 max-md:mt-10 max-md:max-w-full">

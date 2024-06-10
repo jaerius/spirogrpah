@@ -311,24 +311,29 @@ const Sketch = ({
       <div ref={sketchRef}></div>
       <div className="nft">
         {isEnd && (
-          <div className="buttons">
-            <button className="button2" onClick={handlePrint}>
-              <span className="button-text">출력하기</span>
-              <div className="tooltip">
-                AI를 활용하여 자신의 취향을 담아 <br /> 더 멋진 심볼을 만들어
-                보아요!
-              </div>
-            </button>
-            <button
-              className="button3"
-              onClick={() => navigate("/aiCorrection", { state: { url } })}
-            >
-              <span className="button-text">AI 수정하기</span>
-              <div className="tooltip">
-                AI를 활용하여 자신의 취향을 담아 <br /> 더 멋진 심볼을 만들어
-                보아요!
-              </div>
-            </button>
+          <div className="flex  h-32 justify-center items-center min-h-screen">
+            <div className="flex flex-row gap-4">
+              {/* <div className="button2 flex flex-col" onClick={handlePrint}>
+                <span className="button-text">홈으로 가기</span>
+                <div className="tooltip ">
+                  AI를 활용하여 자신의 취향을 담아 <br /> 더 멋진 심볼을 만들어
+                  보아요!
+                </div>
+              </div> */}
+              <button
+                className="button3 flex flex-col"
+                onClick={() => {
+                  navigate("/");
+                }}
+                // onClick={() => navigate("/aiCorrection", { state: { url } })}
+              >
+                <span className="button-text">홈으로 가기</span>
+                {/* <div className="tooltip">
+                  AI를 활용하여 자신의 취향을 담아 <br /> 더 멋진 심볼을 만들어
+                  보아요!
+                </div> */}
+              </button>
+            </div>
           </div>
         )}
       </div>

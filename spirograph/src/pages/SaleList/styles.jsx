@@ -57,21 +57,25 @@ export const Card = styled.div`
   justify-content: center;
   font-size: 1rem;
   text-align: center;
+  margin: 0 1rem;
 `;
 
 export const ImgWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  width: 19rem;
+  height: 27rem;
   flex: "1 0 auto";
+  object-fit: contain;
 `;
 export const Img = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 19rem;
+  height: 27rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  object-fit: contain;
 `;
 export const TextWrapper = styled.div`
   text-align: start;
