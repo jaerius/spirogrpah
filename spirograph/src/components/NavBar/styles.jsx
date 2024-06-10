@@ -3,11 +3,11 @@ import styled from "styled-components";
 //로고+메뉴바
 export const NavBar = styled.nav`
   width: 100%;
-  /* background-color: black; */
+  background-color: transparent;
   display: flex;
   flex-direction: row;
   /* margin-top: 2rem; */
-  height: 5vh;
+  height: 10vh;
   top: 0;
   width: 100%;
   transition: top 0.3s;

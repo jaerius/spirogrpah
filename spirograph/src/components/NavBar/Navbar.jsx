@@ -64,7 +64,13 @@ const Navbar = () => {
     };
   }, [lastScrollY]);
   return (
-    <S.NavBar style={{ top: `${topOffset}px`, transition: "top 0.3s" }}>
+    <S.NavBar
+      style={{
+        marginTop: "1rem",
+        top: `${topOffset}px`,
+        transition: "top 0.3s",
+      }}
+    >
       <ImageWrapper>
         <Image
           src={Logo}
@@ -77,13 +83,7 @@ const Navbar = () => {
       <Group>
         <Horizon />
 
-        <S.NavMenu
-          onClick={() => {
-            navigate("/branding");
-          }}
-        >
-          Symbol Logic
-        </S.NavMenu>
+        <S.NavMenu>Symbol Logic</S.NavMenu>
       </Group>
       <Group>
         <Horizon />
@@ -117,12 +117,20 @@ const Navbar = () => {
       </Group>
       <Group>
         <Horizon />
-        <S.NavMenu onClick={handleClick}>Shop</S.NavMenu>
+        <S.NavMenu
+          onClick={() => {
+            navigate("/salelist");
+          }}
+        >
+          Shop
+        </S.NavMenu>
       </Group>
       <Group>
         <Horizon />
         <S.NavMenu
-          onClick={handleClick}
+          onClick={() => {
+            navigate("/sketch");
+          }}
           style={{ fontSize: "1.12rem" }}
           hoverColor="#5339FD"
         >
