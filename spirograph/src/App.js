@@ -10,6 +10,7 @@ import LastPage from "./pages/spiro/LastPage.jsx";
 import SaleListPage from "./pages/SaleList/index";
 import BrandingPage from "./pages/brandingPage/index";
 import BusinessPage from "./pages/businessPage/index";
+import ContactPage from "./pages/contactPage/index.jsx";
 
 function App() {
   return (
@@ -19,11 +20,12 @@ function App() {
           <Route path="/salelist" element={<SaleListPage />} />
           <Route path="/branding" element={<BrandingPage />} />
           <Route path="/business" element={<BusinessPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+
           <Route path="/" element={<Main />} />
           <Route path="/sketch" element={<SketchPage />} />
           <Route path="/aiCorrection" element={<AICorrection />} />
           <Route path="/LastPage" element={<LastPage />} />
-
         </Routes>
       </Router>
     </div>

@@ -4,6 +4,11 @@ import Nav from "../../components/NavBar/Navbar";
 import BIcon from "../../assets/saleListImg/Bicon.svg";
 import HorizonLine from "./horizonLine";
 import Graph1 from "../../assets/saleListImg/graphh1.png";
+import Graph2 from "../../assets/saleListImg/graph2.png";
+import Graph3 from "../../assets/saleListImg/graph3.png";
+import Graph4 from "../../assets/saleListImg/graph4.png";
+import Graph5 from "../../assets/saleListImg/graph5.png";
+import Graph6 from "../../assets/saleListImg/graphh1.png";
 
 const SaleListPage = () => {
   return (
@@ -33,7 +38,7 @@ const SaleListPage = () => {
       <S.CardContainer>
         <S.Card>
           <S.ImgWrapper>
-            <S.Img src={Graph1} alt="main"></S.Img>
+            <S.Img src={Graph1} alt="main" style={{ width: "17rem" }}></S.Img>
           </S.ImgWrapper>
           <S.TextWrapper>
             <S.TextGroup>
@@ -66,7 +71,7 @@ const SaleListPage = () => {
 
         <S.Card>
           <S.ImgWrapper>
-            <S.Img src={Graph1} alt="main"></S.Img>
+            <S.Img src={Graph2} alt="main"></S.Img>
           </S.ImgWrapper>
           <S.TextWrapper>
             <S.TextGroup>
@@ -99,7 +104,7 @@ const SaleListPage = () => {
 
         <S.Card>
           <S.ImgWrapper>
-            <S.Img src={Graph1} alt="main"></S.Img>
+            <S.Img src={Graph3} alt="main"></S.Img>
           </S.ImgWrapper>
           <S.TextWrapper>
             <S.TextGroup>
@@ -132,7 +137,7 @@ const SaleListPage = () => {
 
         <S.Card>
           <S.ImgWrapper>
-            <S.Img src={Graph1} alt="main"></S.Img>
+            <S.Img src={Graph4} alt="main"></S.Img>
           </S.ImgWrapper>
           <S.TextWrapper>
             <S.TextGroup>
@@ -165,7 +170,7 @@ const SaleListPage = () => {
 
         <S.Card>
           <S.ImgWrapper>
-            <S.Img src={Graph1} alt="main"></S.Img>
+            <S.Img src={Graph5} alt="main"></S.Img>
           </S.ImgWrapper>
           <S.TextWrapper>
             <S.TextGroup>
@@ -198,7 +203,7 @@ const SaleListPage = () => {
 
         <S.Card>
           <S.ImgWrapper>
-            <S.Img src={Graph1} alt="main"></S.Img>
+            <S.Img src={Graph6} alt="main"></S.Img>
           </S.ImgWrapper>
           <S.TextWrapper>
             <S.TextGroup>

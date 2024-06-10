@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import * as S from "./styles";
+import * as S from "./NavBar/styles";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import Horizon from "../../components/NavBar/horizon";
@@ -30,7 +30,7 @@ const Group = styled.div`
     transition: background-color 0.8s;
   }
 `;
-const Navbar = () => {
+const NavbarMain = () => {
   const navigate = useNavigate();
   const [topOffset, setTopOffset] = useState(0);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -133,4 +133,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarMain;

@@ -38,7 +38,7 @@ const whiteImages = [
   { src: Thirteen, alt: "13" },
   { src: Fourteen, alt: "14" },
 ];
-export default function BrandingPage() {
+export default function BusinessPage() {
   const navigate = useNavigate();
 
   const Container = styled.div`
